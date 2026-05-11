@@ -11,11 +11,11 @@ import ContactStrip from "../home/ContactStrip";
 
 
 
-import heroImage from "../../assets/images/hero.png";
+import heroImage from "../../assets/images/hero-bg.webp";
 import bookAppointmentImg from "../../assets/images/book appointment.jpg";
 import labTestImg from "../../assets/images/lab test.jpg";
 import pharmacyImg from "../../assets/images/pharmacy.jpg";
-import speakToDoctorImg from "../../assets/images/speak to a doc.jpg";
+import speakToDoctorImg from "../../assets/images/speak to a doc.webp";
 
 type SlideButtonProps = {
   label: string;

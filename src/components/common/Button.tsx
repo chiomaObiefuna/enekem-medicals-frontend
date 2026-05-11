@@ -1,22 +1,20 @@
 // src/components/common/Button.tsx
-// A reusable button component used across the whole site.
-// Supports two variants: "primary" (navy) and "whatsapp" (green).
-// The "slide" prop enables the sliding hover animation for hero buttons.
-// Without "slide", it's a simple hover color change (used in Header).
 
-import React from "react";
+import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface ButtonProps {
-  label: string;           // Text shown on the button
-  href?: string;           // If provided, renders as an <a> tag (link)
-  onClick?: () => void;    // If provided, renders as a <button>
-  variant?: "primary" | "whatsapp"; // Color style
-  slide?: boolean;         // true = sliding animation (hero only)
-  external?: boolean;      // true = opens in new tab (for WhatsApp link)
-  fullWidth?: boolean;     // true = stretches to full width
+  label: string;
+  href?: string;
+  onClick?: () => void;
+  variant?: "primary" | "whatsapp";
+  slide?: boolean;
+  external?: boolean;
+  fullWidth?: boolean;
+  icon?: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   label,
   href,
   onClick,
@@ -24,53 +22,61 @@ const Button: React.FC<ButtonProps> = ({
   slide = false,
   external = false,
   fullWidth = false,
-}) => {
-
-  // ── Style logic ──────────────────────────────────────────
-
-  // Base styles shared by all buttons
+  icon,
+}: ButtonProps) => {
   const base = `
-    relative overflow-hidden inline-block font-semibold text-sm
+    relative inline-flex items-center justify-center gap-2
+    overflow-hidden font-semibold text-sm
     px-6 py-3 rounded-lg text-center cursor-pointer
-    transition-colors duration-300
+    transition-all duration-300
     ${fullWidth ? "w-full" : ""}
   `;
 
-  // Simple header button styles (no slide animation)
   const simpleStyles = {
-    primary: "bg-[#0B5D7A] text-white hover:bg-[#102A43]",
-    whatsapp: "bg-[#2FA66A] text-white hover:bg-[#258855]",
+    primary: "bg-[#01369E] text-white hover:bg-[#102A43]",
+    whatsapp: "bg-[#2F8F68] text-white hover:bg-[#257456]",
   };
 
-  // Sliding hero button styles — uses CSS classes defined in index.css
   const slideStyles = {
-    primary: "slide-btn slide-btn-navy rounded-full",
-    whatsapp: "slide-btn slide-btn-green rounded-full",
+    primary: "slide-btn slide-btn-navy",
+    whatsapp: "slide-btn slide-btn-green",
   };
 
-  // Pick the right style based on whether slide is enabled
   const className = slide
     ? `${base} ${slideStyles[variant]}`
     : `${base} ${simpleStyles[variant]}`;
 
-  // ── Render as link or button ─────────────────────────────
+  const content = (
+    <span className="relative z-10 flex items-center justify-center gap-2">
+      {icon}
+      {label}
+    </span>
+  );
 
   if (href) {
+    if (external || href.startsWith("http")) {
+      return (
+        <a
+          href={href}
+          className={className}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {content}
+        </a>
+      );
+    }
+
     return (
-      <a
-        href={href}
-        className={className}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-      >
-        {label}
-      </a>
+      <Link to={href} className={className}>
+        {content}
+      </Link>
     );
   }
 
   return (
-    <button onClick={onClick} className={className}>
-      {label}
+    <button type="button" onClick={onClick} className={className}>
+      {content}
     </button>
   );
 };
