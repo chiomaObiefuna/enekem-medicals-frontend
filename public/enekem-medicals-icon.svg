@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-labelledby="title desc">
+  <title id="title">Enekem Medicals Icon</title>
+  <desc id="desc">Vector-style blue and green medical icon for Enekem Medicals.</desc>
+  <defs>
+    <style>
+      .brand-blue{fill:#0E3F99;}
+      .brand-green{fill:#39D334;}
+    </style>
+  </defs>
+  <rect x="65" y="185" width="370" height="115" rx="57.5" class="brand-green"/>
+  <path class="brand-blue" d="M205 105C205 75 227 53 250 53C273 53 295 75 295 105V345H205V105Z"/>
+  <path class="brand-blue" d="M205 335H295V400H378V445C378 472 356 495 329 495H250C223 495 205 472 205 445V335Z"/>
+  <path d="M205 325C205 372 242 388 286 388H378" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M295 335V388" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="square"/>
+</svg>
