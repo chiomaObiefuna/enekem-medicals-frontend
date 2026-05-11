@@ -1,1 +1,1090 @@
 @import "tailwindcss";
+
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════
+   HERO ENTRANCE ANIMATIONS
+═══════════════════════════════════ */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-up {
+  opacity: 0;
+  animation: heroFadeUp 0.85s ease-out forwards;
+}
+
+.hero-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.hero-delay-2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes quickActionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quick-action-fade-up {
+  opacity: 0;
+  animation: quickActionFadeUp 0.8s ease-out forwards;
+}
+
+.quick-action-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.quick-action-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.quick-action-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.quick-action-delay-4 {
+  animation-delay: 0.6s;
+}
+
+/* Optional: keeps animations accessible for people who reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up,
+  .quick-action-fade-up {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+.hero-headline,
+.hero-paragraph,
+.hero-buttons {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeSlideUp 0.7s ease forwards;
+}
+
+.hero-headline  { animation-delay: 0.1s;  }
+.hero-paragraph { animation-delay: 0.3s;  }
+.hero-buttons   { animation-delay: 0.55s; }
+
+@keyframes fadeSlideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════
+   HERO BUTTON SLIDE ANIMATION
+   Only used when slide={true} on Button.tsx
+═══════════════════════════════════ */
+.slide-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: color 0.35s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.slide-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.35s ease;
+  z-index: 0;
+}
+
+.slide-btn:hover::before { left: 0; }
+
+/* Navy (Book Appointment) */
+.slide-btn-navy              { background-color: #fff; color: #102A43; border-color: #102A43; }
+.slide-btn-navy::before      { background-color: #0B5D7A; }
+.slide-btn-navy:hover        { color: #ffffff; }
+
+/* Green (WhatsApp) */
+.slide-btn-green             { background-color: #fff; color: #2FA66A; border-color: #2FA66A; }
+.slide-btn-green::before     { background-color: #2FA66A; }
+.slide-btn-green:hover       { color: #ffffff; }
+
+/* QUICK ACTION CARD CSS */
+
+@keyframes quickActionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quick-action-fade-up {
+  opacity: 0;
+  animation: quickActionFadeUp 0.8s ease-out forwards;
+}
+
+.quick-action-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.quick-action-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.quick-action-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.quick-action-delay-4 {
+  animation-delay: 0.6s;
+}
+
+@keyframes aboutFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* About Snippet styling */
+
+@keyframes aboutSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.about-snippet-left {
+  opacity: 0;
+  animation: aboutFadeUp 0.8s ease-out forwards;
+}
+
+.about-snippet-card {
+  opacity: 0;
+  animation: aboutSlideRight 0.9s ease-out 0.15s forwards;
+}
+
+.about-feature {
+  opacity: 0;
+  animation: aboutFadeUp 0.7s ease-out forwards;
+}
+
+.about-feature-delay-1 {
+  animation-delay: 0.35s;
+}
+
+.about-feature-delay-2 {
+  animation-delay: 0.5s;
+}
+
+.about-feature-delay-3 {
+  animation-delay: 0.65s;
+}
+
+
+/* ServiceOverview styling */
+
+@keyframes servicesFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services-overview-heading {
+  opacity: 0;
+  animation: servicesFadeUp 0.8s ease-out forwards;
+}
+
+.services-card {
+  opacity: 0;
+  animation: servicesFadeUp 0.8s ease-out forwards;
+}
+
+.services-card-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.services-card-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.services-card-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.services-overview-cta {
+  opacity: 0;
+  animation: servicesFadeUp 0.8s ease-out 0.65s forwards;
+}
+
+/* WHYCHOOSEUS STYLING */
+@keyframes whySlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-44px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes whySlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes whyFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes whyBadgeFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.why-images {
+  opacity: 0;
+  animation: whySlideFromLeft 0.9s ease-out forwards;
+}
+
+.why-content {
+  opacity: 0;
+  animation: whySlideFromRight 0.9s ease-out 0.15s forwards;
+}
+
+.why-image-small {
+  opacity: 0;
+  animation: whyFadeUp 0.8s ease-out 0.35s forwards;
+}
+
+.why-image-delay {
+  animation-delay: 0.5s;
+}
+
+.why-floating-badge {
+  animation: whyFadeUp 0.8s ease-out 0.7s forwards,
+    whyBadgeFloat 4s ease-in-out 1.6s infinite;
+  opacity: 0;
+}
+
+.why-trust-row {
+  opacity: 0;
+  animation: whyFadeUp 0.75s ease-out forwards;
+}
+
+.why-trust-delay-1 {
+  animation-delay: 0.35s;
+}
+
+.why-trust-delay-2 {
+  animation-delay: 0.5s;
+}
+
+.why-trust-delay-3 {
+  animation-delay: 0.65s;
+}
+
+.why-trust-delay-4 {
+  animation-delay: 0.8s;
+}
+
+.why-actions {
+  opacity: 0;
+  animation: whyFadeUp 0.75s ease-out 1s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-images,
+  .why-content,
+  .why-image-small,
+  .why-floating-badge,
+  .why-trust-row,
+  .why-actions {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   WHY CHOOSE US — scroll-triggered animations
+  
+═══════════════════════════════════════════════════════ */
+
+@keyframes whySlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-44px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes whySlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes whyFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes whyBadgeFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.why-images {
+  opacity: 0;
+  animation: whySlideFromLeft 0.9s ease-out forwards;
+}
+
+.why-content {
+  opacity: 0;
+  animation: whySlideFromRight 0.9s ease-out 0.15s forwards;
+}
+
+.why-image-small {
+  opacity: 0;
+  animation: whyFadeUp 0.8s ease-out 0.35s forwards;
+}
+
+.why-image-delay {
+  animation-delay: 0.5s;
+}
+
+.why-floating-badge {
+  animation: whyFadeUp 0.8s ease-out 0.7s forwards,
+    whyBadgeFloat 4s ease-in-out 1.6s infinite;
+  opacity: 0;
+}
+
+.why-trust-row {
+  opacity: 0;
+  animation: whyFadeUp 0.75s ease-out forwards;
+}
+
+.why-trust-delay-1 {
+  animation-delay: 0.35s;
+}
+
+.why-trust-delay-2 {
+  animation-delay: 0.5s;
+}
+
+.why-trust-delay-3 {
+  animation-delay: 0.65s;
+}
+
+.why-trust-delay-4 {
+  animation-delay: 0.8s;
+}
+
+.why-actions {
+  opacity: 0;
+  animation: whyFadeUp 0.75s ease-out 1s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-images,
+  .why-content,
+  .why-image-small,
+  .why-floating-badge,
+  .why-trust-row,
+  .why-actions {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   CONTACT STRIP — scroll-triggered animations
+═══════════════════════════════════════════════════════ */
+
+/* Label */
+/* CONTACT STRIP scroll-triggered animations */
+.contact-label { opacity:0; transform:translateX(-20px); transition:opacity .5s ease,transform .5s ease; transition-delay:.05s; }
+.contact-label--visible { opacity:1; transform:translateX(0); }
+
+.contact-heading { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; transition-delay:.1s; }
+.contact-heading--visible { opacity:1; transform:translateY(0); }
+
+.contact-subtext { opacity:0; transform:translateY(16px); transition:opacity .6s ease,transform .6s ease; transition-delay:.18s; }
+.contact-subtext--visible { opacity:1; transform:translateY(0); }
+
+.contact-info-block { opacity:0; transform:translateX(-24px); transition:opacity .55s ease,transform .55s ease; }
+.contact-info-block--visible { opacity:1; transform:translateX(0); }
+
+.contact-divider { opacity:0; transition:opacity .5s ease; transition-delay:.52s; }
+.contact-divider--visible { opacity:1; }
+
+.contact-ctas { opacity:0; transform:translateY(16px); transition:opacity .6s ease,transform .6s ease; transition-delay:.58s; }
+.contact-ctas--visible { opacity:1; transform:translateY(0); }
+
+.contact-map { opacity:0; transform:translateX(40px); transition:opacity .75s ease,transform .75s ease; transition-delay:.2s; }
+.contact-map--visible { opacity:1; transform:translateX(0); }
+
+.contact-notice { opacity:0; transform:translateY(12px); transition:opacity .5s ease,transform .5s ease; transition-delay:.7s; }
+.contact-notice--visible { opacity:1; transform:translateY(0); }
+
+/* FLOATING WHATSAPP PULSE RING
+   Expands from scale(1) to scale(1.75) while fading out — loops every 2s */
+.whatsapp-pulse {
+  animation: whatsappPulse 2s ease-out infinite;
+}
+@keyframes whatsappPulse {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  70%  { transform: scale(1.75); opacity: 0;   }
+  100% { transform: scale(1.75); opacity: 0;   }
+}
+
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT HERO + ABOUT SECTION  — animations 
+═══════════════════════════════════════════════════════════════ */
+@keyframes aboutHeroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutHeroSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(48px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes aboutHeroFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutHeroBlobMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(18px, -14px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes aboutHeroOrganicPulse {
+  0% {
+    transform: rotate(-3deg) scale(1);
+    border-radius: 64% 36% 42% 58% / 48% 42% 58% 52%;
+  }
+
+  50% {
+    transform: rotate(2deg) scale(1.02);
+    border-radius: 45% 55% 60% 40% / 56% 45% 55% 44%;
+  }
+
+  100% {
+    transform: rotate(-3deg) scale(1);
+    border-radius: 64% 36% 42% 58% / 48% 42% 58% 52%;
+  }
+}
+
+@keyframes aboutPageFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutPageSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-42px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes aboutPageSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(42px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.about-hero-copy {
+  opacity: 0;
+  animation: aboutHeroFadeUp 0.9s ease-out forwards;
+}
+
+.about-hero-buttons {
+  opacity: 0;
+  animation: aboutHeroFadeUp 0.8s ease-out 0.25s forwards;
+}
+
+.about-hero-trust {
+  opacity: 0;
+  animation: aboutHeroFadeUp 0.8s ease-out 0.45s forwards;
+}
+
+.about-hero-visual {
+  opacity: 0;
+  animation: aboutHeroSlideRight 1s ease-out 0.2s forwards;
+}
+
+.about-hero-floating-card {
+  opacity: 0;
+  animation: aboutHeroFadeUp 0.8s ease-out 0.75s forwards,
+    aboutHeroFloat 4s ease-in-out 1.6s infinite;
+}
+
+.about-hero-stat-card {
+  opacity: 0;
+  animation: aboutHeroFadeUp 0.8s ease-out 0.95s forwards,
+    aboutHeroFloat 4.5s ease-in-out 1.8s infinite;
+}
+
+.about-hero-blob-one,
+.about-hero-blob-two {
+  animation: aboutHeroBlobMove 7s ease-in-out infinite;
+}
+
+.about-hero-organic {
+  animation: aboutHeroOrganicPulse 8s ease-in-out infinite;
+}
+
+.about-approach-panel,
+.about-section-heading,
+.about-mission-card,
+.about-value-card,
+.about-offer-left,
+.about-offer-item,
+.about-commitment-panel,
+.about-trust-panel,
+.about-trust-tile,
+.about-visit-cta {
+  opacity: 0;
+  animation: aboutPageFadeUp 0.85s ease-out forwards;
+}
+
+.about-mission-delay {
+  animation-delay: 0.2s;
+}
+
+.about-value-delay-1,
+.about-offer-delay-1,
+.about-trust-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.about-value-delay-2,
+.about-offer-delay-2,
+.about-trust-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.about-value-delay-3,
+.about-offer-delay-3,
+.about-trust-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.about-trust-delay-4 {
+  animation-delay: 0.6s;
+}
+
+.about-offer-left,
+.about-commitment-panel {
+  animation-name: aboutPageSlideLeft;
+}
+
+.about-trust-panel {
+  animation-name: aboutPageSlideRight;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-copy,
+  .about-hero-buttons,
+  .about-hero-trust,
+  .about-hero-visual,
+  .about-hero-floating-card,
+  .about-hero-stat-card,
+  .about-hero-blob-one,
+  .about-hero-blob-two,
+  .about-hero-organic,
+  .about-approach-panel,
+  .about-section-heading,
+  .about-mission-card,
+  .about-value-card,
+  .about-offer-left,
+  .about-offer-item,
+  .about-commitment-panel,
+  .about-trust-panel,
+  .about-trust-tile,
+  .about-visit-cta {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+/* ═══════════════════════════════════════════════════════════════
+   SERVICE HERO + SERVICE SECTION— animations 
+   
+═══════════════════════════════════════════════════════════════ */
+
+@keyframes servicesPageFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes servicesPageSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(44px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes servicesPageFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes servicesPageBlob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(18px, -12px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.services-hero-copy,
+.services-hero-buttons,
+.services-hero-points,
+.services-page-heading,
+.services-page-card,
+.services-trust-heading,
+.services-trust-card,
+.services-cta {
+  opacity: 0;
+  animation: servicesPageFadeUp 0.85s ease-out forwards;
+}
+
+.services-hero-visual {
+  opacity: 0;
+  animation: servicesPageSlideRight 0.95s ease-out 0.15s forwards;
+}
+
+.services-hero-buttons {
+  animation-delay: 0.22s;
+}
+
+.services-hero-points {
+  animation-delay: 0.42s;
+}
+
+.services-hero-floating-card {
+  opacity: 0;
+  animation: servicesPageFadeUp 0.75s ease-out 0.7s forwards,
+    servicesPageFloat 4s ease-in-out 1.5s infinite;
+}
+
+.services-hero-blob-one,
+.services-hero-blob-two {
+  animation: servicesPageBlob 7s ease-in-out infinite;
+}
+
+.services-page-card-delay-1,
+.services-trust-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.services-page-card-delay-2,
+.services-trust-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.services-page-card-delay-3,
+.services-trust-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.services-page-card-delay-4,
+.services-trust-delay-4 {
+  animation-delay: 0.6s;
+}
+
+.services-cta {
+  animation-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-hero-copy,
+  .services-hero-buttons,
+  .services-hero-points,
+  .services-hero-visual,
+  .services-hero-floating-card,
+  .services-hero-blob-one,
+  .services-hero-blob-two,
+  .services-page-heading,
+  .services-page-card,
+  .services-trust-heading,
+  .services-trust-card,
+  .services-cta {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BOOKING + BOOKING SECTION— animations 
+   
+═══════════════════════════════════════════════════════════════ */
+
+
+@keyframes bookingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bookingSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(42px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bookingBlobMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(18px, -12px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.booking-hero-copy,
+.booking-services-panel,
+.booking-form-card,
+.booking-side-panel,
+.booking-process-heading,
+.booking-step,
+.booking-warning {
+  opacity: 0;
+  animation: bookingFadeUp 0.85s ease-out forwards;
+}
+
+.booking-services-panel,
+.booking-side-panel {
+  animation-name: bookingSlideRight;
+  animation-delay: 0.15s;
+}
+
+.booking-step-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.booking-step-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.booking-step-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.booking-warning {
+  animation-delay: 0.2s;
+}
+
+.booking-blob-one,
+.booking-blob-two {
+  animation: bookingBlobMove 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-hero-copy,
+  .booking-services-panel,
+  .booking-form-card,
+  .booking-side-panel,
+  .booking-process-heading,
+  .booking-step,
+  .booking-warning,
+  .booking-blob-one,
+  .booking-blob-two {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE LOADER SPINNER— animations 
+   
+═══════════════════════════════════════════════════════════════ */
+
+@keyframes pageLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pageLoaderPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes pageLoaderFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pageLoaderSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+@keyframes offlineFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-loader-ring {
+  animation: pageLoaderSpin 1.2s linear infinite;
+}
+
+.page-loader-glow {
+  animation: pageLoaderPulse 2s ease-in-out infinite;
+}
+
+.page-loader-icon {
+  animation: pageLoaderFloat 2.4s ease-in-out infinite;
+}
+
+.page-loader-line span {
+  animation: pageLoaderSweep 1.4s ease-in-out infinite;
+}
+
+.offline-card {
+  animation: offlineFadeUp 0.75s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader-ring,
+  .page-loader-glow,
+  .page-loader-icon,
+  .page-loader-line span,
+  .offline-card {
+    animation: none;
+    transform: none;
+  }
+}
