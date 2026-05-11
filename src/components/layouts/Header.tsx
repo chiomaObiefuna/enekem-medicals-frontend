@@ -15,7 +15,6 @@ import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 import navLinks from "../data/navLinks";
-import { contactInfo } from "../data/contactInfo";
 import logo from "../../assets/logo/Enekemlogo.png";
 
 const Header = () => {

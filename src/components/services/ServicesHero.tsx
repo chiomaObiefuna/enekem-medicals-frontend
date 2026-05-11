@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CalendarPlus, CheckCircle2 } from "lucide-react";
+import { CalendarPlus, CheckCircle2 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { contactInfo } from "../data/contactInfo";

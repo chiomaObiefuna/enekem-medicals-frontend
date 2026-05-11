@@ -9,7 +9,7 @@
 //
 // Floating WhatsApp bubble reused from ContactStrip pattern
 
-import { useState, useRef, useEffect, type ChangeEvent } from "react";
+import { useState,type ChangeEvent } from "react";
 import {
   FaPhone,
   FaWhatsapp,
