@@ -151,20 +151,28 @@ const Footer = () => {
             <h3 className="text-lg font-extrabold text-white">Contact Us</h3>
 
             <div className="mt-5 space-y-4">
-              <a
-                href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
-                className="flex gap-3 text-sm text-[#D8E8EE] transition hover:text-[#44CC3A]"
-              >
-                <PhoneCall
-                  size={18}
-                  className="mt-0.5 shrink-0 text-[#44CC3A]"
-                />
-                <span>
-                  {contactInfo.phone1}
-                  <br />
-                  {contactInfo.phone2}
-                </span>
-              </a>
+              <div className="flex gap-3 text-sm text-[#D8E8EE]">
+                  <PhoneCall
+                    size={18}
+                    className="mt-0.5 shrink-0 text-[#44CC3A]"
+                  />
+
+                  <div className="flex flex-col gap-1">
+                    <a
+                      href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
+                      className="transition hover:text-[#44CC3A]"
+                    >
+                      {contactInfo.phone1}
+                    </a>
+
+                    <a
+                      href={`tel:${contactInfo.phone2.replace(/\s+/g, "")}`}
+                      className="transition hover:text-[#44CC3A]"
+                    >
+                      {contactInfo.phone2}
+                    </a>
+                  </div>
+                </div>
 
               <a
                 href={contactInfo.whatsappLink}

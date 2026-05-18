@@ -3,8 +3,8 @@
 // Import this wherever you need phone, whatsapp, email, or address.
 
 export const contactInfo = {
-  phone1: "+234 806 427 8568",
-  phone2: "+234 901 660 9310",
+  phone1: "+234 901 660 9310",
+  phone2: "+234 806 427 8568",
   whatsappNumber: "2348064278568", // used in wa.me links
   whatsappLink: "https://wa.me/2348064278568",
   email: "info@enekemhealth.com",

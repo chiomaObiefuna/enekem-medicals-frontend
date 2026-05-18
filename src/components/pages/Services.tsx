@@ -146,7 +146,7 @@ const Services = () => {
                 tabIndex={0}
                 className={`services-page-card services-page-card-delay-${
                   index + 1
-                } group h-[520px] rounded-[2rem] outline-none [perspective:1400px] sm:h-[500px]`}
+                } group h-[470px] rounded-[2rem] outline-none [perspective:1400px] sm:h-[430px] md:h-[440px]lg:h-[450px]`}
               >
                 <div className="relative h-full w-full rounded-[2rem] transition-transform duration-900 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus:[transform:rotateY(180deg)]">
                   {/* FRONT */}
@@ -171,7 +171,8 @@ const Services = () => {
                   </div>
 
                   {/* BACK */}
-                  <div className="absolute inset-0 flex flex-col justify-between rounded-[2rem] border border-[#D8E8EE] bg-[#01369E] p-7 text-[#102A43] shadow-[0_24px_80px_rgba(16,42,67,0.12)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-8">
+                  <div className="absolute inset-0 flex flex-col overflow-hidden rounded-[2rem] border border-[#D8E8EE] bg-[#01369E] p-4 text-[#102A43] shadow-[0_24px_80px_rgba(16,42,67,0.12)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-5 lg:p-6">
+
                     <div>
                       <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#44CC3A]">
                         Service Detail
@@ -181,38 +182,37 @@ const Services = () => {
                         {service.title}
                       </h3>
 
-                      <p className="mt-4 text-sm leading-relaxed text-[#44CC3A] sm:text-base">
-                        {service.description}
+                      <p className="mt-3 text-xs leading-relaxed text-[#44CC3A] sm:text-sm lg:text-base">
+                          {service.description}
                       </p>
-
-                      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                     <div className="mt-4 grid gap-2 grid-cols-1 sm:grid-cols-2">
                         {service.points.map((point) => (
                           <div
-                            key={point}
-                            className="flex gap-2 rounded-2xl border border-[#D8E8EE] bg-white p-3 text-sm text-[#526071]"
-                          >
-                            <CheckCircle2
-                              size={18}
-                              className="mt-0.5 shrink-0 text-[#2F8F68]"
-                              strokeWidth={2.5}
-                            />
-                            <span>{point}</span>
+                              key={point}
+                              className="flex gap-2 rounded-xl border border-[#D8E8EE] bg-white p-2.5 text-xs text-[#526071] sm:text-sm"
+                            >
+                              <CheckCircle2
+                                size={15}
+                                className="mt-0.5 shrink-0 text-[#2F8F68]"
+                                strokeWidth={2.5}
+                              />
+                              <span>{point}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="mt-6 rounded-2xl bg-[#F0F7FF] p-4">
-                      <p className="text-sm leading-relaxed text-[#526071]">
+                   <div className="mt-3 rounded-2xl bg-[#F0F7FF] p-3 sm:p-4">
+                      <p className="text-xs leading-relaxed text-[#526071] sm:text-sm">
                         {service.supportText}
                       </p>
 
                       <Link
                         to="/book"
-                        className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#102A43] transition hover:text-[#2F8F68]"
+                        className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-[#102A43] transition hover:text-[#2F8F68] sm:text-sm"
                       >
                         Book or ask about this service
-                        <ArrowRight size={17} strokeWidth={2.5} />
+                        <ArrowRight size={15} strokeWidth={2.5} />
                       </Link>
                     </div>
                   </div>

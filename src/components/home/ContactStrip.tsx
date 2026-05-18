@@ -1,15 +1,3 @@
-// src/components/home/ContactStrip.tsx
-// CHANGES FROM PREVIOUS VERSION:
-// ✅ Background changed to light subtle #F8FBFF (very soft cool white-blue)
-//    — clean, minimal, no heavy color load on the page
-// ✅ Text colors updated to work on light background (#102A43 dark navy text)
-// ✅ Info block icons use #01369E navy instead of white
-// ✅ Map border updated to match light theme
-// ✅ Emergency banner adjusted for light bg
-// ✅ Floating WhatsApp bubble added (fixed bottom-right)
-//    — pulse ring animation + tooltip text on hover
-//    — fully separate from the section, sits above everything
-
 import { useEffect, useRef, useState } from "react";
 import {
   FaPhone,
@@ -27,11 +15,10 @@ import { contactInfo } from "../data/contactInfo";
 interface InfoBlockProps {
   icon: React.ReactNode;
   label: string;
-  lines: string[];
+  lines: React.ReactNode[];
   delay: string;
   isVisible: boolean;
 }
-
 const InfoBlock = ({ icon, label, lines, delay, isVisible }: InfoBlockProps) => (
   <div
     className={`contact-info-block flex items-start gap-4 ${
@@ -60,11 +47,6 @@ const InfoBlock = ({ icon, label, lines, delay, isVisible }: InfoBlockProps) => 
 // ─────────────────────────────────────────
 // FLOATING WHATSAPP BUBBLE
 // Fixed bottom-right corner, always visible.
-// HOW ANIMATION WORKS:
-//   1. "whatsapp-pulse" keyframe creates an expanding ring behind the icon
-//      — it scales up and fades out in a loop, like a ripple/sonar effect
-//   2. On hover, a tooltip label slides in from the right
-//   3. The bubble itself has a gentle bounce on hover via Tailwind
 // ─────────────────────────────────────────
 const FloatingWhatsApp = () => {
   const [hovered, setHovered] = useState(false);
@@ -192,7 +174,22 @@ const ContactStrip = () => {
               <InfoBlock
                 icon={<FaPhone size={16} />}
                 label="Phone Numbers"
-                lines={[contactInfo.phone1, contactInfo.phone2]}
+                lines={[
+                  <a
+                    key="phone1"
+                    href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
+                    className="transition hover:text-[#01369E] hover:underline"
+                  >
+                    {contactInfo.phone1}
+                  </a>,
+                  <a
+                    key="phone2"
+                    href={`tel:${contactInfo.phone2.replace(/\s+/g, "")}`}
+                    className="transition hover:text-[#01369E] hover:underline"
+                  >
+                    {contactInfo.phone2}
+                  </a>,
+                ]}
                 delay="0.22s"
                 isVisible={isVisible}
               />
@@ -228,19 +225,19 @@ const ContactStrip = () => {
               >
                 {/* Call Now — navy outline */}
                 <a
-                  href={`tel:${contactInfo.phone1}`}
+                  href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
                   className="
                     group relative inline-flex items-center justify-center gap-2
                     overflow-hidden rounded-full border-2 border-[#01369E]
-                    px-7 py-3.5 text-sm font-bold text-[#01369E]
+                    px-6 py-3.5 text-sm font-bold text-[#01369E]
                     transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg
                   "
                 >
                   <span className="absolute inset-0 -translate-x-full bg-[#01369E] transition-transform duration-[350ms] ease-out group-hover:translate-x-0" />
                   <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
                     <FaPhone size={14} />
-                    Call Now
-                  </span>
+                    Call {contactInfo.phone1}
+                          </span>
                 </a>
 
                 {/* WhatsApp — green filled */}

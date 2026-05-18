@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <>
       <header className="sticky top-0 z-50 w-full overflow-x-hidden border-b border-[#D8E8EE] bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex min-h-[88px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
+        <div className="mx-auto flex min-h-[72px] max-w-5xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
           {/* Logo */}
           <Link
             to="/"
@@ -37,7 +37,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Enekem Medicals"
-              className="h-16 w-auto object-contain md:h-20 lg:h-24"
+              className="h-12 w-auto object-contain md:h-14 lg:h-16"
             />
           </Link>
 
@@ -105,7 +105,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Enekem Medicals"
-              className="h-14 w-auto object-contain"
+              className="h-11 w-auto object-contain"
             />
           </Link>
 

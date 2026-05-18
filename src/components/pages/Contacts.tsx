@@ -117,6 +117,7 @@ interface SectionWrapperProps {
   sectionTag: string;
   sideLabel: string;
   sideColor: string;
+  sideNumber: string; // ghost watermark number e.g. "01", "02"
   children: React.ReactNode;
 }
 
@@ -124,41 +125,76 @@ const SectionWrapper = ({
   sectionTag,
   sideLabel,
   sideColor,
+  sideNumber,
   children,
 }: SectionWrapperProps) => (
   <div className="grid gap-0 lg:grid-cols-[220px_1fr]">
-    {/* Sticky left sidebar label */}
+
+    {/* ── LEFT: Sticky sidebar ──
+        position:sticky + top:0 + min-height:100%
+        keeps the label centered while right content scrolls.
+        Ghost number sits behind as a large watermark.     */}
     <div
-      className="hidden lg:flex lg:flex-col lg:items-start lg:justify-start lg:px-8 lg:py-14"
+      className="hidden lg:block"
       style={{ backgroundColor: sideColor }}
     >
-      <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
-        {sectionTag}
-      </p>
-      <h2 className="text-3xl font-extrabold leading-tight text-white">
-        {sideLabel}
-      </h2>
+      <div
+        className="sticky top-0 flex min-h-screen flex-col items-start justify-center overflow-hidden px-8 py-14"
+        style={{ backgroundColor: sideColor }}
+      >
+        {/* Ghost watermark number — large, faded, absolutely positioned */}
+        <span
+          className="pointer-events-none absolute -bottom-6 -right-4 select-none font-extrabold leading-none text-white/[0.07]"
+          style={{ fontSize: "160px" }}
+          aria-hidden="true"
+        >
+          {sideNumber}
+        </span>
+
+        {/* Top decorative line */}
+        <span className="mb-5 block h-[2px] w-10 rounded-full bg-white/30" />
+
+        {/* Small tag text */}
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.25em] text-white/55">
+          {sectionTag}
+        </p>
+
+        {/* Main heading — preserves \n line breaks */}
+        <h2 className="whitespace-pre-line text-3xl font-extrabold leading-tight text-white">
+          {sideLabel}
+        </h2>
+
+        {/* Bottom accent dot */}
+        <span
+          className="mt-6 block h-2 w-2 rounded-full bg-white/40"
+        />
+      </div>
     </div>
 
-    {/* Right content */}
+    {/* ── RIGHT: Content area ── */}
     <div className="bg-white px-5 py-12 sm:px-10 lg:px-14 lg:py-14">
-      {/* Mobile label — shown instead of sidebar on small screens */}
+
+      {/* Mobile label — only shows on screens below lg */}
       <div className="mb-8 lg:hidden">
+        <span
+          className="mb-3 block h-[2px] w-8 rounded-full"
+          style={{ backgroundColor: sideColor }}
+        />
         <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#102A43]/40">
           {sectionTag}
         </p>
         <h2
-          className="mt-1 text-2xl font-extrabold"
+          className="mt-1 whitespace-pre-line text-2xl font-extrabold"
           style={{ color: sideColor }}
         >
           {sideLabel}
         </h2>
       </div>
+
       {children}
     </div>
   </div>
 );
-
 // ─────────────────────────────────────────
 // MAIN PAGE
 // ─────────────────────────────────────────
@@ -212,6 +248,7 @@ const Contacts = () => {
         sectionTag="Contact Us"
         sideLabel={"Contact\nUs"}
         sideColor="#01369E"
+        sideNumber="01" 
       >
         <div className="grid gap-10 xl:grid-cols-[1fr_300px]">
 
@@ -231,13 +268,24 @@ const Contacts = () => {
               icon={<FaPhone size={14} />}
               label="Phone Numbers"
               lines={[
-                <span key="p1">
-                  {contactInfo.phone1}{" "}
-                  <span className="ml-1 rounded-full bg-[#25D366]/15 px-2 py-0.5 text-[11px] font-bold text-[#25D366]">
+                <a
+                  key="p1"
+                  href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
+                  className="inline-flex items-center gap-2 text-[#01369E] transition hover:underline"
+                >
+                  {contactInfo.phone1}
+                  <span className="rounded-full bg-[#25D366]/15 px-2 py-0.5 text-[11px] font-bold text-[#25D366]">
                     Available 24/7
                   </span>
-                </span>,
-                contactInfo.phone2,
+                </a>,
+
+                <a
+                  key="p2"
+                  href={`tel:${contactInfo.phone2.replace(/\s+/g, "")}`}
+                  className="text-[#01369E] transition hover:underline"
+                >
+                  {contactInfo.phone2}
+                </a>,
               ]}
             />
 
@@ -264,17 +312,18 @@ const Contacts = () => {
             {/* CTA buttons */}
             <div className="mt-2 flex flex-wrap gap-3">
               {/* Call Now */}
-              <a
-                href={`tel:${contactInfo.phone1}`}
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-[#01369E] px-6 py-3 text-sm font-bold text-[#01369E] transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
-              >
-                <span className="absolute inset-0 -translate-x-full bg-[#01369E] transition-transform duration-[350ms] ease-out group-hover:translate-x-0" />
-                <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
-                  <PhoneCall size={15} />
-                  Call Now
-                </span>
+             <a
+                    href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
+                    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-[#01369E] px-6 py-3 text-sm font-bold text-[#01369E] transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
+                  >
+                    <span className="absolute inset-0 -translate-x-full bg-[#01369E] transition-transform duration-[350ms] ease-out group-hover:translate-x-0" />
+                    <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
+                      <PhoneCall size={15} />
+                      Call {contactInfo.phone1}
+                    </span>
               </a>
 
+                  
               {/* WhatsApp */}
               <a
                 href={contactInfo.whatsappLink}
@@ -304,11 +353,9 @@ const Contacts = () => {
           <div className="flex flex-col gap-4">
             {/* Map thumbnail */}
             <div className="overflow-hidden rounded-2xl border border-[#D8E8EE] shadow-md">
-              {/*
-                REPLACE the src below with your real Google Maps embed URL:
-                1. maps.google.com → search the Yaba address
-                2. Share → Embed a map → copy the src URL
-              */}
+              
+              
+            
               <iframe
                 title="Enekem Medicals - Yaba Lagos"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9!2d3.3792!3d6.5244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzEnMjguMCJOIDPCsDIyJzQ1LjEiRQ!5e0!3m2!1sen!2sng"
@@ -356,6 +403,7 @@ const Contacts = () => {
         sectionTag="Send a Message"
         sideLabel={"Send a\nMessage"}
         sideColor="#25D366"
+        sideNumber="02"  
       >
         <div className="max-w-2xl">
           <h3 className="mb-2 text-xl font-bold text-[#102A43]">
@@ -419,8 +467,8 @@ const Contacts = () => {
 
             <div>
               <label className="mb-2 block text-sm font-semibold text-[#102A43]">
-                Email Address{" "}
-                <span className="font-normal text-[#102A43]/40">(optional)</span>
+                Email Address
+                
               </label>
               <input
                 name="email"

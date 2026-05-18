@@ -11,7 +11,7 @@ import ContactStrip from "../home/ContactStrip";
 
 
 
-import heroImage from "../../assets/images/hero-bg.webp";
+
 import bookAppointmentImg from "../../assets/images/book-appointment.jpg";
 import labTestImg from "../../assets/images/lab-test.jpg";
 import pharmacyImg from "../../assets/images/pharmacy.jpg";
@@ -130,48 +130,85 @@ const quickActions: QuickAction[] = [
 const Home = () => {
   return (
     <main className="w-full">
-      {/* HERO SECTION */}
-      <section className="relative min-h-[680px] w-full overflow-hidden md:min-h-[620px] lg:min-h-[680px]">
-        <img
-          src={heroImage}
-          alt="Hospital lobby with healthcare staff"
-          className="absolute inset-0 h-full w-full object-cover object-[60%_center] sm:object-center"
+      
+  {/* HERO SECTION */}
+<section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[540px]">
+
+  
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    poster="/videos/poster.webp"
+    className="absolute inset-0 h-full w-full object-cover object-center"
+  >
+    {/* Mobile — below 768px */}
+    <source
+      src="/videos/Mobile-Hero.webm"
+      type="video/webm"
+      media="(max-width: 767px)"
+    />
+    <source
+      src="/videos/Mobile-Hero.mp4"
+      type="video/mp4"
+      media="(max-width: 767px)"
+    />
+
+    {/* Tablet — 768px to 1023px */}
+    <source
+      src="/videos/Tablet-Hero.webm"
+      type="video/webm"
+      media="(max-width: 1023px)"
+    />
+    <source
+      src="/videos/Tablet-Hero.mp4"
+      type="video/mp4"
+      media="(max-width: 1023px)"
+    />
+
+    {/* Desktop — 1024px and above */}
+    <source src="/videos/Desktop-Hero.webm" type="video/webm" />
+    <source src="/videos/Desktop-Hero.mp4"  type="video/mp4"  />
+
+    {/* Fallback for browsers that block video */}
+    <img
+      src="/videos/poster.PNG"
+      alt="Enekem Medicals healthcare facility"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+    />
+  </video>
+
+  
+  {/* Very light scrim — just enough for text readability, video stays vivid */}
+  <div className="absolute inset-0 bg-black/20" />
+
+  {/* Hero content — minimal, clean, centered */}
+  <div className="relative z-10 mx-auto flex min-h-[420px] max-w-7xl items-end px-5 pb-10 sm:min-h-[480px] sm:px-8 sm:pb-14 lg:min-h-[540px] lg:px-10 lg:pb-16">
+    <div className="max-w-xl">
+
+      {/* Short tagline only — no big headline, video does the talking */}
+      <p
+        className="hero-fade-up text-sm font-medium leading-relaxed text-white/80 sm:text-base lg:text-lg"
+        style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+      >
+        Reliable and professional healthcare services — consultation,
+        diagnostics, and pharmacy, all in one place.
+      </p>
+
+      {/* Single CTA — Book Appointment only */}
+      <div className="hero-fade-up hero-delay-1 mt-6">
+        <SlideButton
+          label="Book Appointment"
+          href="/book"
+          variant="primary"
         />
+      </div>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#102A43]/75 via-[#102A43]/45 to-transparent" />
+    </div>
+  </div>
+</section>
 
-        <div className="relative z-10 mx-auto flex min-h-[680px] max-w-7xl items-center px-5 sm:px-8 md:min-h-[620px] lg:min-h-[680px] lg:px-10">
-          <div className="max-w-2xl">
-            <h1 className="hero-fade-up text-5xl font-extrabold leading-tight text-white drop-shadow-md sm:text-6xl lg:text-7xl">
-              Complete Healthcare
-              <br />
-              You Can Trust
-            </h1>
-
-            <p className="hero-fade-up hero-delay-1 mt-6 max-w-xl text-base leading-relaxed text-white/95 sm:text-lg">
-              From consultation to diagnosis and medication, Enekem Medicals
-              provides reliable and professional healthcare services all in one
-              place.
-            </p>
-
-            <div className="hero-fade-up hero-delay-2 mt-9 flex flex-col gap-4 sm:flex-row">
-              <SlideButton
-                label="Book Appointment"
-                href="/book"
-                variant="primary"
-              />
-
-              <SlideButton
-                label="Chat on WhatsApp"
-                href={contactInfo.whatsappLink}
-                variant="whatsapp"
-                external={true}
-                icon={<FaWhatsapp className="text-lg" />}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* QUICK ACTIONS GRID SECTION */}
       <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
