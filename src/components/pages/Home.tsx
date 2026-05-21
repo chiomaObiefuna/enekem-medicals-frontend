@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { FaWhatsapp } from "react-icons/fa";
+ import { FaWhatsapp } from "react-icons/fa";
 
 
 import { contactInfo } from "../data/contactInfo";
@@ -85,6 +85,9 @@ const SlideButton = ({
     </Link>
   );
 };
+//__________________________________________________________________
+// Quick Action Data
+//__________________________________________________________________ 
 
 type QuickAction = {
   title: string;
@@ -127,12 +130,17 @@ const quickActions: QuickAction[] = [
   },
 ];
 
+//__________________________________________________________________
+// HOME PAGE COMPONENT
+//__________________________________________________________________ 
+
+
 const Home = () => {
   return (
     <main className="w-full">
       
   {/* HERO SECTION */}
-<section className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[540px]">
+ <section className="relative isolate min-h-[680px] overflow-hidden bg-[#102A43] md:min-h-[760px] lg:min-h-[820px]">
 
   
   <video
@@ -180,34 +188,75 @@ const Home = () => {
   </video>
 
   
-  {/* Very light scrim — just enough for text readability, video stays vivid */}
-  <div className="absolute inset-0 bg-black/20" />
-
-  {/* Hero content — minimal, clean, centered */}
-  <div className="relative z-10 mx-auto flex min-h-[420px] max-w-7xl items-end px-5 pb-10 sm:min-h-[480px] sm:px-8 sm:pb-14 lg:min-h-[540px] lg:px-10 lg:pb-16">
-    <div className="max-w-xl">
-
-      {/* Short tagline only — no big headline, video does the talking */}
-      <p
-        className="hero-fade-up text-sm font-medium leading-relaxed text-white/80 sm:text-base lg:text-lg"
-        style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+    <div className="relative z-10 flex min-h-[640px] items-center px-5 pb-14 pt-28 sm:px-8 md:min-h-[740px] lg:min-h-[820px] lg:px-16 lg:pt-32">
+  <div className="mx-auto w-full max-w-7xl">
+    <div className="max-w-[720px]">
+      <h1
+        className="
+          hero-text-reveal
+          text-[2.6rem] font-black leading-[1.05] tracking-[-0.04em] text-white
+          sm:text-[3.6rem]
+          md:text-[5rem]
+          lg:text-[4rem]
+          xl:text-[5.2rem]
+        "
       >
-        Reliable and professional healthcare services — consultation,
-        diagnostics, and pharmacy, all in one place.
+        Complete
+        <br />
+        Healthcare
+        <br />
+        <span className="text-[#44CC3A]">You Can Trust</span>
+      </h1>
+
+      <p
+        className="
+          hero-subtext
+          mt-5 max-w-xl
+          text-sm font-medium leading-7 text-white/95
+          sm:text-base sm:leading-8
+          md:text-lg
+        "
+      >
+        From consultation to diagnosis and medication, Enekem Medicals provides
+        reliable and professional healthcare services all in one place.
       </p>
 
-      {/* Single CTA — Book Appointment only */}
-      <div className="hero-fade-up hero-delay-1 mt-6">
-        <SlideButton
-          label="Book Appointment"
-          href="/book"
-          variant="primary"
-        />
-      </div>
+      <div className="hero-actions mt-8 flex flex-col gap-4 sm:flex-row">
+        <Link
+          to="/book"
+          className="
+            inline-flex items-center justify-center rounded-full
+            border-2 border-white bg-white px-7 py-3.5
+            text-sm font-extrabold text-[#01369E]
+            transition-all duration-300
+            hover:-translate-y-1 hover:bg-[#01369E] hover:text-white hover:border-[#01369E]
+          "
+        >
+          Book Appointment
+        </Link>
 
+        <a
+          href={contactInfo.whatsappLink}
+          target="_blank"
+          rel="noreferrer"
+          className="
+            inline-flex items-center justify-center gap-2 rounded-full
+            border-2 border-white/85 bg-transparent px-7 py-3.5
+            text-sm font-extrabold text-white
+            transition-all duration-300
+            hover:-translate-y-1 hover:border-[#44CC3A] hover:bg-[#44CC3A]
+          "
+        >
+          <FaWhatsapp className="text-lg" />
+          Chat on WhatsApp
+        </a>
+      </div>
     </div>
   </div>
-</section>
+</div>
+ 
+      </section>
+      {/* ── End Hero ── */}
 
 
       {/* QUICK ACTIONS GRID SECTION */}

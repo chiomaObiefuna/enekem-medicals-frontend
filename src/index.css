@@ -5,6 +5,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "tailwindcss";
+
+@theme {
+  /* Enekem Primary Blue System */
+  --color-enekem-blue-950: #011f5e;
+  --color-enekem-blue-900: #012b7a;
+  --color-enekem-blue-700: #01369e;
+  --color-enekem-blue-600: #0b56c5;
+  --color-enekem-blue-100: #eaf2ff;
+  --color-enekem-blue-50: #f6faff;
+
+  /* Enekem Green Accent System */
+  --color-enekem-green-800: #188038;
+  --color-enekem-green-700: #2ba84a;
+  --color-enekem-green-500: #44cc3a;
+  --color-enekem-green-100: #eaf8ee;
+  --color-enekem-green-50: #f6fcf7;
+
+  /* Neutral System */
+  --color-enekem-neutral-900: #0b1f33;
+  --color-enekem-neutral-700: #334e68;
+  --color-enekem-neutral-600: #5f6f82;
+  --color-enekem-neutral-200: #d9e6f2;
+  --color-enekem-neutral-100: #eef5fb;
+  --color-enekem-neutral-50: #f8fbff;
+
+  /* Medical Alert */
+  --color-enekem-emergency: #d92d20;
+}
+
 /* ═══════════════════════════════════
    HERO ENTRANCE ANIMATIONS
 ═══════════════════════════════════ */
@@ -13,6 +43,58 @@ body,
 #root {
   width: 100%;
   overflow-x: hidden;
+}
+
+.hero-text-reveal,
+.hero-subtext,
+.hero-actions {
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.72);
+}
+
+.hero-text-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: heroTextReveal 0.9s ease-out 0.2s forwards;
+}
+
+.hero-subtext {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroTextReveal 0.8s ease-out 0.45s forwards;
+}
+
+.hero-actions {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroTextReveal 0.8s ease-out 0.65s forwards;
+}
+
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-text-reveal {
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.78);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-text-reveal,
+  .hero-subtext,
+  .hero-actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 @keyframes heroFadeUp {

@@ -47,10 +47,10 @@ const trustPoints = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="relative overflow-hidden bg-[#0E3442] px-5 py-20 text-white sm:px-8 lg:px-10">
+    <section className="relative overflow-hidden bg-[#002D82] px-5 py-20 text-white sm:px-8 lg:px-10">
       {/* Background pattern */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
-        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_20%,#BFE7D0_0,transparent_32%),radial-gradient(circle_at_80%_80%,#8FC7D8_0,transparent_30%)]" />
+        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_20%,#44CC3A_0,transparent_32%),radial-gradient(circle_at_80%_80%,#8FC7D8_0,transparent_30%)]" />
       </div>
 
       <div className="pointer-events-none absolute -left-24 top-24 h-80 w-80 rounded-full bg-[#2F8F68]/25 blur-3xl" />

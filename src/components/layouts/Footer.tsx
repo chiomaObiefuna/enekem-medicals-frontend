@@ -68,7 +68,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden bg-[#102A43] text-white">
+    <footer className="relative overflow-hidden bg-[#002D82] text-white">
       {/* Soft footer background pattern */}
       <div className="pointer-events-none absolute -left-24 top-20 h-80 w-80 rounded-full bg-[#44CC3A]/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-10 h-96 w-96 rounded-full bg-[#F0F7FF]/10 blur-3xl" />

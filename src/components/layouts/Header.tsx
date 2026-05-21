@@ -1,7 +1,7 @@
 // src/components/layouts/Header.tsx
 
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 import navLinks from "../data/navLinks";
@@ -9,9 +9,45 @@ import logo from "../../assets/logo/Enekemlogo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+   const [hasPassedHero, setHasPassedHero] = useState(false);
+
+   const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const closeMenu = () => setMenuOpen(false);
 
+  useEffect(() => {
+    const handleHeaderState = () => {
+        if (!isHomePage) {
+        setHasPassedHero(true);
+        return;
+      }
+      const heroSection = document.getElementById("home-hero");
+        // Fallback in case the hero ID is missing.
+      if (!heroSection) {
+        setHasPassedHero(window.scrollY > 500);
+        return;
+      }
+
+      const headerHeight = 82;
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+
+       // Header becomes solid only when it reaches/passes the end of the hero.
+      setHasPassedHero(window.scrollY + headerHeight >= heroBottom);
+    };
+      handleHeaderState();
+
+    window.addEventListener("scroll", handleHeaderState);
+    window.addEventListener("resize", handleHeaderState);
+
+    return () => {
+      window.removeEventListener("scroll", handleHeaderState);
+      window.removeEventListener("resize", handleHeaderState);
+    };
+  }, [isHomePage, location.pathname]);
+
+    
+    
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -26,8 +62,14 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full overflow-x-hidden border-b border-[#D8E8EE] bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex min-h-[72px] max-w-5xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
+      <header
+        className={`fixed left-0 top-0 z-50 w-full overflow-x-hidden transition-all duration-300 ${
+          hasPassedHero
+            ? "border-b border-white/10 bg-[#011F5E]/95 shadow-[0_12px_35px_rgba(1,31,94,0.25)] backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex min-h-[58px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:min-h-[66px] lg:px-10">
           {/* Logo */}
           <Link
             to="/"
@@ -37,21 +79,21 @@ const Header = () => {
             <img
               src={logo}
               alt="Enekem Medicals"
-              className="h-12 w-auto object-contain md:h-14 lg:h-16"
+              className="h-12 w-auto object-contain drop-shadow-[0_4px_14px_rgba(0,0,0,0.35)] md:h-14 lg:h-16 sm:h-10"
             />
           </Link>
 
           {/* Desktop and tablet navigation */}
-          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-5 md:flex lg:gap-10">
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-5 md:flex lg:gap-9">
             {navLinks.map((link) => (
               <NavLink
                 key={link.label}
                 to={link.path}
                 className={({ isActive }) =>
-                  `whitespace-nowrap text-sm font-semibold tracking-wide transition-colors duration-200 lg:text-[15px] ${
+                  `whitespace-nowrap text-sm font-bold tracking-wide drop-shadow-[0_3px_10px_rgba(0,0,0,0.35)] transition-colors duration-200 lg:text-[15px] ${
                     isActive
-                      ? "text-[#01369E]"
-                      : "text-[#102A43] hover:text-[#01369E]"
+                      ? "text-[#44CC3A]"
+                      : "text-white hover:text-[#44CC3A]"
                   }`
                 }
               >
@@ -64,7 +106,11 @@ const Header = () => {
           <div className="hidden shrink-0 items-center md:flex">
             <Link
               to="/book"
-              className="whitespace-nowrap rounded-lg bg-[#01369E] px-4 py-3 text-sm font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002D82] hover:shadow-lg lg:px-8 lg:py-4"
+              className={`whitespace-nowrap rounded-full px-5 py-3 text-sm font-extrabold transition-all duration-300 lg:px-7 lg:py-3.5 ${
+                hasPassedHero
+                  ? "bg-[#44CC3A] text-[#011F5E] shadow-[0_12px_28px_rgba(68,204,58,0.22)] hover:-translate-y-0.5 hover:bg-[#5BE052]"
+                  : "border-2 border-white bg-white/10 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:bg-white hover:text-[#01369E]"
+              }`}
             >
               Book an Appointment
             </Link>
@@ -74,7 +120,11 @@ const Header = () => {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#D8E8EE] bg-white text-[#102A43] transition hover:bg-[#F3FAFC] md:hidden"
+            className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition md:hidden ${
+              hasPassedHero
+                ? "border border-white/15 bg-white/10 text-white hover:bg-white/15"
+                : "border border-white/60 bg-black/10 text-white backdrop-blur-sm hover:bg-white/15"
+            }`}
             aria-label="Open navigation menu"
             aria-expanded={menuOpen}
           >
@@ -129,7 +179,7 @@ const Header = () => {
               className={({ isActive }) =>
                 `rounded-xl px-4 py-3 text-base font-semibold transition-colors duration-200 ${
                   isActive
-                    ? "bg-[#F3FAFC] text-[#01369E]"
+                    ? "bg-[#EAF2FF] text-[#01369E]"
                     : "text-[#102A43] hover:bg-[#F3FAFC] hover:text-[#01369E]"
                 }`
               }
@@ -142,7 +192,7 @@ const Header = () => {
             <Link
               to="/book"
               onClick={closeMenu}
-              className="block w-full rounded-lg bg-[#01369E] px-6 py-4 text-center text-sm font-bold text-white shadow-md transition hover:bg-[#002D82]"
+              className="block w-full rounded-full bg-[#01369E] px-6 py-4 text-center text-sm font-bold text-white shadow-md transition hover:bg-[#011F5E]"
             >
               Book an Appointment
             </Link>

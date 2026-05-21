@@ -1,7 +1,3 @@
-// src/App.tsx
-// It sets up React Router with all page routes.
-// The Header (from layouts/) wraps all pages automatically.
-// Each route renders the matching page from the pages/ folder.
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/layouts/Header";
