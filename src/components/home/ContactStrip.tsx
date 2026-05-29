@@ -205,7 +205,7 @@ const ContactStrip = () => {
               <InfoBlock
                 icon={<FaClock size={16} />}
                 label="Opening Hours"
-                lines={[contactInfo.hoursWeekdays, contactInfo.hoursSunday]}
+                lines={[contactInfo.hours, contactInfo.hoursNote]}
                 delay="0.46s"
                 isVisible={isVisible}
               />

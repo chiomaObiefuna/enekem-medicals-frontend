@@ -140,7 +140,8 @@ const Home = () => {
     <main className="w-full">
       
   {/* HERO SECTION */}
- <section className="relative isolate min-h-[680px] overflow-hidden bg-[#102A43] md:min-h-[760px] lg:min-h-[820px]">
+ <section id="home-hero"
+  className="relative isolate min-h-[680px] overflow-hidden bg-[#102A43] md:min-h-[760px] lg:min-h-[820px]">
 
   
   <video

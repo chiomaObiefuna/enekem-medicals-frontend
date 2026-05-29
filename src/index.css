@@ -43,6 +43,7 @@ body,
 #root {
   width: 100%;
   overflow-x: hidden;
+   font-family: 'Inter', system-ui, sans-serif;
 }
 
 .hero-text-reveal,
@@ -1209,6 +1210,1883 @@ body,
   .page-loader-line span,
   .offline-card {
     animation: none;
+    transform: none;
+  }
+}
+
+
+/* ═══════════════════════════════════
+   SERVICE SPECIALIST ANIMATIONS
+═══════════════════════════════════ */
+
+.specialist-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: specialistFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.specialist-image-reveal {
+  opacity: 0;
+  transform: translateX(34px) scale(0.98);
+  animation: specialistImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.specialist-pop {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: specialistFadeUp 0.65s ease-out 0.25s forwards;
+}
+
+.specialist-delay-1 {
+  animation-delay: 0.38s;
+}
+
+.specialist-delay-2 {
+  animation-delay: 0.5s;
+}
+
+.specialist-card {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: specialistFadeUp 0.75s ease-out forwards;
+}
+
+.specialist-card-0 {
+  animation-delay: 0.1s;
+}
+
+.specialist-card-1 {
+  animation-delay: 0.18s;
+}
+
+.specialist-card-2 {
+  animation-delay: 0.26s;
+}
+
+.specialist-card-3 {
+  animation-delay: 0.34s;
+}
+
+.specialist-card-4 {
+  animation-delay: 0.42s;
+}
+
+.specialist-card-5 {
+  animation-delay: 0.5s;
+}
+
+.specialist-card-6 {
+  animation-delay: 0.58s;
+}
+
+.specialist-step {
+  opacity: 0;
+  transform: translateX(28px);
+  animation: specialistStepIn 0.75s ease-out forwards;
+}
+
+.specialist-step:nth-child(1) {
+  animation-delay: 0.12s;
+}
+
+.specialist-step:nth-child(2) {
+  animation-delay: 0.24s;
+}
+
+.specialist-step:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+.specialist-float {
+  animation: specialistFloat 8s ease-in-out infinite;
+}
+
+.specialist-float-slow {
+  animation: specialistFloat 11s ease-in-out infinite;
+}
+
+@keyframes specialistFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes specialistImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(34px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes specialistStepIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes specialistFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .specialist-reveal,
+  .specialist-image-reveal,
+  .specialist-pop,
+  .specialist-card,
+  .specialist-step,
+  .specialist-float,
+  .specialist-float-slow {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+/* ═══════════════════════════════════
+   NURSING CARE PAGE ANIMATIONS
+═══════════════════════════════════ */
+
+
+
+.nursing-hero-copy {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: nursingFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.nursing-hero-image {
+  opacity: 0;
+  transform: translateX(34px) scale(0.98);
+  animation: nursingImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.nursing-fact {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: nursingFadeUp 0.65s ease-out 0.2s forwards;
+}
+
+.nursing-delay-1 {
+  animation-delay: 0.34s;
+}
+
+.nursing-delay-2 {
+  animation-delay: 0.48s;
+}
+
+.nursing-care-row,
+.nursing-visit-panel,
+.nursing-book-panel {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: nursingFadeUp 0.75s ease-out forwards;
+}
+
+.nursing-care-row-0 {
+  animation-delay: 0.1s;
+}
+
+.nursing-care-row-1 {
+  animation-delay: 0.18s;
+}
+
+.nursing-care-row-2 {
+  animation-delay: 0.26s;
+}
+
+.nursing-care-row-3 {
+  animation-delay: 0.34s;
+}
+
+.nursing-care-row-4 {
+  animation-delay: 0.42s;
+}
+
+.nursing-care-row-5 {
+  animation-delay: 0.5s;
+}
+
+.nursing-visit-panel {
+  animation-delay: 0.18s;
+}
+
+.nursing-book-panel {
+  animation-delay: 0.3s;
+}
+
+.nursing-float {
+  animation: nursingFloat 8s ease-in-out infinite;
+}
+
+.nursing-float-slow {
+  animation: nursingFloat 11s ease-in-out infinite;
+}
+
+@keyframes nursingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nursingImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(34px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes nursingFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nursing-hero-copy,
+  .nursing-hero-image,
+  .nursing-fact,
+  .nursing-care-row,
+  .nursing-visit-panel,
+  .nursing-book-panel,
+  .nursing-float,
+  .nursing-float-slow {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════
+   TELEMEDICINE PAGE ANIMATIONS
+═══════════════════════════════════ */
+
+
+.tele-grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.tele-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: teleFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.tele-hero-screen {
+  opacity: 0;
+  transform: translateX(36px) scale(0.98);
+  animation: teleImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.tele-orb {
+  animation: teleFloat 10s ease-in-out infinite;
+}
+
+.tele-orb-two {
+  animation-duration: 13s;
+}
+
+.tele-chat-bubble {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: teleFadeUpSmall 0.55s ease-out 0.65s forwards;
+}
+
+.tele-chat-delay {
+  animation-delay: 0.85s;
+}
+
+.tele-chat-delay-2 {
+  animation-delay: 1.05s;
+}
+
+.tele-pulse-ring {
+  animation: telePulse 2.5s ease-in-out infinite;
+}
+
+.tele-highlight,
+.tele-list-panel,
+.tele-warning-panel,
+.tele-process-intro,
+.tele-step,
+.tele-final-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: teleFadeUp 0.75s ease-out forwards;
+}
+
+.tele-highlight-0 {
+  animation-delay: 0.08s;
+}
+
+.tele-highlight-1 {
+  animation-delay: 0.18s;
+}
+
+.tele-highlight-2 {
+  animation-delay: 0.28s;
+}
+
+.tele-list-panel {
+  animation-delay: 0.12s;
+}
+
+.tele-warning-panel {
+  animation-delay: 0.24s;
+}
+
+.tele-process-intro {
+  animation-delay: 0.1s;
+}
+
+.tele-step-0 {
+  animation-delay: 0.14s;
+}
+
+.tele-step-1 {
+  animation-delay: 0.26s;
+}
+
+.tele-step-2 {
+  animation-delay: 0.38s;
+}
+
+.tele-final-cta {
+  animation-delay: 0.12s;
+}
+
+@keyframes teleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes teleFadeUpSmall {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes teleImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes teleFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(16px, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes telePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translateX(-50%) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tele-hero-copy,
+  .tele-hero-screen,
+  .tele-orb,
+  .tele-chat-bubble,
+  .tele-pulse-ring,
+  .tele-highlight,
+  .tele-list-panel,
+  .tele-warning-panel,
+  .tele-process-intro,
+  .tele-step,
+  .tele-final-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Family Planning page animations */
+
+.family-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: familyFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.family-hero-image {
+  opacity: 0;
+  transform: translateX(34px) scale(0.98);
+  animation: familyImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.family-soft-orb {
+  animation: familyFloat 10s ease-in-out infinite;
+}
+
+.family-soft-orb-two {
+  animation-duration: 13s;
+}
+
+.family-fact,
+.family-option,
+.family-guidance,
+.family-steps,
+.family-before,
+.family-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: familyFadeUp 0.75s ease-out forwards;
+}
+
+.family-fact {
+  animation-delay: 0.14s;
+}
+
+.family-delay-1 {
+  animation-delay: 0.26s;
+}
+
+.family-delay-2 {
+  animation-delay: 0.38s;
+}
+
+.family-option-0 {
+  animation-delay: 0.12s;
+}
+
+.family-option-1 {
+  animation-delay: 0.24s;
+}
+
+.family-option-2 {
+  animation-delay: 0.36s;
+}
+
+.family-guidance {
+  animation-delay: 0.12s;
+}
+
+.family-steps {
+  animation-delay: 0.26s;
+}
+
+.family-before {
+  animation-delay: 0.12s;
+}
+
+.family-cta {
+  animation-delay: 0.26s;
+}
+
+.family-step {
+  opacity: 0;
+  transform: translateX(24px);
+  animation: familyStepIn 0.75s ease-out forwards;
+}
+
+.family-step-0 {
+  animation-delay: 0.18s;
+}
+
+.family-step-1 {
+  animation-delay: 0.32s;
+}
+
+.family-step-2 {
+  animation-delay: 0.46s;
+}
+
+@keyframes familyFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes familyImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(34px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes familyStepIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes familyFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(18px, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .family-hero-copy,
+  .family-hero-image,
+  .family-soft-orb,
+  .family-fact,
+  .family-option,
+  .family-guidance,
+  .family-steps,
+  .family-before,
+  .family-cta,
+  .family-step {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════
+  DENTAL SERVICE PAGE ANIMATIONS
+═══════════════════════════════════ */
+/* Premium Dental Waves */
+
+.dental-premium-wave {
+  opacity: 0;
+  animation: dentalPremiumWaveIn 1.2s ease-out forwards,
+    dentalPremiumWaveFloat 10s ease-in-out 1.3s infinite;
+}
+
+.dental-premium-wave-one {
+  animation-delay: 0.2s, 1.5s;
+}
+
+.dental-premium-wave-two {
+  animation-delay: 0.45s, 1.75s;
+}
+
+.dental-service-wave {
+  opacity: 0;
+  animation: dentalPremiumWaveIn 1s ease-out 0.2s forwards,
+    dentalPremiumWaveFloatSlow 14s ease-in-out 1.2s infinite;
+}
+
+.dental-cta-wave {
+  opacity: 0.28;
+  animation: dentalPremiumWaveFloat 11s ease-in-out infinite;
+}
+
+@keyframes dentalPremiumWaveIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dentalPremiumWaveFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(14px, -8px, 0);
+  }
+}
+
+@keyframes dentalPremiumWaveFloatSlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(10px, -6px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-premium-wave,
+  .dental-service-wave,
+  .dental-cta-wave {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-wave,
+  .dental-hero-copy,
+  .dental-hero-image,
+  .dental-fact,
+  .dental-service-card,
+  .dental-panel,
+  .dental-final-cta,
+  .dental-service-wave,
+  .dental-cta-wave {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Dental floating hero visual */
+
+.dental-floating-tooth {
+  animation: dentalToothFloat 4.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.dental-float-card {
+  opacity: 0;
+  animation: dentalFloatCardIn 0.75s ease-out forwards;
+}
+
+.dental-float-card-top {
+  animation-delay: 0.65s;
+}
+
+.dental-float-card-bottom {
+  animation-delay: 0.85s;
+}
+
+.dental-mini-badge {
+  opacity: 0;
+  animation: dentalBadgeIn 0.8s ease-out 1s forwards,
+    dentalBadgeFloat 3.5s ease-in-out 1.2s infinite;
+}
+
+@keyframes dentalToothFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+}
+
+@keyframes dentalFloatCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dentalBadgeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dentalBadgeFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-floating-tooth,
+  .dental-float-card,
+  .dental-mini-badge {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dental-visit-step {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: dentalFadeUp 0.75s ease-out forwards;
+}
+
+.dental-visit-step-0 {
+  animation-delay: 0.1s;
+}
+
+.dental-visit-step-1 {
+  animation-delay: 0.22s;
+}
+
+.dental-visit-step-2 {
+  animation-delay: 0.34s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dental-visit-step {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Ultrasound page animations */
+
+.ultra-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.ultra-scan-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(68, 204, 58, 0.12) 48%,
+    rgba(68, 204, 58, 0.32) 50%,
+    rgba(68, 204, 58, 0.12) 52%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: ultraFullScan 5s ease-in-out infinite;
+}
+
+.ultra-image-overlay {
+  background:
+    linear-gradient(rgba(68, 204, 58, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(68, 204, 58, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+
+
+.ultra-moving-beam {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(68, 204, 58, 0.05) 42%,
+    rgba(68, 204, 58, 0.45) 50%,
+    rgba(68, 204, 58, 0.05) 58%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: ultraImageBeam 4s ease-in-out infinite;
+}
+
+.ultra-orb-one,
+.ultra-orb-two {
+  animation: ultraFloat 10s ease-in-out infinite;
+}
+
+.ultra-orb-two {
+  animation-duration: 13s;
+}
+
+.ultra-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: ultraFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.ultra-hero-visual {
+  opacity: 0;
+  transform: translateX(36px) scale(0.98);
+  animation: ultraImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.ultra-mini-panel {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: ultraMiniPanelIn 0.7s ease-out forwards;
+}
+
+.ultra-mini-panel-one {
+  animation-delay: 0.65s;
+}
+
+.ultra-mini-panel-two {
+  animation-delay: 0.85s;
+}
+
+.ultra-fact,
+.ultra-scan-card,
+.ultra-panel,
+.ultra-process,
+.ultra-final-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: ultraFadeUp 0.75s ease-out forwards;
+}
+
+.ultra-fact {
+  animation-delay: 0.12s;
+}
+
+.ultra-delay-1 {
+  animation-delay: 0.24s;
+}
+
+.ultra-delay-2 {
+  animation-delay: 0.36s;
+}
+
+.ultra-scan-card-0 {
+  animation-delay: 0.08s;
+}
+
+.ultra-scan-card-1 {
+  animation-delay: 0.16s;
+}
+
+.ultra-scan-card-2 {
+  animation-delay: 0.24s;
+}
+
+.ultra-scan-card-3 {
+  animation-delay: 0.32s;
+}
+
+.ultra-scan-card-4 {
+  animation-delay: 0.4s;
+}
+
+.ultra-panel {
+  animation-delay: 0.12s;
+}
+
+.ultra-panel-delay {
+  animation-delay: 0.26s;
+}
+
+.ultra-process-0 {
+  animation-delay: 0.1s;
+}
+
+.ultra-process-1 {
+  animation-delay: 0.22s;
+}
+
+.ultra-process-2 {
+  animation-delay: 0.34s;
+}
+
+.ultra-final-cta {
+  animation-delay: 0.12s;
+}
+
+@keyframes ultraFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ultraImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes ultraMiniPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ultraFullScan {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ultraImageBeam {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ultraFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(16px, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ultra-scan-line,
+  .ultra-moving-beam,
+  .ultra-orb-one,
+  .ultra-orb-two,
+  .ultra-hero-copy,
+  .ultra-hero-visual,
+  .ultra-mini-panel,
+  .ultra-fact,
+  .ultra-scan-card,
+  .ultra-panel,
+  .ultra-process,
+  .ultra-final-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* Laboratory Diagnosis page animations and bubbles */
+
+.lab-bubble,
+.lab-image-bubble,
+.lab-section-bubble,
+.lab-cta-bubble {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+}
+
+.lab-bubble-one {
+  left: -80px;
+  top: 120px;
+  height: 260px;
+  width: 260px;
+  background: rgba(255, 233, 127, 0.35);
+  animation: labBubbleFloat 9s ease-in-out infinite;
+}
+
+.lab-bubble-two {
+  right: -120px;
+  top: 80px;
+  height: 360px;
+  width: 360px;
+  background: rgba(244, 247, 255, 0.8);
+  border: 1px solid rgba(16, 42, 67, 0.06);
+  animation: labBubbleFloat 12s ease-in-out infinite;
+}
+
+.lab-bubble-three {
+  left: 46%;
+  bottom: 40px;
+  height: 120px;
+  width: 120px;
+  background: rgba(255, 233, 127, 0.22);
+  animation: labBubbleFloat 10s ease-in-out infinite;
+}
+
+.lab-bubble-four {
+  right: 26%;
+  bottom: 110px;
+  height: 70px;
+  width: 70px;
+  background: rgba(255, 255, 255, 0.9);
+  animation: labBubbleFloat 8s ease-in-out infinite;
+}
+
+.lab-image-bubble-one {
+  left: -24px;
+  top: -24px;
+  height: 96px;
+  width: 96px;
+  background: rgba(255, 233, 127, 0.55);
+  z-index: 2;
+  animation: labBubbleFloat 8s ease-in-out infinite;
+}
+
+.lab-image-bubble-two {
+  right: -20px;
+  top: 38%;
+  height: 78px;
+  width: 78px;
+  background: rgba(244, 247, 255, 0.95);
+  z-index: 2;
+  animation: labBubbleFloat 11s ease-in-out infinite;
+}
+
+.lab-image-bubble-three {
+  left: 18%;
+  bottom: -26px;
+  height: 110px;
+  width: 110px;
+  background: rgba(255, 233, 127, 0.28);
+  z-index: 2;
+  animation: labBubbleFloat 9s ease-in-out infinite;
+}
+
+.lab-section-bubble-one {
+  right: 6%;
+  top: 10%;
+  height: 220px;
+  width: 220px;
+  background: rgba(255, 233, 127, 0.16);
+}
+
+.lab-section-bubble-two {
+  left: 4%;
+  bottom: 12%;
+  height: 160px;
+  width: 160px;
+  background: rgba(244, 247, 255, 0.9);
+  border: 1px solid rgba(16, 42, 67, 0.05);
+}
+
+.lab-cta-bubble-one {
+  right: 8%;
+  top: -40px;
+  height: 160px;
+  width: 160px;
+  background: rgba(255, 255, 255, 0.25);
+  animation: labBubbleFloat 8s ease-in-out infinite;
+}
+
+.lab-cta-bubble-two {
+  left: 6%;
+  bottom: -50px;
+  height: 200px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.18);
+  animation: labBubbleFloat 10s ease-in-out infinite;
+}
+
+.lab-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: labFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.lab-hero-image {
+  opacity: 0;
+  transform: translateX(36px) scale(0.98);
+  animation: labImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.lab-floating-card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: labCardIn 0.7s ease-out forwards;
+}
+
+.lab-floating-card-one {
+  animation-delay: 0.65s;
+}
+
+.lab-floating-card-two {
+  animation-delay: 0.85s;
+}
+
+.lab-fact,
+.lab-test-card,
+.lab-panel,
+.lab-process,
+.lab-final-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: labFadeUp 0.75s ease-out forwards;
+}
+
+.lab-fact {
+  animation-delay: 0.12s;
+}
+
+.lab-delay-1 {
+  animation-delay: 0.24s;
+}
+
+.lab-delay-2 {
+  animation-delay: 0.36s;
+}
+
+.lab-test-card-0 {
+  animation-delay: 0.08s;
+}
+
+.lab-test-card-1 {
+  animation-delay: 0.16s;
+}
+
+.lab-test-card-2 {
+  animation-delay: 0.24s;
+}
+
+.lab-test-card-3 {
+  animation-delay: 0.32s;
+}
+
+.lab-test-card-4 {
+  animation-delay: 0.4s;
+}
+
+.lab-test-card-5 {
+  animation-delay: 0.48s;
+}
+
+.lab-panel {
+  animation-delay: 0.12s;
+}
+
+.lab-panel-delay {
+  animation-delay: 0.26s;
+}
+
+.lab-process-0 {
+  animation-delay: 0.1s;
+}
+
+.lab-process-1 {
+  animation-delay: 0.22s;
+}
+
+.lab-process-2 {
+  animation-delay: 0.34s;
+}
+
+.lab-final-cta {
+  animation-delay: 0.12s;
+}
+
+@keyframes labFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes labImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes labCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes labBubbleFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(14px, -18px, 0) scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-bubble,
+  .lab-image-bubble,
+  .lab-cta-bubble,
+  .lab-hero-copy,
+  .lab-hero-image,
+  .lab-floating-card,
+  .lab-fact,
+  .lab-test-card,
+  .lab-panel,
+  .lab-process,
+  .lab-final-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ECG page animations */
+
+.ecg-grid {
+  background-image:
+    linear-gradient(rgba(158, 240, 26, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(158, 240, 26, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.ecg-bg-line {
+  animation: ecgBackgroundSlide 8s linear infinite;
+}
+
+.ecg-bg-line-two {
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
+.ecg-monitor-grid {
+  background-image:
+    linear-gradient(rgba(158, 240, 26, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(158, 240, 26, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.ecg-monitor-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: ecgDrawLine 2.2s ease-out 0.75s forwards,
+    ecgLineGlow 2.4s ease-in-out 3s infinite;
+}
+
+.ecg-monitor-line-shadow {
+  animation-delay: 0.7s, 3s;
+}
+
+.ecg-sweep {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(158, 240, 26, 0.04) 42%,
+    rgba(158, 240, 26, 0.32) 50%,
+    rgba(158, 240, 26, 0.04) 58%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: ecgSweep 3.2s ease-in-out infinite;
+}
+
+.ecg-orb-one,
+.ecg-orb-two {
+  animation: ecgFloat 10s ease-in-out infinite;
+}
+
+.ecg-orb-two {
+  animation-duration: 13s;
+}
+
+.ecg-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: ecgFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.ecg-hero-console {
+  opacity: 0;
+  transform: translateX(36px) scale(0.98);
+  animation: ecgImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.ecg-floating-note {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: ecgNoteIn 0.7s ease-out 0.9s forwards;
+}
+
+.ecg-fact,
+.ecg-use-card,
+.ecg-panel,
+.ecg-flow-card,
+.ecg-final-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: ecgFadeUp 0.75s ease-out forwards;
+}
+
+.ecg-fact {
+  animation-delay: 0.12s;
+}
+
+.ecg-delay-1 {
+  animation-delay: 0.24s;
+}
+
+.ecg-delay-2 {
+  animation-delay: 0.36s;
+}
+
+.ecg-use-card-0 {
+  animation-delay: 0.08s;
+}
+
+.ecg-use-card-1 {
+  animation-delay: 0.16s;
+}
+
+.ecg-use-card-2 {
+  animation-delay: 0.24s;
+}
+
+.ecg-use-card-3 {
+  animation-delay: 0.32s;
+}
+
+.ecg-panel {
+  animation-delay: 0.12s;
+}
+
+.ecg-panel-delay {
+  animation-delay: 0.26s;
+}
+
+.ecg-flow-card-0 {
+  animation-delay: 0.1s;
+}
+
+.ecg-flow-card-1 {
+  animation-delay: 0.22s;
+}
+
+.ecg-flow-card-2 {
+  animation-delay: 0.34s;
+}
+
+.ecg-final-cta {
+  animation-delay: 0.12s;
+}
+
+.ecg-cta-line {
+  animation: ecgBackgroundSlide 8s linear infinite;
+}
+
+@keyframes ecgFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ecgImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes ecgNoteIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ecgDrawLine {
+  from {
+    stroke-dashoffset: 1200;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ecgLineGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px rgba(158, 240, 26, 0.5));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(158, 240, 26, 0.9));
+  }
+}
+
+@keyframes ecgSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes ecgBackgroundSlide {
+  from {
+    transform: translateX(-80px);
+  }
+
+  to {
+    transform: translateX(80px);
+  }
+}
+
+@keyframes ecgFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(16px, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecg-bg-line,
+  .ecg-monitor-line,
+  .ecg-sweep,
+  .ecg-orb-one,
+  .ecg-orb-two,
+  .ecg-hero-copy,
+  .ecg-hero-console,
+  .ecg-floating-note,
+  .ecg-fact,
+  .ecg-use-card,
+  .ecg-panel,
+  .ecg-flow-card,
+  .ecg-final-cta,
+  .ecg-cta-line {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Immunization page animations */
+
+.immunization-soft-grid {
+  background-image:
+    linear-gradient(rgba(244, 162, 97, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 162, 97, 0.08) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.immunization-orb,
+.immunization-section-orb,
+.immunization-cta-orb {
+  animation: immunizationFloat 10s ease-in-out infinite;
+}
+
+.immunization-orb-two {
+  animation-duration: 13s;
+}
+
+.immunization-ring {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid rgba(244, 162, 97, 0.28);
+}
+
+.immunization-ring-one {
+  inset: 20px;
+  animation: immunizationRingFloat 9s ease-in-out infinite;
+}
+
+.immunization-ring-two {
+  inset: 60px;
+  border-color: rgba(61, 43, 31, 0.1);
+  animation: immunizationRingFloat 12s ease-in-out infinite reverse;
+}
+
+.immunization-card-stack {
+  transform: rotate(-5deg) translate(16px, 18px);
+}
+
+.immunization-card-back {
+  opacity: 0.75;
+}
+
+.immunization-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: immunizationFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.immunization-record-area {
+  opacity: 0;
+  transform: translateX(36px) scale(0.98);
+  animation: immunizationImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.immunization-record-card {
+  animation: immunizationCardFloat 5.8s ease-in-out 1.2s infinite;
+}
+
+.immunization-floating-note {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: immunizationNoteIn 0.7s ease-out 0.85s forwards;
+}
+
+.immunization-fact,
+.immunization-group,
+.immunization-intro-panel,
+.immunization-vaccine,
+.immunization-panel,
+.immunization-flow,
+.immunization-final-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: immunizationFadeUp 0.75s ease-out forwards;
+}
+
+.immunization-fact {
+  animation-delay: 0.12s;
+}
+
+.immunization-delay-1 {
+  animation-delay: 0.24s;
+}
+
+.immunization-delay-2 {
+  animation-delay: 0.36s;
+}
+
+.immunization-group-0 {
+  animation-delay: 0.1s;
+}
+
+.immunization-group-1 {
+  animation-delay: 0.22s;
+}
+
+.immunization-group-2 {
+  animation-delay: 0.34s;
+}
+
+.immunization-intro-panel {
+  animation-delay: 0.12s;
+}
+
+.immunization-vaccine-0 {
+  animation-delay: 0.08s;
+}
+
+.immunization-vaccine-1 {
+  animation-delay: 0.14s;
+}
+
+.immunization-vaccine-2 {
+  animation-delay: 0.2s;
+}
+
+.immunization-vaccine-3 {
+  animation-delay: 0.26s;
+}
+
+.immunization-vaccine-4 {
+  animation-delay: 0.32s;
+}
+
+.immunization-vaccine-5 {
+  animation-delay: 0.38s;
+}
+
+.immunization-vaccine-6 {
+  animation-delay: 0.44s;
+}
+
+.immunization-panel {
+  animation-delay: 0.12s;
+}
+
+.immunization-panel-delay {
+  animation-delay: 0.26s;
+}
+
+.immunization-flow-0 {
+  animation-delay: 0.1s;
+}
+
+.immunization-flow-1 {
+  animation-delay: 0.22s;
+}
+
+.immunization-flow-2 {
+  animation-delay: 0.34s;
+}
+
+.immunization-final-cta {
+  animation-delay: 0.12s;
+}
+
+.immunization-cta-orb {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+}
+
+.immunization-cta-orb-one {
+  right: 8%;
+  top: -40px;
+  height: 160px;
+  width: 160px;
+  background: rgba(255, 248, 239, 0.25);
+}
+
+.immunization-cta-orb-two {
+  left: 6%;
+  bottom: -50px;
+  height: 210px;
+  width: 210px;
+  background: rgba(255, 248, 239, 0.18);
+  animation-duration: 13s;
+}
+
+@keyframes immunizationFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes immunizationImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes immunizationNoteIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes immunizationCardFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(0.4deg);
+  }
+}
+
+@keyframes immunizationFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(14px, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes immunizationRingFloat {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .immunization-orb,
+  .immunization-section-orb,
+  .immunization-cta-orb,
+  .immunization-ring,
+  .immunization-hero-copy,
+  .immunization-record-area,
+  .immunization-record-card,
+  .immunization-floating-note,
+  .immunization-fact,
+  .immunization-group,
+  .immunization-intro-panel,
+  .immunization-vaccine,
+  .immunization-panel,
+  .immunization-flow,
+  .immunization-final-cta {
+    animation: none;
+    opacity: 1;
     transform: none;
   }
 }

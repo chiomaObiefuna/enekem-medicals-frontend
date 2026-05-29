@@ -1,17 +1,30 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Header from "./components/layouts/Header";
- import Footer from "./components/layouts/Footer";
- import ErrorBoundary from "./components/common/ErrorBoundary";
- import PageLoader from "./components/common/PageLoader";
+import Footer from "./components/layouts/Footer";
+import ErrorBoundary from "./components/common/ErrorBoundary";
+import PageLoader from "./components/common/PageLoader";
 import OfflinePage from "./components/common/OfflinePage";
+//import Telemedicine from "./components/services/Telemedicine";
 
 const Home = lazy(() => import("./components/pages/Home"));
-const About = lazy(() =>  import("./components/pages/About"));
+const About = lazy(() => import("./components/pages/About"));
 const Services = lazy(() => import("./components/pages/Services"));
 const Bookings = lazy(() => import("./components/pages/Bookings"));
-const Contacts = lazy(() =>  import("./components/pages/Contacts"));
+const Contacts = lazy(() => import("./components/pages/Contacts"));
+const HMO = lazy(() => import("./components/pages/HMO"));
 
+ const Dental = lazy(() => import("./components/services/Dental"));
+ const ECG = lazy(() => import("./components/services/ECG"));
+ const FamilyPlanning = lazy(() => import("./components/services/FamilyPlanning"));
+const Laboratory = lazy(() => import("./components/services/Laboratory"));
+const GPConsultation = lazy(() => import("./components/services/GPConsultation"));
+const Immunization = lazy(() => import("./components/services/Immunization"));
+ const Ultrasound = lazy(() => import("./components/services/Ultrasound"));
+const NursingCare = lazy(() => import("./components/services/NursingCare"));
+ const SpecialistConsultation = lazy(() => import("./components/services/SpecialistConsultation"));
+ const Telemedicine = lazy(() => import("./components/services/Telemedicine"));
 
 function App() {
   const [isOnline, setIsOnline] = useState(
@@ -19,10 +32,13 @@ function App() {
   );
 
   useEffect(() => {
-    const handleOnline = () => {setIsOnline(true);};
-    console.log("App is online:", navigator.onLine);
+    const handleOnline = () => {
+      setIsOnline(true);
+    };
 
-    const handleOffline = () => {setIsOnline(false);};
+    const handleOffline = () => {
+      setIsOnline(false);
+    };
 
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
@@ -39,25 +55,39 @@ function App() {
 
   return (
     <Router>
-      {/* Header appears on every page */}
-      <Header />
-
       
+      <Header />
+    
+
       <ErrorBoundary>
-       <Suspense fallback={<PageLoader />}>
-      <Routes>
-        {/* Page content changes based on the URL */}
-        <Route path="/"          element={<Home />} />
-          <Route path="/about"     element={<About />} />
-         <Route path="/services"  element={<Services />} /> 
-        <Route path="/book"      element={<Bookings />} />
-        <Route path="/contact"   element={<Contacts />} /> 
-      </Routes>
-       </Suspense>  
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            {/* Main pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/book" element={<Bookings />} />
+            <Route path="/contact" element={<Contacts />} />
+
+            {/* Service pages */}
+            <Route path="/services/gp-consultation" element={<GPConsultation />} />
+            <Route path="/services/specialist-consultation" element={<SpecialistConsultation />} />
+             <Route path="/services/nursing-care" element={<NursingCare />} />
+              <Route path="/services/telemedicine" element={<Telemedicine />} /> 
+              <Route path="/services/family-planning" element={<FamilyPlanning />} />
+              <Route path="/services/dental" element={<Dental />} />
+              <Route path="/services/ultrasound" element={<Ultrasound />} />
+              <Route path="/services/laboratory" element={<Laboratory />} />
+              <Route path="/services/ecg" element={<ECG />} />
+              <Route path="/services/immunization" element={<Immunization />} />
+
+            <Route path="/hmo" element={<HMO />} />
+           
+          </Routes>
+        </Suspense>
       </ErrorBoundary>
 
-      {/* Footer appears on every page */}
-       <Footer /> 
+      <Footer />
     </Router>
   );
 }

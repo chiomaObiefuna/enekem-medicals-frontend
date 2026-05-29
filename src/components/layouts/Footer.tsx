@@ -203,9 +203,10 @@ const Footer = () => {
               <div className="flex gap-3 text-sm leading-relaxed text-[#D8E8EE]">
                 <Clock size={18} className="mt-0.5 shrink-0 text-[#44CC3A]" />
                 <span>
-                  {contactInfo.hoursWeekdays}
+                  {[contactInfo.hours]}
                   <br />
-                  {contactInfo.hoursSunday}
+                  
+                     {[contactInfo.hoursNote]}
                 </span>
               </div>
             </div>

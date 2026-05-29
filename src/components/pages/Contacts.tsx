@@ -306,7 +306,7 @@ const Contacts = () => {
             <ContactRow
               icon={<FaClock size={14} />}
               label="Opening Hours"
-              lines={[contactInfo.hoursWeekdays, contactInfo.hoursSunday]}
+              lines={[contactInfo.hours, contactInfo.hoursNote]}
             />
 
             {/* CTA buttons */}

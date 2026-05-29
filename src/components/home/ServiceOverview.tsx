@@ -1,11 +1,15 @@
-import type { ElementType } from "react";
+// import type { ElementType } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, HeartPulse, Microscope, Pill } from "lucide-react";
+ import { ArrowRight } from "lucide-react";
+import Clinic from "../../assets/icons/clinic.png";
+import HandPill from "../../assets/icons/hand_pill.png";
+import Health from "../../assets/icons/health.png";
+
 
 type ServiceItem = {
   title: string;
   description: string;
-  icon: ElementType;
+  image: string;
 };
 
 const services: ServiceItem[] = [
@@ -13,19 +17,19 @@ const services: ServiceItem[] = [
     title: "Medical Care",
     description:
       "General consultations and professional medical attention tailored to your needs.",
-    icon: HeartPulse,
+    image:Clinic,
   },
   {
     title: "Diagnostics",
     description:
       "Accurate laboratory testing, ultrasound, and essential diagnostic services.",
-    icon: Microscope,
+    image: Health,
   },
   {
     title: "Pharmacy",
     description:
       "Access to quality medications and health products with professional guidance.",
-    icon: Pill,
+    image: HandPill,
   },
 ];
 
@@ -58,7 +62,7 @@ const ServicesOverview = () => {
         {/* Flip Service cards */}
         <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
-            const Icon = service.icon;
+           
 
             return (
               <article
@@ -72,7 +76,11 @@ const ServicesOverview = () => {
                   {/* FRONT SIDE */}
                   <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center rounded-3xl border border-[#D8E8EE] bg-white p-8 text-center shadow-[0_18px_45px_rgba(16,42,67,0.08)] [backface-visibility:hidden]">
                     <div className="mb-8 flex h-24 w-24 items-center justify-center rounded-3xl bg-[#EEF6F8] text-[#01369E] shadow-sm transition-all duration-300 group-hover:bg-[#01369E] group-hover:text-white">
-                      <Icon size={56} strokeWidth={3} />
+                     <img
+                        src={service.image}
+                        alt={`${service.title} icon`}
+                       className="h-16 w-16 object-contain"
+                      />
                     </div>
 
                     <h3 className="text-2xl font-extrabold text-[#102A43]">
@@ -84,7 +92,11 @@ const ServicesOverview = () => {
                   <div className="absolute inset-0 flex h-full w-full flex-col justify-between rounded-3xl bg-[#44CC3A] p-8 text-white shadow-[0_24px_70px_rgba(16,42,67,0.16)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <div>
                       <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-white">
-                        <Icon size={36} strokeWidth={3} />
+                        <img
+                          src={service.image}
+                          alt={`${service.title} icon`}
+                          className="h-14 w-14 object-contain"
+                        />
                       </div>
 
                       <h3 className="text-2xl font-extrabold text-white">

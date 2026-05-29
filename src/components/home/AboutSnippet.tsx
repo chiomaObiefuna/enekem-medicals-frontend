@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { CheckCircle2, Stethoscope, Microscope, Pill, HeartPulse } from "lucide-react";
+import { CheckCircle2, Stethoscope, Microscope, Pill,} from "lucide-react";
+import MedicalId from "../../assets/icons/medical_id.png";
 
 const aboutFeatures = [
   {
@@ -88,7 +89,11 @@ const AboutSnippet = () => {
               </div>
 
               <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#01369E] text-white shadow-lg">
-                <HeartPulse size={30} strokeWidth={2.5} />
+                <img
+                  src={MedicalId}
+                  alt="Medical ID icon"
+                  className="h-12 w-12 object-contain"
+                />
               </div>
             </div>
 
