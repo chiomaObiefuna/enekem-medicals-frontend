@@ -3,7 +3,7 @@ import specialistIcon from "../../assets/icons/specialist-consultation.png";
 import nurseIcon from "../../assets/icons/nursing-care.png";
 import laboratoryIcon from "../../assets/icons/laboratory-icon.png";
 import pharmacyIcon from "../../assets/icons/hand_pill.png";
-import supportIcon from "../../assets/icons/Telemedicine-icon.png";
+import supportIcon from "../../assets/icons/Telemedicine-Icon.png";
 
 
 export interface TeamDepartment {
