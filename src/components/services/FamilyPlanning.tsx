@@ -143,55 +143,10 @@ const FamilyPlanning = () => {
                   className="h-[360px] w-full rounded-[2rem] object-cover object-center sm:h-[430px] lg:h-[520px]"
                 />
               </div>
-
-              <div className="absolute -bottom-8 left-7 max-w-xs rounded-[1.7rem] bg-white px-6 py-5 shadow-[0_22px_70px_rgba(16,42,67,0.15)]">
-                <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-                  Physical Only
-                </p>
-                <p className="mt-2 text-2xl font-black text-[#102A43]">
-                  ₦15,000
-                </p>
-                <p className="mt-1 text-xs font-semibold leading-5 text-[#5F6F82]">
-                  Consultation fee. Contraceptive costs vary.
-                </p>
-              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* FACT STRIP */}
-      <section className="border-y border-[#D8E8EE] bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <div className="family-fact rounded-[1.7rem] bg-[#F3F7F3] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="family-fact family-delay-1 rounded-[1.7rem] bg-[#F6FFF6] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#8CCB8C]">
-              Consultation
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              ₦15,000
-            </p>
-          </div>
-
-          <div className="family-fact family-delay-2 rounded-[1.7rem] bg-[#F8F6EF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              15 to 30 minutes
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* EXPECT / NUMBER PATTERN */}
       <section
         id="options"

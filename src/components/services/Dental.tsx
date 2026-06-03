@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ServiceDetails from "../common/ServiceDetails";
 import dentalIcon from "../../assets/icons/dental.png";
 import dentalImage from "../../assets/images/dental-tooth-transparent.png";
 
@@ -71,7 +70,7 @@ const visitSteps = [
 ];
 
 const Dental = () => {
-  const bookingPath = "/book?service=dental&mode=physical";
+  const bookingPath = "/book?service=Dental Services&mode=physical";
 
   return (
     <main className="w-full overflow-hidden bg-[#F8FCFF] text-[#102A43]">
@@ -243,17 +242,8 @@ const Dental = () => {
                 />
               </div>
 
-            {/* top floating card */}
-            <div className="dental-float-card dental-float-card-top absolute right-0 top-6 z-20 rounded-[1.4rem] bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.14)]">
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-                Consultation
-              </p>
-              <p className="mt-1 text-sm font-black text-[#102A43]">
-                ₦15,000
-              </p>
-            </div>
 
-            {/* bottom floating card */}
+            {/* floating card */}
             <div className="dental-float-card dental-float-card-bottom absolute bottom-10 left-0 z-20 rounded-[1.4rem] bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.14)]">
               <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
                 Mode
@@ -271,39 +261,6 @@ const Dental = () => {
           </div>
         </div>
       </section>
-
-      {/* FACT STRIP */}
-      <section className="border-y border-[#D8E8EE] bg-[#F8FCFF] px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <div className="dental-fact rounded-[1.7rem] bg-white p-5 shadow-sm">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="dental-fact dental-delay-1 rounded-[1.7rem] bg-white p-5 shadow-sm">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-              Consultation
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              ₦15,000
-            </p>
-          </div>
-
-          <div className="dental-fact dental-delay-2 rounded-[1.7rem] bg-white p-5 shadow-sm">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              15 to 45 minutes
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* SERVICES WITH WAVE LINE */}
       <section
         id="dental-services"

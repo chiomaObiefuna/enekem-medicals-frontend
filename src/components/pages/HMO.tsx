@@ -1,539 +1,508 @@
-import { useState } from "react";
+// src/components/pages/PaymentHMO.tsx
+
 import { Link } from "react-router-dom";
-import {
-  IoCall,
-  IoLogoWhatsapp,
-  IoCalendar,
-  IoCheckmarkCircle,
-  IoCopyOutline,
-  IoCheckmark,
-  IoAlertCircleOutline,
-} from "react-icons/io5";
+import { IoCall, IoLogoWhatsapp } from "react-icons/io5";
+
 import { contactInfo } from "../data/contactInfo";
 
-// ─────────────────────────────────────────
-// HMO PROVIDERS — pill tag cloud style
-// ─────────────────────────────────────────
 const hmoProviders = [
-  { name: "HCI" },
-  { name: "Bastion" },
-  { name: "Reliance" },
-  { name: "AXA Mansard" },
-  { name: "Hadiel" },
-  { name: "Redcare" },
-  { name: "Aspire" },
-  { name: "Leadway" },
-  { name: "Noor" },
-  { name: "NEM" },
+  "HCI",
+  "Bastion",
+  "Reliance",
+  "AXA Mansard",
+  "Hadiel",
+  "Redcare",
+  "Aspire",
+  "Leadway",
+  "Noor",
+  "NEM",
 ];
 
-// ─────────────────────────────────────────
-// PAYMENT STEPS — timeline style
-// ─────────────────────────────────────────
+const hmoSteps = [
+  {
+    number: "01",
+    title: "Confirm your HMO provider",
+    description:
+      "Check if your HMO provider is listed before visiting the clinic or requesting a service.",
+  },
+  {
+    number: "02",
+    title: "Bring your HMO details",
+    description:
+      "Come with your HMO card, authorisation code, approval note, referral document, or any required verification detail.",
+  },
+  {
+    number: "03",
+    title: "Verify service coverage",
+    description:
+      "The clinic team will confirm whether your HMO covers the selected service before care begins.",
+  },
+  {
+    number: "04",
+    title: "Proceed after confirmation",
+    description:
+      "Once your HMO details are verified, the team will guide you on the next step for consultation, diagnostics, or treatment.",
+  },
+];
+
+const hmoChecklist = [
+  "HMO card or policy details",
+  "Authorisation code, if required",
+  "Referral document, if required",
+  "Valid means of identification",
+  "Details of the service you want to use",
+];
+
 const paymentSteps = [
   {
-    number: "1",
-    title: "Book your appointment",
-    body: "Visit our website and complete the booking form. Select your service, preferred date and time, and fill in your details.",
+    number: "01",
+    title: "Confirm the service",
+    description:
+      "Speak with the team to confirm the service you need before making payment.",
   },
   {
-    number: "2",
-    title: "Receive your Booking ID",
-    body: "You will get an email with your unique Booking ID and a secure payment link immediately after submitting.",
+    number: "02",
+    title: "Make payment",
+    description:
+      "Payment can be made through any accepted payment method provided by the clinic.",
   },
   {
-    number: "3",
-    title: "Complete your payment",
-    body: "Pay via the secure link using your debit card, bank transfer, or USSD. Or transfer directly to our Globus Bank account.",
+    number: "03",
+    title: "Send proof of payment",
+    description:
+      "If payment is made by transfer, send your proof of payment through WhatsApp for confirmation.",
   },
   {
-    number: "4",
-    title: "Get your confirmation",
-    body: "Your booking is confirmed the moment payment is received. An email confirmation is sent to you immediately.",
+    number: "04",
+    title: "Wait for confirmation",
+    description:
+      "The team will confirm your payment and guide you on the next step.",
   },
 ];
 
-// ─────────────────────────────────────────
-// COPY ACCOUNT NUMBER BUTTON
-// ─────────────────────────────────────────
-const CopyButton = ({ value }: { value: string }) => {
-  const [copied, setCopied] = useState(false);
+const paymentMethods = ["Debit Card", "Bank Transfer", "USSD"];
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Fallback for older browsers
-      const el = document.createElement("textarea");
-      el.value = value;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand("copy");
-      document.body.removeChild(el);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+const policies = [
+  {
+    title: "Refund Policy",
+    description: "No refunds.",
+  },
+  {
+    title: "Cancellation Policy",
+    description: "48 hours notice is required for cancellation.",
+  },
+];
 
-  return (
-    <button
-      onClick={handleCopy}
-      title="Copy account number"
-      className={`
-        flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold
-        transition-all duration-200
-        ${copied
-          ? "bg-[#44CC3A]/15 text-[#2a8a22]"
-          : "bg-white/15 text-white hover:bg-white/25"
-        }
-      `}
-    >
-      {copied ? (
-        <>
-          <IoCheckmark size={13} />
-          Copied
-        </>
-      ) : (
-        <>
-          <IoCopyOutline size={13} />
-          Copy
-        </>
-      )}
-    </button>
+const PaymentHMO = () => {
+  const hmoWhatsAppMessage = encodeURIComponent(
+    `Hello Enekem Medicals, I would like to make an enquiry about Payment or HMO.
+
+Full name:
+HMO provider, if applicable:
+Service needed:
+Question:`
   );
-};
 
-// ─────────────────────────────────────────
-// MAIN PAGE
-// ─────────────────────────────────────────
-const HMO = () => {
+  const proofOfPaymentMessage = encodeURIComponent(
+    `Hello Enekem Medicals, I would like to send proof of payment.
+
+Full name:
+Service paid for:
+Payment method:
+Payment reference:
+Proof of payment attached below:`
+  );
+
+  const whatsappSeparator = contactInfo.whatsappLink.includes("?") ? "&" : "?";
+
+  const hmoWhatsAppLink = `${contactInfo.whatsappLink}${whatsappSeparator}text=${hmoWhatsAppMessage}`;
+  const proofOfPaymentLink = `${contactInfo.whatsappLink}${whatsappSeparator}text=${proofOfPaymentMessage}`;
+
+  const cleanPhoneNumber = contactInfo.phone1.replace(/\s+/g, "");
+
   return (
-    <main className="w-full bg-white">
+    <main className="w-full overflow-hidden bg-[#F8FBFF] text-[#102A43]">
+      {/* HERO */}
+      <section className="payment-hmo-hero-gradient relative overflow-hidden px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pt-32">
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mb-8 flex flex-wrap items-center gap-2 text-sm font-semibold text-white/75">
+            <Link to="/" className="transition hover:text-white">
+              Home
+            </Link>
+            <span>/</span>
+            <span>Patient Info</span>
+            <span>/</span>
+            <span className="text-white">Payment & HMO</span>
+          </div>
 
-      {/* ══════════════════════════════════════════
-          HERO — asymmetric split layout
-          Left: large editorial headline + context
-          Right: accent panel with quick facts
-      ══════════════════════════════════════════ */}
-      <section className="w-full overflow-hidden pt-24 sm:pt-28 lg:pt-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid min-h-[340px] gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-
-            {/* Left — editorial headline */}
-            <div className="flex flex-col justify-center pb-12 pr-0 lg:pb-16 lg:pr-16">
-              {/* Eyebrow */}
-              <p className="mb-6 text-xs font-bold uppercase tracking-[0.25em] text-[#44CC3A]">
-                HMO & Insurance · Payment
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <div className="payment-hero-copy">
+              <p className="mb-5 inline-flex rounded-full border border-white/25 bg-white/12 px-5 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-white shadow-sm backdrop-blur-md">
+                Patient Information
               </p>
 
-              {/* Large headline — editorial style */}
-              <h1 className="mb-6 text-5xl font-black leading-[1.05] text-[#011F5E] sm:text-6xl lg:text-7xl">
-                Your health
-                <br />
-                <span className="text-[#01369E]">plan works</span>
-                <br />
-                here.
+              <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Payment & HMO Information
               </h1>
 
-              <p className="mb-8 max-w-md text-base leading-relaxed text-[#102A43]/60">
-                We accept 10 HMO providers and offer simple, secure payment
-                options so nothing stands between you and the care you need.
+              <p className="mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
+                Find information about accepted HMO providers, payment methods,
+                bank transfer details, proof of payment, and important patient
+                payment policies at Enekem Medicals.
               </p>
 
-              {/* Inline CTAs */}
-              <div className="flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
                   to="/book"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#011F5E] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#01369E]"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-4 text-sm font-extrabold text-[#01369E] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#F4F7FF]"
                 >
-                  <IoCalendar size={15} />
                   Book Appointment
                 </Link>
+
                 <a
-                  href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#D8E8EE] px-6 py-3 text-sm font-bold text-[#011F5E] transition hover:-translate-y-0.5 hover:border-[#01369E]"
+                  href={`tel:${cleanPhoneNumber}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#01369E]"
                 >
-                  <IoCall size={15} />
-                  Confirm your HMO
+                  <IoCall size={18} />
+                  Call Enekem
                 </a>
               </div>
             </div>
 
-            {/* Right — accent panel with key facts */}
-            <div className="relative hidden overflow-hidden rounded-tl-[3rem] bg-[#011F5E] lg:flex lg:flex-col lg:justify-center lg:px-12 lg:py-12">
-              {/* Decorative circle */}
-              <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#01369E]/40" />
-              <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#44CC3A]/10" />
-
-              <div className="relative z-10 flex flex-col gap-6">
-                {[
-                  { value: "10", label: "Accepted HMO Providers" },
-                  { value: "24/7", label: "Always Open, No Exceptions" },
-                  { value: "₦15k", label: "Physical Consultation Fee" },
-                  { value: "₦20k", label: "Online Consultation Fee" },
-                ].map((fact) => (
-                  <div key={fact.label} className="flex items-baseline gap-4">
-                    <span className="text-4xl font-black text-white">
-                      {fact.value}
-                    </span>
-                    <span className="text-sm font-medium text-white/50">
-                      {fact.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Full-width divider line */}
-        <div className="h-px w-full bg-[#D8E8EE]" />
-      </section>
-
-      {/* ══════════════════════════════════════════
-          HMO PROVIDERS — tag cloud style
-          Providers displayed as organic pill tags
-          not a rigid grid of identical boxes
-      ══════════════════════════════════════════ */}
-      <section className="w-full px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-
-            {/* Left — headline + context */}
-            <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#44CC3A]">
-                Accepted Providers
+            <div className="payment-hero-panel rounded-[2.2rem] border border-white/20 bg-white/95 p-7 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-md sm:p-8">
+              <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+                Quick Reminder
               </p>
-              <h2 className="mb-5 text-3xl font-extrabold leading-tight text-[#011F5E] sm:text-4xl">
-                Is your HMO plan
-                <br />
-                accepted here?
+
+              <h2 className="mt-4 text-2xl font-black leading-tight text-[#01369E]">
+                Bring your HMO card or payment confirmation details.
               </h2>
-              <p className="mb-8 text-sm leading-relaxed text-[#102A43]/60">
-                We currently accept the 10 providers listed. If your HMO is not
-                on the list, call us — we are always expanding our network.
-              </p>
 
-              {/* What to bring */}
-              <div className="rounded-2xl bg-[#F4F7FF] p-5">
-                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[#01369E]/60">
-                  When you visit, bring
-                </p>
-                {[
-                  "Your valid HMO card",
-                  "Authorisation letter if required by your provider",
-                  "A valid means of identification",
-                ].map((item) => (
-                  <div key={item} className="mb-2.5 flex items-start gap-2.5">
-                    <IoCheckmarkCircle
-                      size={16}
-                      className="mt-0.5 shrink-0 text-[#44CC3A]"
-                    />
-                    <p className="text-sm text-[#102A43]/70">{item}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Not listed */}
-              <p className="mt-6 text-sm text-[#102A43]/55">
-                Provider not listed?{" "}
-                <a
-                  href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
-                  className="font-bold text-[#01369E] hover:underline"
-                >
-                  Call us to confirm
-                </a>
+              <p className="mt-4 text-sm leading-7 text-[#5F6F82]">
+                HMO patients may need verification before consultation,
+                diagnostics, pharmacy support, or other clinic services are
+                completed.
               </p>
             </div>
-
-            {/* Right — tag cloud of HMO providers */}
-            <div className="flex flex-wrap items-center gap-3">
-              {hmoProviders.map((provider, index) => {
-                // Alternate styling for visual variety — not a uniform grid
-                const styles = [
-                  "bg-[#011F5E] text-white text-base px-6 py-3",
-                  "border-2 border-[#01369E] text-[#01369E] text-sm px-5 py-2.5",
-                  "bg-[#EAF2FF] text-[#01369E] text-lg font-black px-7 py-3.5",
-                  "border border-[#D8E8EE] text-[#102A43] text-sm px-5 py-2.5",
-                  "bg-[#44CC3A] text-white text-base px-6 py-3",
-                  "border-2 border-[#D8E8EE] text-[#102A43]/70 text-sm px-5 py-2",
-                  "bg-[#F4F7FF] text-[#011F5E] text-base font-bold px-6 py-3",
-                  "border border-[#01369E]/20 text-[#01369E] text-sm px-4 py-2",
-                  "bg-[#011F5E]/8 text-[#011F5E] text-base px-6 py-3",
-                  "border-2 border-[#44CC3A] text-[#2a8a22] text-sm px-5 py-2.5",
-                ];
-                return (
-                  <span
-                    key={provider.name}
-                    className={`rounded-full font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-default ${styles[index % styles.length]}`}
-                  >
-                    {provider.name}
-                  </span>
-                );
-              })}
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* Full-width divider */}
-      <div className="h-px w-full bg-[#D8E8EE]" />
-
-      {/* ══════════════════════════════════════════
-          PAYMENT SECTION
-          Left: vertical timeline of steps
-          Right: bank card design + payment methods
-      ══════════════════════════════════════════ */}
-      <section className="w-full bg-[#F4F7FF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      {/* HMO PROVIDERS */}
+      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
         <div className="mx-auto max-w-7xl">
-
-          <div className="mb-12">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#44CC3A]">
-              Making Payment
+          <div className="max-w-3xl">
+            <p className="payment-section-reveal text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+              HMO Providers
             </p>
-            <h2 className="text-3xl font-extrabold text-[#011F5E] sm:text-4xl">
-              Simple steps to confirm
-              <br />
-              your booking.
+
+            <h2 className="payment-section-reveal payment-delay-1 mt-4 text-3xl font-black tracking-tight text-[#01369E] sm:text-4xl">
+              Accepted HMO providers.
+            </h2>
+
+            <p className="payment-section-reveal payment-delay-2 mt-4 text-base leading-8 text-[#5F6F82]">
+              Enekem Medicals currently works with the following HMO providers.
+              If your provider is not listed, please call to confirm before your
+              visit.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {hmoProviders.map((provider, index) => (
+              <div
+                key={provider}
+                className={`payment-provider payment-provider-${index} rounded-[1.4rem] border border-[#D8E8EE] bg-[#F8FBFF] p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#44CC3A]/70 hover:bg-white hover:shadow-[0_18px_50px_rgba(1,54,158,0.08)]`}
+              >
+                <p className="text-base font-black text-[#01369E]">
+                  {provider}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="payment-provider-notice mt-8 rounded-[1.7rem] border border-[#D8E8EE] bg-[#F4F7FF] p-6">
+            <p className="text-sm font-semibold leading-7 text-[#5F6F82]">
+              If your HMO provider is not listed, please call Enekem Medicals to
+              confirm whether your provider can be accepted before visiting the
+              clinic.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW TO USE HMO */}
+      <section className="bg-[#F8FBFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="payment-left-copy">
+            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+              How To Use HMO
+            </p>
+
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-[#01369E] sm:text-4xl">
+              Simple steps for HMO patients.
+            </h2>
+
+            <p className="mt-4 text-base leading-8 text-[#5F6F82]">
+              HMO use may require confirmation before care begins. These steps
+              help patients prepare the right information before visiting the
+              clinic.
+            </p>
+          </div>
+
+          <div className="grid gap-5">
+            {hmoSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className={`payment-step-card payment-step-card-${index} rounded-[1.8rem] bg-white p-6 shadow-[0_18px_60px_rgba(1,54,158,0.07)]`}
+              >
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <span className="text-5xl font-light leading-none text-[#44CC3A]">
+                    {step.number}
+                  </span>
+
+                  <div>
+                    <h3 className="text-xl font-black text-[#01369E]">
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-7 text-[#5F6F82]">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-7xl rounded-[2.2rem] bg-white p-7 shadow-[0_20px_70px_rgba(1,54,158,0.08)] sm:p-8">
+          <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+            What To Bring
+          </p>
+
+          <h3 className="mt-4 text-2xl font-black text-[#01369E]">
+            HMO checklist.
+          </h3>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {hmoChecklist.map((item) => (
+              <div key={item} className="flex items-start gap-4">
+                <span className="mt-2.5 h-2.5 w-2.5 shrink-0 rounded-full bg-[#44CC3A]" />
+                <p className="text-sm font-semibold leading-7 text-[#5F6F82]">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PAYMENT STEPS + BANK DETAILS */}
+      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 max-w-3xl">
+            <p className="payment-section-reveal text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+              Payment Steps
+            </p>
+
+            <h2 className="payment-section-reveal payment-delay-1 mt-4 text-3xl font-black tracking-tight text-[#01369E] sm:text-4xl">
+              How payment confirmation works.
             </h2>
           </div>
 
-          <div className="grid gap-12 lg:grid-cols-[1fr_420px] lg:items-start">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="grid gap-5 sm:grid-cols-2">
+              {paymentSteps.map((step, index) => (
+                <article
+                  key={step.title}
+                  className={`payment-info-card payment-info-card-${index} rounded-[2rem] border border-[#D8E8EE] bg-[#F8FBFF] p-6`}
+                >
+                  <span className="block text-4xl font-light leading-none text-[#44CC3A]">
+                    {step.number}
+                  </span>
 
-            {/* Left — vertical timeline */}
-            <div className="relative">
-              {/* Connecting vertical line */}
-              <div className="absolute left-5 top-5 h-[calc(100%-60px)] w-px bg-[#D8E8EE]" />
+                  <h3 className="mt-4 text-lg font-black text-[#01369E]">
+                    {step.title}
+                  </h3>
 
-              <div className="flex flex-col gap-8">
-                {paymentSteps.map((step, index) => (
-                  <div key={step.number} className="relative flex items-start gap-6">
-                    {/* Node on the timeline */}
-                    <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#011F5E] text-sm font-extrabold text-white shadow-md">
-                      {step.number}
-                    </div>
-
-                    {/* Step content */}
-                    <div className="flex-1 pb-2 pt-1.5">
-                      <h3 className="mb-1.5 text-[15px] font-bold text-[#011F5E]">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-[#102A43]/60">
-                        {step.body}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Alternative payment note */}
-              <div className="mt-8 ml-16 flex items-start gap-3 rounded-2xl border border-[#D8E8EE] bg-white p-5">
-                <IoAlertCircleOutline
-                  size={18}
-                  className="mt-0.5 shrink-0 text-[#01369E]"
-                />
-                <p className="text-sm leading-relaxed text-[#102A43]/65">
-                  Alternatively, transfer directly to our bank account and
-                  send proof of payment via WhatsApp to{" "}
-                  <a
-                    href={contactInfo.whatsappLink}
-                    className="font-bold text-[#44CC3A] hover:underline"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {contactInfo.phone1}
-                  </a>
-                  . Quote your Booking ID in the message.
-                </p>
-              </div>
+                  <p className="mt-2 text-sm leading-7 text-[#5F6F82]">
+                    {step.description}
+                  </p>
+                </article>
+              ))}
             </div>
 
-            {/* Right — bank card + payment methods */}
-            <div className="flex flex-col gap-5 lg:sticky lg:top-24">
+            <aside className="payment-bank-card rounded-[2.2rem] bg-[#01369E] p-7 text-white shadow-[0_24px_80px_rgba(1,54,158,0.18)] sm:p-8">
+              <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+                Bank Details
+              </p>
 
-              {/* Bank card — physical card design */}
-              <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#011F5E] via-[#01369E] to-[#0147C8] p-7 shadow-[0_20px_60px_rgba(1,31,94,0.3)]">
+              <h3 className="mt-4 text-3xl font-black leading-tight">
+                Transfer information.
+              </h3>
 
-                {/* Card top row */}
-                <div className="mb-8 flex items-start justify-between">
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                      Bank Name
-                    </p>
-                    <p className="mt-1 text-lg font-extrabold text-white">
-                      {contactInfo.bankName}
-                    </p>
-                  </div>
-                  {/* Decorative card chip */}
-                  <div className="h-8 w-10 rounded-md bg-gradient-to-br from-yellow-300 to-yellow-500 opacity-90" />
-                </div>
-
-                {/* Account number — with copy button */}
-                <div className="mb-6">
-                  <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                    Account Number
+              <div className="mt-8 space-y-5">
+                <div className="rounded-[1.5rem] bg-white/10 p-5">
+                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-white/60">
+                    Bank
                   </p>
-                  <div className="flex items-center justify-between">
-                    <p className="font-mono text-3xl font-black tracking-[0.15em] text-white">
-                      {contactInfo.accountNumber}
-                    </p>
-                    <CopyButton value={contactInfo.accountNumber} />
-                  </div>
+                  <p className="mt-2 text-xl font-black">Globus Bank</p>
                 </div>
 
-                {/* Account name */}
-                <div>
-                  <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                <div className="rounded-[1.5rem] bg-white/10 p-5">
+                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-white/60">
                     Account Name
                   </p>
-                  <p className="text-base font-bold text-white/90">
-                    {contactInfo.accountName}
+                  <p className="mt-2 text-xl font-black">
+                    Enekem Medicals Ltd
                   </p>
                 </div>
 
-                {/* Decorative circles */}
-                <div className="absolute -right-8 -bottom-8 h-32 w-32 rounded-full bg-white/5" />
-                <div className="absolute -right-2 -bottom-2 h-16 w-16 rounded-full bg-white/5" />
-              </div>
-
-              {/* After transfer — send proof */}
-              <a
-                href={contactInfo.whatsappLink}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2 rounded-2xl border-2 border-[#44CC3A] bg-white px-6 py-4 text-sm font-bold text-[#44CC3A] transition hover:-translate-y-0.5 hover:bg-[#44CC3A] hover:text-white"
-              >
-                <IoLogoWhatsapp size={18} />
-                Send Proof of Payment on WhatsApp
-              </a>
-
-              {/* Payment methods */}
-              <div className="rounded-2xl border border-[#D8E8EE] bg-white p-5">
-                <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[#102A43]/40">
-                  We accept
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {["Debit Card", "Bank Transfer", "USSD"].map((method) => (
-                    <span
-                      key={method}
-                      className="rounded-full border border-[#D8E8EE] bg-[#F4F7FF] px-4 py-2 text-xs font-bold text-[#011F5E]"
-                    >
-                      {method}
-                    </span>
-                  ))}
+                <div className="rounded-[1.5rem] bg-white/10 p-5">
+                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-white/60">
+                    Account Number
+                  </p>
+                  <p className="mt-2 text-2xl font-black tracking-wide">
+                    1000222016
+                  </p>
                 </div>
               </div>
-
-            </div>
+            </aside>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          POLICIES — minimal, text-forward
-      ══════════════════════════════════════════ */}
-      <section className="w-full px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-2">
-
-            {/* Refund */}
-            <div>
-              <div className="mb-4 flex items-center gap-3">
-                <div className="h-px flex-1 bg-[#D8E8EE]" />
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#102A43]/40">
-                  Refund Policy
-                </p>
-              </div>
-              <p className="text-[15px] leading-relaxed text-[#102A43]/70">
-                Enekem Medicals does not offer refunds once payment has been
-                made. If you need to cancel or reschedule, please contact us
-                as early as possible and we will find you an alternative
-                appointment at no additional charge.
-              </p>
-            </div>
-
-            {/* Cancellation */}
-            <div>
-              <div className="mb-4 flex items-center gap-3">
-                <div className="h-px flex-1 bg-[#D8E8EE]" />
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#102A43]/40">
-                  Cancellation Policy
-                </p>
-              </div>
-              <p className="text-[15px] leading-relaxed text-[#102A43]/70">
-                Cancellations must be requested at least{" "}
-                <span className="font-bold text-[#011F5E]">48 hours</span>{" "}
-                before your scheduled appointment. Call{" "}
-                <a
-                  href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
-                  className="font-bold text-[#01369E] hover:underline"
-                >
-                  {contactInfo.phone1}
-                </a>{" "}
-                or{" "}
-                <a
-                  href={`tel:${contactInfo.phone2.replace(/\s+/g, "")}`}
-                  className="font-bold text-[#01369E] hover:underline"
-                >
-                  {contactInfo.phone2}
-                </a>
-                . No refunds are issued but we will reschedule you at no
-                extra charge.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          BOTTOM CTA — minimal, text-forward
-      ══════════════════════════════════════════ */}
-      <section className="w-full border-t border-[#D8E8EE] bg-[#011F5E] px-5 py-14 sm:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#44CC3A]">
-              We are open 24/7
+      {/* PAYMENT METHODS + PROOF */}
+      <section className="bg-[#F8FBFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="payment-left-copy">
+            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+              Payment Methods
             </p>
-            <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
-              Ready when you are.
+
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-[#01369E] sm:text-4xl">
+              Accepted payment options.
+            </h2>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {paymentMethods.map((method) => (
+                <div
+                  key={method}
+                  className="rounded-[1.5rem] border border-[#D8E8EE] bg-white p-5 text-center shadow-sm"
+                >
+                  <p className="text-sm font-black text-[#01369E]">{method}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="payment-guideline-panel rounded-[2.2rem] bg-white p-7 shadow-[0_20px_70px_rgba(1,54,158,0.08)] sm:p-8">
+            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+              Alternative Payment
+            </p>
+
+            <h3 className="mt-4 text-2xl font-black text-[#01369E]">
+              Send proof of payment through WhatsApp.
+            </h3>
+
+            <p className="mt-4 text-sm leading-7 text-[#5F6F82]">
+              If you make payment by bank transfer, send your proof of payment
+              through WhatsApp with your full name, service paid for, payment
+              method, and payment reference.
+            </p>
+
+            <a
+              href={proofOfPaymentLink}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-[#44CC3A] px-7 py-4 text-sm font-extrabold text-[#01369E] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#53DD49]"
+            >
+              <IoLogoWhatsapp size={18} />
+              Send Proof on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* POLICIES */}
+      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10 max-w-3xl">
+            <p className="payment-section-reveal text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+              Payment Policies
+            </p>
+
+            <h2 className="payment-section-reveal payment-delay-1 mt-4 text-3xl font-black tracking-tight text-[#01369E] sm:text-4xl">
+              Important payment and cancellation information.
             </h2>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Link
-              to="/book"
-              className="inline-flex items-center gap-2 rounded-full bg-[#44CC3A] px-7 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#35A82D]"
-            >
-              <IoCalendar size={16} />
-              Book Appointment
-            </Link>
-            <a
-              href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/20"
-            >
-              <IoCall size={16} />
-              {contactInfo.phone1}
-            </a>
-            <a
-              href={contactInfo.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/20"
-            >
-              <IoLogoWhatsapp size={16} />
-              WhatsApp
-            </a>
+          <div className="grid gap-6 md:grid-cols-2">
+            {policies.map((policy, index) => (
+              <article
+                key={policy.title}
+                className={`payment-policy-card payment-policy-card-${index} rounded-[2rem] border border-[#D8E8EE] bg-[#F8FBFF] p-7`}
+              >
+                <div className="mb-6 h-1.5 w-16 rounded-full bg-[#44CC3A]" />
+
+                <h3 className="text-2xl font-black text-[#01369E]">
+                  {policy.title}
+                </h3>
+
+                <p className="mt-4 text-base font-semibold leading-8 text-[#5F6F82]">
+                  {policy.description}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* BOTTOM CTA */}
+      <section className="bg-[#F8FBFF] px-5 py-16 sm:px-8 lg:px-10">
+        <div className="payment-contact-panel mx-auto max-w-7xl rounded-[2.5rem] border border-[#D8E8EE] bg-white p-7 shadow-[0_24px_80px_rgba(1,54,158,0.08)] sm:p-10">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
+                Need help with payment or HMO?
+              </p>
+
+              <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-tight text-[#01369E] sm:text-4xl">
+                Speak with the team before your visit.
+              </h2>
+
+              <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-[#5F6F82]">
+                If you are unsure about your HMO provider, payment confirmation,
+                required documents, or service verification, contact the clinic
+                team for guidance.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
+          
+              <a
+                href={`tel:${cleanPhoneNumber}`}
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#01369E] bg-white px-7 py-4 text-sm font-extrabold text-[#01369E] transition-all duration-300 hover:-translate-y-1 hover:bg-[#01369E] hover:text-white"
+              >
+                <IoCall size={18} />
+                Call
+              </a>
+
+              <a
+                href={hmoWhatsAppLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#44CC3A] px-7 py-4 text-sm font-extrabold text-[#01369E] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[#53DD49]"
+              >
+                <IoLogoWhatsapp size={18} />
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
 
-export default HMO;
+export default PaymentHMO;

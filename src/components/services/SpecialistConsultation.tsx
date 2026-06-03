@@ -145,52 +145,8 @@ const SpecialistConsultation = () => {
                   alt="Specialist doctor consultation at Enekem Medicals"
                   className="h-[360px] w-full object-cover object-center sm:h-[440px] lg:h-[520px]"
                 />
-              </div>
-
-              <div className="absolute -bottom-6 left-8 max-w-xs rounded-2xl bg-white px-6 py-5 shadow-[0_20px_60px_rgba(16,42,67,0.18)]">
-                <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#3A9AD9]">
-                  Consultation Fee
-                </p>
-                <p className="mt-1 text-2xl font-black text-[#102A43]">
-                  ₦60,000
-                </p>
-                <p className="mt-1 text-xs font-semibold text-[#5F6F82]">
-                  Physical consultation only. 10 to 15 minutes.
-                </p>
-              </div>
+              </div> 
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* QUICK FACTS */}
-      <section className="border-y border-[#D8E8EE] bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-3">
-          <div className="specialist-pop rounded-2xl bg-[#FFF8DD] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#102A43]/60">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="specialist-pop specialist-delay-1 rounded-2xl bg-[#F2FBFF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-              Fee
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              ₦60,000
-            </p>
-          </div>
-
-          <div className="specialist-pop specialist-delay-2 rounded-2xl bg-[#F7FFF6] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#44CC3A]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              10 to 15 minutes
-            </p>
           </div>
         </div>
       </section>

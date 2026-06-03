@@ -3,8 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link, NavLink as RouterNavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
-
 import navLinks, { type NavLink as NavLinkType } from "../data/navLinks";
 import { contactInfo } from "../data/contactInfo";
 import logo from "../../assets/logo/Enekemlogo.png";
@@ -33,8 +31,6 @@ const ModeBadge = ({ mode }: { mode?: string }) => {
 
 // ─────────────────────────────────────────
 // DESKTOP DROPDOWN PANEL
-// - No divider between groups
-// - Hover: bottom border underline + #44CC3A text
 // ─────────────────────────────────────────
 const DropdownPanel = ({ link }: { link: NavLinkType }) => {
   if (!link.dropdownGroups) return null;
@@ -82,19 +78,6 @@ const DropdownPanel = ({ link }: { link: NavLinkType }) => {
             </div>
           ))}
         </div>
-
-        {/* Footer CTA
-        {link.dropdownFooter && (
-          <div className="border-t border-[#D8E8EE] bg-[#EAF2FF] px-6 py-3">
-            <Link
-              to={link.dropdownFooter.path}
-              className="inline-flex items-center gap-2 text-sm font-bold text-[#01369E] transition-colors hover:text-[#44CC3A]"
-            >
-              {link.dropdownFooter.label}
-              <ArrowRight size={14} strokeWidth={2.5} />
-            </Link>
-          </div>
-        )} */}
       </div>
     </div>
   );
@@ -102,7 +85,6 @@ const DropdownPanel = ({ link }: { link: NavLinkType }) => {
 
 // ─────────────────────────────────────────
 // MOBILE ACCORDION
-// Hover color → #44CC3A (matches desktop)
 // ─────────────────────────────────────────
 const MobileAccordion = ({
   link,
@@ -166,17 +148,6 @@ const MobileAccordion = ({
               ))}
             </div>
           ))}
-
-          {/* {link.dropdownFooter && (
-            <Link
-              to={link.dropdownFooter.path}
-              onClick={onClose}
-              className="mt-2 inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-bold text-[#01369E] hover:text-[#44CC3A]"
-            >
-              {link.dropdownFooter.label}
-              <ArrowRight size={13} strokeWidth={2.5} />
-            </Link>
-          )} */}
         </div>
       )}
     </div>
@@ -308,16 +279,7 @@ const Header = () => {
 
           {/* ── Desktop CTAs: Gmail icon + Book Appointment ── */}
           <div className="hidden shrink-0 items-center gap-3 md:flex">
-            {/* Gmail icon */}
-            <a
-              href={`mailto:${contactInfo.email}`}
-              aria-label="Email Enekem Medicals"
-              title={contactInfo.email}
-              className="flex items-center justify-center text-white/70 transition-all duration-200 hover:text-white hover:scale-110"
-            >
-              <SiGmail size={20} />
-            </a>
-
+           
             {/* Book Appointment */}
             <Link
               to="/book"
@@ -333,16 +295,6 @@ const Header = () => {
 
           {/* ── Mobile: Gmail icon + Hamburger ── */}
           <div className="flex items-center gap-2 md:hidden">
-            {/* Gmail icon — visible on mobile beside hamburger */}
-            <a
-              href={`mailto:${contactInfo.email}`}
-              aria-label="Email Enekem Medicals"
-              title={contactInfo.email}
-              className="flex h-10 w-10 items-center justify-center rounded-xl text-white transition-colors hover:text-[#44CC3A]"
-            >
-              <SiGmail size={20} />
-            </a>
-
             {/* Hamburger */}
             <button
               type="button"

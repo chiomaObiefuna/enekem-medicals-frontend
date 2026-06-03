@@ -2,21 +2,18 @@ export const contactInfo = {
   // ── Contact ──────────────────────────────
   phone1: "+234 806 427 8568",
   phone2: "+234 901 660 9310",
-  whatsappNumber: "2348064278568",
-  whatsappLink: "https://wa.me/2348064278568",
+  whatsappNumber: "+2349016609310",
+  whatsappLink: "https://wa.me/2349016609310",
   email: "info@enekemhealth.com",
 
   // ── Location ─────────────────────────────
-  // Corrected from knowledge base v1.4
   address: "2 Dapo Bode Thomas Street, off Thorborn Avenue, Yaba, Lagos, Nigeria.",
 
   // ── Opening Hours ────────────────────────
-  // Updated: open 24 hours every day — no exceptions
   hours: "Open 24 Hours — 7 Days a Week",
   hoursNote: "Including weekends and all public holidays. We never close.",
 
   // ── Payment / Bank Details ───────────────
-  // From Section 3 of knowledge base v1.4
   bankName: "Globus Bank",
   accountName: "Enekem Medicals Ltd",
   accountNumber: "1000222016",

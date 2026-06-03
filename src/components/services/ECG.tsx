@@ -211,35 +211,6 @@ const ECG = () => {
 
                   <div className="ecg-sweep pointer-events-none absolute inset-0" />
                 </div>
-
-                <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                  <div className="rounded-2xl bg-white/8 p-4">
-                    <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#abc4ff]">
-                      Fee
-                    </p>
-                    <p className="mt-2 text-sm font-black text-white">
-                      ₦15,000
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/8 p-4">
-                    <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#abc4ff]">
-                      Duration
-                    </p>
-                    <p className="mt-2 text-sm font-black text-white">
-                      15 to 30 mins
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/8 p-4">
-                    <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#abc4ff]">
-                      Review
-                    </p>
-                    <p className="mt-2 text-sm font-black text-white">
-                      GP / Cardiologist
-                    </p>
-                  </div>
-                </div>
               </div>
 
               <div className="ecg-floating-note absolute -bottom-7 left-6 max-w-xs rounded-[1.7rem] bg-white px-6 py-5 shadow-[0_22px_70px_rgba(16,42,67,0.18)]">
@@ -254,39 +225,6 @@ const ECG = () => {
           </div>
         </div>
       </section>
-
-      {/* FACT STRIP */}
-      <section className="border-y border-[#D8E8EE] bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <div className="ecg-fact rounded-[1.7rem] bg-[#edf2fb] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#004b23]">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="ecg-fact ecg-delay-1 rounded-[1.7rem] bg-[#F4FFE8] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#004b23]">
-              Price
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              ₦15,000
-            </p>
-          </div>
-
-          <div className="ecg-fact ecg-delay-2 rounded-[1.7rem] bg-[#edf2fb] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#004b23]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              15 to 30 minutes
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ECG USES */}
       <section
         id="ecg-uses"

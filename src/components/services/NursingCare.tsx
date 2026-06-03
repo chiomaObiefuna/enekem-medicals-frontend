@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import nursingIcon from "../../assets/icons/nursing-care.png";
 import nursingImage from "../../assets/images/nursing-care.jpg";
 
@@ -121,53 +120,13 @@ const NursingCare = () => {
       className="h-[520px] w-full object-cover object-top sm:h-[600px] lg:h-[640px]"
     />
   </div>
-
-  <div className="absolute -bottom-8 left-6 max-w-xs rounded-[1.7rem] bg-white px-6 py-5 shadow-[0_22px_70px_rgba(16,42,67,0.18)]">
-    <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-      Clinic-Based Care
-    </p>
-    <p className="mt-2 text-2xl font-black text-[#102A43]">₦15,000</p>
-    <p className="mt-1 text-xs font-semibold leading-5 text-[#5F6F82]">
-      Physical only. Duration depends on care required.
-    </p>
-  </div>
 </div>
 
           </div>
         </div>
       </section>
 
-      {/* CALM FACT STRIP */}
-      <section className="relative border-b border-[#D8E8EE] bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <div className="nursing-fact rounded-[1.7rem] bg-[#F2FBFF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="nursing-fact nursing-delay-1 rounded-[1.7rem] bg-[#F7FFF6] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#44CC3A]">
-              Service Fee
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              ₦15,000
-            </p>
-          </div>
-
-          <div className="nursing-fact nursing-delay-2 rounded-[1.7rem] bg-[#FFF8DD] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#B88B00]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Depends on care required
-            </p>
-          </div>
-        </div>
-      </section>
+     
 
       {/* CARE SERVICES */}
       <section className="bg-[#F8FCFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">

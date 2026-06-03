@@ -1,14 +1,3 @@
-
-// COLORS:
-//   #01369E  — primary navy (headings, icons, borders)
-//   #25D366  — WhatsApp green (buttons, accents)
-//   #F0F7FF  — soft section background
-//   #F8FBFF  — form card background
-//   #102A43  — dark text
-//   #D8E8EE  — soft borders
-//
-// Floating WhatsApp bubble reused from ContactStrip pattern
-
 import { useState,type ChangeEvent } from "react";
 import {
   FaPhone,
@@ -111,7 +100,6 @@ const emptyForm: InquiryForm = {
 
 // ─────────────────────────────────────────
 // SECTION WRAPPER
-// Left sticky label + right content (Evercare-style)
 // ─────────────────────────────────────────
 interface SectionWrapperProps {
   sectionTag: string;
@@ -130,10 +118,7 @@ const SectionWrapper = ({
 }: SectionWrapperProps) => (
   <div className="grid gap-0 lg:grid-cols-[220px_1fr]">
 
-    {/* ── LEFT: Sticky sidebar ──
-        position:sticky + top:0 + min-height:100%
-        keeps the label centered while right content scrolls.
-        Ghost number sits behind as a large watermark.     */}
+    {/* ── LEFT: Sticky sidebar ──  */}
     <div
       className="hidden lg:block"
       style={{ backgroundColor: sideColor }}
@@ -241,10 +226,8 @@ const Contacts = () => {
 
       {/* ══════════════════════════════════════
           SECTION 1 — CONTACT US
-          Left: #01369E sidebar
-          Right: info rows + small map + CTA buttons
       ══════════════════════════════════════ */}
-      <SectionWrapper
+      <SectionWrapper 
         sectionTag="Contact Us"
         sideLabel={"Contact\nUs"}
         sideColor="#01369E"
@@ -253,7 +236,7 @@ const Contacts = () => {
         <div className="grid gap-10 xl:grid-cols-[1fr_300px]">
 
           {/* Contact info */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 relative overflow-hidden bg-white px-5 pb-4 pt-3 sm:px-2 sm:pb-2 sm:pt-3 lg:px-10 lg:pb-12 lg:pt-20">
             <h3 className="text-xl font-bold text-[#102A43]">
               Get in Touch
             </h3>

@@ -149,40 +149,40 @@ const Home = () => {
     muted
     loop
     playsInline
-    poster="/videos/poster.webp"
+    poster="/videos/poster.png"
     className="absolute inset-0 h-full w-full object-cover object-center"
   >
     {/* Mobile — below 768px */}
     <source
-      src="/videos/Mobile-Hero.webm"
+      src="/videos/Mobile-Hero-2.webm"
       type="video/webm"
       media="(max-width: 767px)"
     />
     <source
-      src="/videos/Mobile-Hero.mp4"
+      src="/videos/Mobile-Hero-2.mp4"
       type="video/mp4"
       media="(max-width: 767px)"
     />
 
     {/* Tablet — 768px to 1023px */}
     <source
-      src="/videos/Tablet-Hero.webm"
+      src="/videos/Tablet-Hero-2.webm"
       type="video/webm"
       media="(max-width: 1023px)"
     />
     <source
-      src="/videos/Tablet-Hero.mp4"
+      src="/videos/Tablet-Hero-2.mp4"
       type="video/mp4"
       media="(max-width: 1023px)"
     />
 
     {/* Desktop — 1024px and above */}
-    <source src="/videos/Desktop-Hero.webm" type="video/webm" />
-    <source src="/videos/Desktop-Hero.mp4"  type="video/mp4"  />
+    <source src="/videos/Desktop-Hero-2.webm" type="video/webm" />
+    <source src="/videos/Desktop-Hero-2.mp4"  type="video/mp4"  />
 
     {/* Fallback for browsers that block video */}
     <img
-      src="/videos/poster.PNG"
+      src="/videos/poster.png"
       alt="Enekem Medicals healthcare facility"
       className="absolute inset-0 h-full w-full object-cover object-center"
     />

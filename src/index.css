@@ -3090,3 +3090,309 @@ body,
     transform: none;
   }
 }
+
+/* ═══════════════════════════════════
+   Medical Team ANIMATIONS
+═══════════════════════════════════ */
+
+.team-soft-grid {
+  background-image:
+    linear-gradient(rgba(1, 54, 158, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1, 54, 158, 0.05) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.team-orb {
+  animation: teamFloat 10s ease-in-out infinite;
+}
+
+.team-orb-two {
+  animation-duration: 13s;
+}
+
+.team-hero-copy {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: teamFadeUp 0.8s ease-out 0.15s forwards;
+}
+
+.team-hero-image {
+  opacity: 0;
+  transform: translateX(36px) scale(0.98);
+  animation: teamImageIn 0.9s ease-out 0.25s forwards;
+}
+
+.team-floating-card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: teamCardIn 0.7s ease-out 0.7s forwards;
+}
+
+.team-floating-card-two {
+  animation-delay: 0.9s;
+}
+
+.team-department,
+.team-role-card,
+.team-standard-intro,
+.team-standard,
+.team-final-cta {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: teamFadeUp 0.75s ease-out forwards;
+}
+
+.team-department-0,
+.team-role-card-0,
+.team-standard-0 {
+  animation-delay: 0.08s;
+}
+
+.team-department-1,
+.team-role-card-1,
+.team-standard-1 {
+  animation-delay: 0.16s;
+}
+
+.team-department-2,
+.team-role-card-2,
+.team-standard-2 {
+  animation-delay: 0.24s;
+}
+
+.team-department-3,
+.team-role-card-3 {
+  animation-delay: 0.32s;
+}
+
+.team-department-4,
+.team-role-card-4 {
+  animation-delay: 0.4s;
+}
+
+.team-role-card-5 {
+  animation-delay: 0.48s;
+}
+
+.team-standard-intro {
+  animation-delay: 0.1s;
+}
+
+.team-final-cta {
+  animation-delay: 0.12s;
+}
+
+@keyframes teamFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes teamImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes teamCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes teamFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(14px, -18px, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-orb,
+  .team-hero-copy,
+  .team-hero-image,
+  .team-floating-card,
+  .team-department,
+  .team-role-card,
+  .team-standard-intro,
+  .team-standard,
+  .team-final-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════
+   HMO ANIMATIONS
+═══════════════════════════════════ */
+
+
+.payment-hmo-hero-gradient {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.14), transparent 26%),
+    linear-gradient(to left, #44cc3a 0%, #01369e 100%);
+}
+
+.payment-hero-copy,
+.payment-hero-panel,
+.payment-section-reveal,
+.payment-step-card,
+.payment-left-copy,
+.payment-guideline-panel,
+.payment-info-card,
+.payment-provider,
+.payment-provider-notice,
+.payment-bank-card,
+.payment-policy-card,
+.payment-contact-panel {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: paymentFadeUp 0.75s ease-out forwards;
+}
+
+.payment-hero-copy {
+  animation-delay: 0.1s;
+}
+
+.payment-hero-panel {
+  animation-delay: 0.22s;
+}
+
+.payment-delay-1 {
+  animation-delay: 0.18s;
+}
+
+.payment-delay-2 {
+  animation-delay: 0.28s;
+}
+
+.payment-step-card-0,
+.payment-info-card-0,
+.payment-policy-card-0 {
+  animation-delay: 0.08s;
+}
+
+.payment-step-card-1,
+.payment-info-card-1,
+.payment-policy-card-1 {
+  animation-delay: 0.16s;
+}
+
+.payment-step-card-2,
+.payment-info-card-2 {
+  animation-delay: 0.24s;
+}
+
+.payment-step-card-3,
+.payment-info-card-3 {
+  animation-delay: 0.32s;
+}
+
+.payment-left-copy {
+  animation-delay: 0.1s;
+}
+
+.payment-guideline-panel {
+  animation-delay: 0.22s;
+}
+
+.payment-provider-0 {
+  animation-delay: 0.05s;
+}
+
+.payment-provider-1 {
+  animation-delay: 0.08s;
+}
+
+.payment-provider-2 {
+  animation-delay: 0.11s;
+}
+
+.payment-provider-3 {
+  animation-delay: 0.14s;
+}
+
+.payment-provider-4 {
+  animation-delay: 0.17s;
+}
+
+.payment-provider-5 {
+  animation-delay: 0.2s;
+}
+
+.payment-provider-6 {
+  animation-delay: 0.23s;
+}
+
+.payment-provider-7 {
+  animation-delay: 0.26s;
+}
+
+.payment-provider-8 {
+  animation-delay: 0.29s;
+}
+
+.payment-provider-9 {
+  animation-delay: 0.32s;
+}
+
+.payment-provider-notice,
+.payment-bank-card,
+.payment-contact-panel {
+  animation-delay: 0.12s;
+}
+
+@keyframes paymentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payment-hero-copy,
+  .payment-hero-panel,
+  .payment-section-reveal,
+  .payment-step-card,
+  .payment-left-copy,
+  .payment-guideline-panel,
+  .payment-info-card,
+  .payment-provider,
+  .payment-provider-notice,
+  .payment-bank-card,
+  .payment-policy-card,
+  .payment-contact-panel {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

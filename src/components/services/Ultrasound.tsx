@@ -1,5 +1,3 @@
-// src/components/services/Ultrasound.tsx
-
 import { Link } from "react-router-dom";
 
 import ultrasoundIcon from "../../assets/icons/ultra-scan.png";
@@ -73,7 +71,7 @@ const scanProcess = [
 ];
 
 const Ultrasound = () => {
-  const bookingPath = "/book?service=ultrasound&mode=physical";
+  const bookingPath = "/book?service=Ultrasound Scan&mode=physical";
 
   return (
     <main className="w-full overflow-hidden bg-[#F5FAFF] text-[#102A43]">
@@ -170,49 +168,8 @@ const Ultrasound = () => {
                 20 to 45 mins
               </p>
             </div>
-
-            <div className="ultra-mini-panel ultra-mini-panel-two absolute -right-2 bottom-12 rounded-2xl bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.20)]">
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#44CC3A]">
-                Price
-              </p>
-              <p className="mt-1 text-sm font-black text-[#102A43]">
-                Varies by scan
-              </p>
-            </div>
           </div>
            </div>
-        </div>
-      </section>
-
-      {/* FACT STRIP */}
-      <section className="border-y border-[#D8E8EE] bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <div className="ultra-fact rounded-[1.7rem] bg-[#F5FAFF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#01369E]">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="ultra-fact ultra-delay-1 rounded-[1.7rem] bg-[#F7FFF6] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#44CC3A]">
-              Price
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Varies by scan type
-            </p>
-          </div>
-
-          <div className="ultra-fact ultra-delay-2 rounded-[1.7rem] bg-[#F5FAFF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#01369E]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              20 to 45 minutes
-            </p>
-          </div>
         </div>
       </section>
 

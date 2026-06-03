@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import laboratoryIcon from "../../assets/icons/laboratory-icon.png";
 import laboratoryImage from "../../assets/images/laboratory.png";
 
@@ -65,7 +64,7 @@ const labProcess = [
 ];
 
 const Laboratory = () => {
-  const bookingPath = "/book?service=laboratory&mode=physical";
+  const bookingPath = "/book?service=Laboratory Diagnosis&mode=physical";
 
   return (
     <main className="w-full overflow-hidden bg-[#F4F7FF] text-[#102A43]">
@@ -152,16 +151,6 @@ const Laboratory = () => {
                   className="h-[360px] w-full rounded-[2.4rem] object-cover object-center sm:h-[430px] lg:h-[520px]"
                 />
               </div>
-
-              <div className="lab-floating-card lab-floating-card-one absolute -left-2 top-10 rounded-[1.5rem] bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.16)]">
-                <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-                  Price
-                </p>
-                <p className="mt-1 text-sm font-black text-[#102A43]">
-                  Varies by test
-                </p>
-              </div>
-
               <div className="lab-floating-card lab-floating-card-two absolute -right-2 bottom-12 rounded-[1.5rem] bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.16)]">
                 <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#102A43]/60">
                   Duration
@@ -171,38 +160,6 @@ const Laboratory = () => {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FACT STRIP */}
-      <section className="border-y border-[#D8E8EE] bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          <div className="lab-fact rounded-[2rem] bg-[#F4F7FF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-              Mode
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Physical Only
-            </p>
-          </div>
-
-          <div className="lab-fact lab-delay-1 rounded-[2rem] bg-[#FFF9CC] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-              Price
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              Varies by test
-            </p>
-          </div>
-
-          <div className="lab-fact lab-delay-2 rounded-[2rem] bg-[#F4F7FF] p-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#A67C00]">
-              Duration
-            </p>
-            <p className="mt-2 text-base font-extrabold text-[#102A43]">
-              15 to 30 minutes
-            </p>
           </div>
         </div>
       </section>

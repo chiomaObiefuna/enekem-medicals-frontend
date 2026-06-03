@@ -54,7 +54,7 @@ const processSteps = [
 ];
 
 const Telemedicine = () => {
-  const bookingPath = "/book?service=telemedicine&mode=online";
+  const bookingPath = "/book?service=Telemedicine&mode=online";
 
   return (
     <main className="w-full overflow-hidden bg-[#F7FFF8] text-[#102A43]">
@@ -129,15 +129,6 @@ const Telemedicine = () => {
 
             {/* RIGHT DIGITAL VISUAL */}
             <div className="tele-hero-screen relative">
-              <div className="absolute -left-4 top-8 z-20 rounded-2xl bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.22)]">
-                <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#44CC3A]">
-                  Price
-                </p>
-                <p className="mt-1 text-sm font-black text-[#102A43]">
-                  ₦20,000 / 30 mins
-                </p>
-              </div>
-
               <div className="absolute -right-3 bottom-16 z-20 rounded-2xl bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.22)]">
                 <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#3A9AD9]">
                   Mode

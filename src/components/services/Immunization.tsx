@@ -1,7 +1,4 @@
-
-
 import { Link } from "react-router-dom";
-
 import immunizationIcon from "../../assets/icons/immunization.png";
 
 const vaccineGroups = [
@@ -67,7 +64,7 @@ const visitFlow = [
 ];
 
 const Immunization = () => {
-  const bookingPath = "/book?service=immunization&mode=physical";
+  const bookingPath = "/book?service=Immunization&mode=physical";
 
   return (
     <main className="w-full overflow-hidden bg-[#edf2fb] text-[#01369E]">

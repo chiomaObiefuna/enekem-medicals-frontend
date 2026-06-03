@@ -14,6 +14,9 @@ const Services = lazy(() => import("./components/pages/Services"));
 const Bookings = lazy(() => import("./components/pages/Bookings"));
 const Contacts = lazy(() => import("./components/pages/Contacts"));
 const HMO = lazy(() => import("./components/pages/HMO"));
+const FAQ = lazy(() => import("./components/pages/FAQ"));
+const MedicalTeam = lazy(() => import("./components/pages/MedicalTeam"));
+
 
  const Dental = lazy(() => import("./components/services/Dental"));
  const ECG = lazy(() => import("./components/services/ECG"));
@@ -82,6 +85,8 @@ function App() {
               <Route path="/services/immunization" element={<Immunization />} />
 
             <Route path="/hmo" element={<HMO />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/about/medical-team" element={<MedicalTeam />} />
            
           </Routes>
         </Suspense>
