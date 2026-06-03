@@ -499,13 +499,11 @@ const Bookings = () => {
       newErrors.phoneNumber = "Please enter your phone number.";
     }
 
-    if (
-      formData.email.trim() &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-    ) {
+   if (!formData.email.trim()) {
+         newErrors.email = "Please enter your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address.";
     }
-
     if (!formData.service) {
       newErrors.service = "Please select a service.";
     }
@@ -572,7 +570,7 @@ const Bookings = () => {
           body: JSON.stringify({
             full_name: formData.fullName,
             phone: formData.phoneNumber,
-            email: formData.email || "N/A",
+            email: formData.email,
             service: formData.service,
             sub_service: selectedSubServiceLabel || "N/A",
             mode: selectedModeLabel || "N/A",
@@ -781,7 +779,7 @@ const Bookings = () => {
                   >
                     Email Address{" "}
                     <span className="font-normal text-[#64748B]">
-                      (optional)
+                     
                     </span>
                   </label>
 
