@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  BadgeCheck,
   HeartHandshake,
+  BadgeCheck,
   Microscope,
   ShieldCheck,
   Stethoscope,
@@ -47,7 +47,7 @@ const trustPoints = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="relative overflow-hidden bg-[#002D82] px-5 py-20 text-white sm:px-8 lg:px-10">
+    <section className="relative overflow-hidden bg-[#002D82] px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
       {/* Background pattern */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
         <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_20%,#44CC3A_0,transparent_32%),radial-gradient(circle_at_80%_80%,#8FC7D8_0,transparent_30%)]" />
@@ -56,12 +56,12 @@ const WhyChooseUs = () => {
       <div className="pointer-events-none absolute -left-24 top-24 h-80 w-80 rounded-full bg-[#2F8F68]/25 blur-3xl" />
       <div className="pointer-events-none absolute -right-28 bottom-20 h-96 w-96 rounded-full bg-[#8FC7D8]/20 blur-3xl" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-        {/* LEFT: Authentic image collage */}
-        <div className="why-images relative">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        {/* LEFT: Authentic image collage - hidden on smaller screens */}
+        <div className="why-images relative hidden lg:block">
           <div className="relative grid grid-cols-12 gap-4">
             {/* Main team image */}
-            <div className="col-span-12 overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.28)] lg:col-span-8">
+            <div className="col-span-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
               <img
                 src={teamImg}
                 alt="Enekem Medicals healthcare team"
@@ -70,7 +70,7 @@ const WhyChooseUs = () => {
             </div>
 
             {/* Side images */}
-            <div className="col-span-12 grid gap-4 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
+            <div className="col-span-4 grid gap-4">
               <div className="why-image-small overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.24)]">
                 <img
                   src={scanImg}
@@ -89,29 +89,31 @@ const WhyChooseUs = () => {
             </div>
           </div>
 
-          {/* Floating badge */}
-          <div className="why-floating-badge absolute -bottom-7 left-6 max-w-xs rounded-2xl border border-white/15 bg-white/95 p-5 text-[#102A43] shadow-[0_24px_70px_rgba(0,0,0,0.24)] backdrop-blur">
-            <div className="flex items-start gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E7F1E8] text-[#2F8F68]">
-                <BadgeCheck size={24} strokeWidth={2.7} />
-              </div>
+           {/* Floating badge - hidden on smaller screens */}
+<div className="why-floating-badge absolute -bottom-7 left-6 hidden max-w-xs rounded-2xl border border-white/15 bg-white/95 p-5 text-[#102A43] shadow-[0_24px_70px_rgba(0,0,0,0.24)] backdrop-blur lg:block">
+  <div className="flex items-start gap-3">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E7F1E8] text-[#2F8F68]">
+      <BadgeCheck size={24} strokeWidth={2.7} />
+    </div>
 
-              <div>
-                <p className="text-sm font-extrabold text-[#102A43]">
-                  Trusted Local Healthcare
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-[#64748B]">
-                  Real people, real care, and dependable support for the
-                  community.
-                </p>
-              </div>
-            </div>
-          </div>
+    <div>
+      <p className="text-sm font-extrabold text-[#102A43]">
+        Trusted Local Healthcare
+      </p>
+
+      <p className="mt-1 text-sm leading-relaxed text-[#64748B]">
+        Real people, real care, and dependable support for the community.
+      </p>
+    </div>
+  </div>
+</div>
+
         </div>
 
+       
         {/* RIGHT: Why choose text and trust rows */}
         <div className="why-content lg:pl-4">
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[#BFE7D0]">
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-[#BFE7D0] sm:mb-4">
             Why Choose Us
           </p>
 
@@ -119,13 +121,13 @@ const WhyChooseUs = () => {
             Trusted Care, Delivered with Professionalism
           </h2>
 
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#D8E8EE]">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#D8E8EE] sm:mt-5">
             Enekem Medicals combines professional healthcare support, accurate
             diagnostics, reliable pharmacy access, and patient-centered service
             in one trusted environment.
           </p>
 
-          <div className="mt-9 space-y-4">
+          <div className="mt-7 space-y-4 sm:mt-9">
             {trustPoints.map((point, index) => {
               const Icon = point.icon;
 
@@ -134,7 +136,7 @@ const WhyChooseUs = () => {
                   key={point.title}
                   className={`why-trust-row why-trust-delay-${
                     index + 1
-                  } group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-5 transition-all duration-300 hover:translate-x-2 hover:border-[#BFE7D0]/40 hover:bg-white/[0.09]`}
+                  } group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition-all duration-300 hover:border-[#BFE7D0]/40 hover:bg-white/[0.09] sm:p-5 lg:hover:translate-x-2`}
                 >
                   <span className="absolute left-0 top-0 h-full w-1 origin-top scale-y-0 bg-[#BFE7D0] transition-transform duration-300 group-hover:scale-y-100" />
 
@@ -143,8 +145,8 @@ const WhyChooseUs = () => {
                       {point.number}
                     </div>
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-[#BFE7D0] transition-all duration-300 group-hover:bg-[#BFE7D0] group-hover:text-[#0E3442]">
-                      <Icon size={24} strokeWidth={2.6} />
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-[#BFE7D0] transition-all duration-300 group-hover:bg-[#BFE7D0] group-hover:text-[#0E3442] sm:h-12 sm:w-12">
+                      <Icon size={23} strokeWidth={2.6} />
                     </div>
 
                     <div>
@@ -162,7 +164,7 @@ const WhyChooseUs = () => {
             })}
           </div>
 
-          <div className="why-actions mt-9 flex flex-col gap-4 sm:flex-row">
+          <div className="why-actions mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:gap-4">
             <Link
               to="/book"
               className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-bold text-[#0E3442] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#BFE7D0]"

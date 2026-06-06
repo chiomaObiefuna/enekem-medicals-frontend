@@ -1,16 +1,12 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
- import { FaWhatsapp } from "react-icons/fa";
-
+import { FaWhatsapp } from "react-icons/fa";
 
 import { contactInfo } from "../data/contactInfo";
 import AboutSnippet from "../home/AboutSnippet";
 import ServicesOverview from "../home/ServiceOverview";
 import WhyChooseUs from "../home/WhyChooseUs";
 import ContactStrip from "../home/ContactStrip";
-
-
-
 
 import bookAppointmentImg from "../../assets/images/book-appointment.jpg";
 import labTestImg from "../../assets/images/lab-test.jpg";
@@ -111,14 +107,14 @@ const quickActions: QuickAction[] = [
     description: "Request diagnostic tests and screenings.",
     buttonLabel: "Run a Test",
     image: labTestImg,
-    href: "/book",
+    href: "/",
   },
   {
     title: "Pharmacy Orders",
     description: "Order medications and health products.",
     buttonLabel: "Order Now",
     image: pharmacyImg,
-    href: "/book",
+    href: "/",
   },
   {
     title: "Speak to a Doctor",
@@ -261,7 +257,7 @@ const Home = () => {
 
 
       {/* QUICK ACTIONS GRID SECTION */}
-      <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="quick-action-fade-up mx-auto max-w-3xl text-center">
             <p className="mb-3 text-sm font-bold uppercase tracking-[0.2em] text-[#01369E]">
@@ -292,7 +288,7 @@ const Home = () => {
                   />
                 </div>
 
-                <div className="flex flex-1 flex-col p-7">
+                <div className="flex flex-1 flex-col p-7 sm:pb-6 sm:pt-5">
                   <h3 className="text-2xl font-bold text-[#102A43]">
                     {action.title}
                   </h3>

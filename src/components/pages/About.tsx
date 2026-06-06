@@ -86,11 +86,11 @@ const About = () => {
   return (
     <main className="w-full">
       {/* ABOUT HERO */}
-      <section className="relative overflow-hidden bg-[#F0F7FF] px-5 py-20 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-[#F0F7FF] px-5 py-20 sm:px-8 py-16 lg:px-8 lg:py-20">
         <div className="about-hero-blob-one pointer-events-none absolute -left-28 top-16 h-80 w-80 rounded-full bg-[#44CC3A]/15 blur-3xl" />
         <div className="about-hero-blob-two pointer-events-none absolute -right-28 bottom-10 h-96 w-96 rounded-full bg-[#102A43]/10 blur-3xl" />
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] ">
           <div className="about-hero-copy">
             <p className="mb-4 inline-flex rounded-full bg-white px-5 py-2 text-sm font-bold uppercase tracking-[0.2em] text-[#2F8F68] shadow-sm">
               About Enekem Medicals
@@ -180,7 +180,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-[#102A43]/20 via-transparent to-transparent" />
             </div>
 
-            <div className="about-hero-floating-card absolute -bottom-8 left-6 max-w-sm rounded-3xl border border-[#D8E8EE] bg-white p-5 shadow-[0_24px_80px_rgba(16,42,67,0.18)] sm:left-10">
+            <div className="about-hero-floating-card hidden sm:absolute -bottom-8 left-6 max-w-sm rounded-3xl border border-[#D8E8EE] bg-white p-5 shadow-[0_24px_80px_rgba(16,42,67,0.18)] sm:left-10">
               <div className="flex gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#E7F1E8] text-[#2F8F68]">
                   <ShieldCheck size={26} strokeWidth={2.7} />
@@ -211,8 +211,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* PROFESSIONAL APPROACH */}
-      <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
+      {/* PROFESSIONAL APPROACH */} 
+      <section className="bg-white px-5 pb-12 pt-10 ;sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="about-approach-panel mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#102A43] text-white shadow-[0_28px_90px_rgba(16,42,67,0.18)]">
           <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="bg-[#0E3442] p-8 sm:p-10 lg:p-12">
@@ -250,7 +250,7 @@ const About = () => {
       </section>
 
       {/* MISSION AND VISION */}
-      <section className="bg-[#F0F7FF] px-5 py-20 sm:px-8 lg:px-10">
+      <section className="bg-[#F0F7FF] px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="about-section-heading mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[#2F8F68]">
@@ -303,7 +303,7 @@ const About = () => {
       </section>
 
       {/* CORE VALUES */}
-      <section className="relative overflow-hidden bg-white px-5 py-20 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-white px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-[#102A43]/5 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-[#44CC3A]/10 blur-3xl" />
 
@@ -348,7 +348,7 @@ const About = () => {
       </section>
 
       {/* WHAT WE OFFER */}
-      <section className="bg-[#F3F8FA] px-5 py-20 sm:px-8 lg:px-10">
+      <section className="bg-[#F3F8FA] px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="about-offer-left">
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[#2F8F68]">
@@ -405,7 +405,7 @@ const About = () => {
       </section>
 
       {/* COMMITMENT AND TRUST */}
-      <section className="relative overflow-hidden bg-[#102A43] px-5 py-20 text-white sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-[#102A43] px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="pointer-events-none absolute -left-24 top-16 h-80 w-80 rounded-full bg-[#44CC3A]/10 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 bottom-10 h-96 w-96 rounded-full bg-[#F0F7FF]/10 blur-3xl" />
 
@@ -482,7 +482,7 @@ const About = () => {
       </section>
 
       {/* VISIT US CTA */}
-      <section className="bg-[#F0F7FF] px-5 py-20 sm:px-8 lg:px-10">
+      <section className="bg-[#F0F7FF]  px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="about-visit-cta mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-[0_28px_80px_rgba(16,42,67,0.1)]">
           <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-8 sm:p-10 lg:p-12">

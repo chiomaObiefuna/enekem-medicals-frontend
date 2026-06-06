@@ -171,7 +171,7 @@ const Services = () => {
                   </div>
 
                   {/* BACK */}
-                  <div className="absolute inset-0 flex flex-col overflow-hidden rounded-[2rem] border border-[#D8E8EE] bg-[#01369E] p-4 text-[#102A43] shadow-[0_24px_80px_rgba(16,42,67,0.12)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-5 lg:p-6">
+                  <div className="absolute inset-0 flex flex-col overflow-hidden rounded-[2rem] border border-[#D8E8EE] bg-[#01369E] p-6 text-[#102A43] shadow-[0_24px_80px_rgba(16,42,67,0.12)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-2 lg:p-8">
 
                     <div>
                       <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#44CC3A]">
@@ -224,7 +224,7 @@ const Services = () => {
       </section>
 
       {/* WHY CHOOSE ENEKEM */}
-      <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-white px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="services-trust-heading mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#2F8F68]">

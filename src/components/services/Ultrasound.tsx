@@ -159,15 +159,6 @@ const Ultrasound = () => {
               <div className="ultra-image-overlay pointer-events-none absolute inset-0" />
               <div className="ultra-moving-beam pointer-events-none absolute inset-0" />
             </div>
-
-            <div className="ultra-mini-panel ultra-mini-panel-one absolute -left-3 top-10 rounded-2xl bg-white px-5 py-4 shadow-[0_22px_70px_rgba(16,42,67,0.20)]">
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#01369E]">
-                Duration
-              </p>
-              <p className="mt-1 text-sm font-black text-[#102A43]">
-                20 to 45 mins
-              </p>
-            </div>
           </div>
            </div>
         </div>

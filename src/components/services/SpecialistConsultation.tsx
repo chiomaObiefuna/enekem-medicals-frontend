@@ -220,7 +220,7 @@ const SpecialistConsultation = () => {
       </section>
 
       {/* PROCESS + BOOKING CTA */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3A9AD9]">

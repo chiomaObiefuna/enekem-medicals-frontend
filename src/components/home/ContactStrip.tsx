@@ -121,7 +121,7 @@ const ContactStrip = () => {
       {/* ── CONTACT STRIP SECTION ── */}
       <section
         ref={sectionRef}
-        className="w-full overflow-hidden bg-[#F8FBFF] py-20 lg:py-28"
+        className="relative overflow-hidden bg-[#F8FBFF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
@@ -268,10 +268,7 @@ const ContactStrip = () => {
               }`}
             >
               {/*
-                REPLACE src="" with your real Google Maps embed URL:
-                1. Go to maps.google.com
-                2. Search "2 Dapo Bode Thomas Street, Montgomery Rd, Yaba, Lagos"
-                3. Share → Embed a map → copy the src URL only
+                  Google Maps iframe embed.
               */}
               <iframe
                 title="Enekem Medicals Location"

@@ -134,7 +134,7 @@ const MedicalTeam = () => {
               return (
                 <article
                  key={member.title}
-    className={`team-role-card team-role-card-${index} rounded-[2.2rem] bg-white p-7 shadow-[0_18px_60px_rgba(1,54,158,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(1,54,158,0.11)]`}
+    className={`team-role-card team-role-card-${index} rounded-[2.2rem] bg-white p-4 shadow-[0_18px_60px_rgba(1,54,158,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(1,54,158,0.11)]`}
   >
     <div className="flex h-20 w-20 items-center p-3">
       <img

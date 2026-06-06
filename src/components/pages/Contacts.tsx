@@ -227,7 +227,8 @@ const Contacts = () => {
       {/* ══════════════════════════════════════
           SECTION 1 — CONTACT US
       ══════════════════════════════════════ */}
-      <SectionWrapper 
+      
+      <SectionWrapper
         sectionTag="Contact Us"
         sideLabel={"Contact\nUs"}
         sideColor="#01369E"

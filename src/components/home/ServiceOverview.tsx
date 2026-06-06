@@ -1,4 +1,3 @@
-// import type { ElementType } from "react";
 import { Link } from "react-router-dom";
  import { ArrowRight } from "lucide-react";
 import Clinic from "../../assets/icons/clinic.png";
@@ -29,13 +28,13 @@ const services: ServiceItem[] = [
     title: "Pharmacy",
     description:
       "Access to quality medications and health products with professional guidance.",
-    image: HandPill,
+    image: HandPill, 
   },
 ];
 
 const ServicesOverview = () => {
   return (
-    <section className="relative overflow-hidden bg-[#F3F8FA] px-5 py-20 sm:px-8 lg:px-10">
+    <section className="relative overflow-hidden bg-[#F3F8FA] px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
       {/* Soft background decoration */}
       <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-[#01369E]/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-[#44CC3A]/10 blur-3xl" />
@@ -89,7 +88,7 @@ const ServicesOverview = () => {
                   </div>
 
                   {/* BACK SIDE */}
-                  <div className="absolute inset-0 flex h-full w-full flex-col justify-between rounded-3xl bg-[#44CC3A] p-8 text-white shadow-[0_24px_70px_rgba(16,42,67,0.16)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 flex h-full w-full flex-col justify-between rounded-3xl bg-[#44CC3A] p-6 text-white shadow-[0_24px_70px_rgba(16,42,67,0.16)] [backface-visibility:hidden] [transform:rotateY(180deg)]">
                     <div>
                       <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 text-white">
                         <img
@@ -103,7 +102,7 @@ const ServicesOverview = () => {
                         {service.title}
                       </h3>
 
-                      <p className="mt-4 text-base leading-relaxed text-white/90">
+                      <p className="mt-4 text-base leading-relaxed text-white">
                         {service.description}
                       </p>
                     </div>

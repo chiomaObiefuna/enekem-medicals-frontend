@@ -3250,6 +3250,8 @@ body,
 ═══════════════════════════════════ */
 
 
+/* Payment & HMO page */
+
 .payment-hmo-hero-gradient {
   background:
     radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), transparent 28%),
@@ -3257,119 +3259,21 @@ body,
     linear-gradient(to left, #44cc3a 0%, #01369e 100%);
 }
 
-.payment-hero-copy,
-.payment-hero-panel,
-.payment-section-reveal,
-.payment-step-card,
-.payment-left-copy,
-.payment-guideline-panel,
-.payment-info-card,
-.payment-provider,
-.payment-provider-notice,
-.payment-bank-card,
-.payment-policy-card,
-.payment-contact-panel {
+.payment-reveal,
+.payment-action-strip {
   opacity: 0;
-  transform: translateY(28px);
-  animation: paymentFadeUp 0.75s ease-out forwards;
+  transform: translateY(22px);
+  animation: paymentFadeUp 0.65s ease-out forwards;
 }
 
-.payment-hero-copy {
-  animation-delay: 0.1s;
-}
-
-.payment-hero-panel {
-  animation-delay: 0.22s;
-}
-
-.payment-delay-1 {
-  animation-delay: 0.18s;
-}
-
-.payment-delay-2 {
-  animation-delay: 0.28s;
-}
-
-.payment-step-card-0,
-.payment-info-card-0,
-.payment-policy-card-0 {
-  animation-delay: 0.08s;
-}
-
-.payment-step-card-1,
-.payment-info-card-1,
-.payment-policy-card-1 {
-  animation-delay: 0.16s;
-}
-
-.payment-step-card-2,
-.payment-info-card-2 {
-  animation-delay: 0.24s;
-}
-
-.payment-step-card-3,
-.payment-info-card-3 {
-  animation-delay: 0.32s;
-}
-
-.payment-left-copy {
-  animation-delay: 0.1s;
-}
-
-.payment-guideline-panel {
-  animation-delay: 0.22s;
-}
-
-.payment-provider-0 {
-  animation-delay: 0.05s;
-}
-
-.payment-provider-1 {
-  animation-delay: 0.08s;
-}
-
-.payment-provider-2 {
-  animation-delay: 0.11s;
-}
-
-.payment-provider-3 {
+.payment-reveal-delay {
   animation-delay: 0.14s;
-}
-
-.payment-provider-4 {
-  animation-delay: 0.17s;
-}
-
-.payment-provider-5 {
-  animation-delay: 0.2s;
-}
-
-.payment-provider-6 {
-  animation-delay: 0.23s;
-}
-
-.payment-provider-7 {
-  animation-delay: 0.26s;
-}
-
-.payment-provider-8 {
-  animation-delay: 0.29s;
-}
-
-.payment-provider-9 {
-  animation-delay: 0.32s;
-}
-
-.payment-provider-notice,
-.payment-bank-card,
-.payment-contact-panel {
-  animation-delay: 0.12s;
 }
 
 @keyframes paymentFadeUp {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(22px);
   }
 
   to {
@@ -3379,18 +3283,8 @@ body,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .payment-hero-copy,
-  .payment-hero-panel,
-  .payment-section-reveal,
-  .payment-step-card,
-  .payment-left-copy,
-  .payment-guideline-panel,
-  .payment-info-card,
-  .payment-provider,
-  .payment-provider-notice,
-  .payment-bank-card,
-  .payment-policy-card,
-  .payment-contact-panel {
+  .payment-reveal,
+  .payment-action-strip {
     animation: none;
     opacity: 1;
     transform: none;

@@ -264,7 +264,7 @@ const Dental = () => {
       {/* SERVICES WITH WAVE LINE */}
       <section
         id="dental-services"
-        className="relative bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10"
+        className="relative bg-white px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
@@ -355,7 +355,7 @@ const Dental = () => {
       </section>
 
       {/* SUITABLE FOR + VISIT PREP */}
-      <section className="bg-[#F8FCFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#F8FCFF] px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="dental-panel rounded-[2.5rem] bg-white p-7 shadow-[0_20px_70px_rgba(16,42,67,0.08)] sm:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3A9AD9]">
@@ -401,8 +401,49 @@ const Dental = () => {
         </div>
       </section>
 
+            {/* VISIT STEPS */}
+      <section className="bg-white px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3A9AD9]">
+              Dental Visit Process
+            </p>
+
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-[#102A43] sm:text-4xl">
+              What happens during your dental visit.
+            </h2>
+
+            <p className="mt-4 text-base leading-8 text-[#5F6F82]">
+              Your dental appointment follows a simple process, from booking to
+              examination and treatment guidance.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {visitSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className={`dental-service-card dental-service-card-${index} relative overflow-hidden rounded-[2rem] border border-[#D8E8EE] bg-[#F8FCFF] p-7 shadow-[0_18px_60px_rgba(16,42,67,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#3A9AD9]/50 hover:bg-white hover:shadow-[0_24px_80px_rgba(16,42,67,0.10)]`}
+              >
+                <span className="block text-6xl font-light leading-none text-[#3A9AD9]/25">
+                  0{step.number}
+                </span>
+
+                <h3 className="mt-5 text-xl font-black text-[#102A43]">
+                  {step.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-7 text-[#5F6F82]">
+                  {step.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* VISIT FLOW */}
-<section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+<section className="bg-white px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
   <div className="mx-auto max-w-7xl">
     <div className="max-w-3xl">
       <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3A9AD9]">
@@ -419,32 +460,11 @@ const Dental = () => {
         any additional cost before proceeding.
       </p>
     </div>
-
-    <div className="mt-12 grid gap-8 md:grid-cols-3">
-      {visitSteps.map((step, index) => (
-        <div
-          key={step.title}
-          className={`dental-visit-step dental-visit-step-${index} relative rounded-[2rem] bg-[#F8FCFF] p-7 shadow-[0_18px_60px_rgba(16,42,67,0.06)]`}
-        >
-          <span className="block text-7xl font-light leading-none text-[#3A9AD9]">
-            {step.number}
-          </span>
-
-          <h3 className="mt-4 text-xl font-black text-[#102A43]">
-            {step.title}
-          </h3>
-
-          <p className="mt-3 text-sm leading-7 text-[#5F6F82]">
-            {step.text}
-          </p>
-        </div>
-      ))}
-    </div>
   </div>
 </section>
 
       {/* BOOKING CTA */}
-      <section className="relative overflow-hidden bg-[#3A9AD9] px-5 py-16 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-[#3A9AD9]  px-5 pb-12 pt-10 text-white sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <svg
           className="dental-cta-wave pointer-events-none absolute inset-x-0 top-0 h-40 w-full opacity-30"
           viewBox="0 0 1200 160"

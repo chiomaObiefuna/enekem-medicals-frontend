@@ -22,7 +22,7 @@ const aboutFeatures = [
 
 const AboutSnippet = () => {
   return (
-    <section className="relative overflow-hidden bg-[#E7F1E8] px-5 py-20 sm:px-8 lg:px-10">
+    <section className="relative overflow-hidden bg-[#E7F1E8] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
       {/* Soft background decorations */}
       <div className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-white/40 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-[#44CC3A]/10 blur-3xl" />

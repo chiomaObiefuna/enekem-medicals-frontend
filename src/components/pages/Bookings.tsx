@@ -561,7 +561,7 @@ const Bookings = () => {
 
     try {
       const response = await fetch(
-        "https://primary-production-d8fe.up.railway.app/webhook/enekem-booking",
+        "https://jt1zjplb.rcld.app/webhook/enekem-booking",
         {
           method: "POST",
           headers: {
@@ -1140,7 +1140,7 @@ const Bookings = () => {
       </section>
 
       {/* WHAT HAPPENS AFTER BOOKING */}
-      <section className="bg-[#F8FBFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#F8FBFF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="booking-process-heading mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#44CC3A]">
@@ -1178,7 +1178,7 @@ const Bookings = () => {
       </section>
 
       {/* IMPORTANT NOTE */}
-      <section className="px-5 py-14 sm:px-8 lg:px-10">
+      <section className= "px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="booking-warning mx-auto max-w-7xl rounded-2xl border border-[#F2B8B5] bg-[#FFF5F5] p-5">
           <div className="flex gap-3 text-[#B94747]">
             <AlertTriangle
