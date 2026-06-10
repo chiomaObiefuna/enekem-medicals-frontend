@@ -132,7 +132,7 @@ const NursingCare = () => {
      
 
       {/* CARE SERVICES */}
-      <section className="bg-[#F8FCFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#F8FCFF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3A9AD9]">
@@ -176,7 +176,7 @@ const NursingCare = () => {
       </section>
 
       {/* VISIT PREPARATION + BOOKING */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white  px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_420px] lg:items-start">
           <div className="nursing-visit-panel rounded-[2.5rem] bg-[#F2FBFF] p-7 sm:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#3A9AD9]">

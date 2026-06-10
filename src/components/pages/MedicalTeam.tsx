@@ -10,7 +10,7 @@ const MedicalTeam = () => {
   return (
     <main className="w-full overflow-hidden bg-[#F3FAFC] text-[#102A43]">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#F3FAFC] px-5 pb-20 pt-28 sm:px-8 lg:px-10 lg:pt-32">
+      <section className="relative overflow-hidden bg-[#F3FAFC] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="team-soft-grid pointer-events-none absolute inset-0 opacity-40" />
         <div className="team-orb team-orb-one pointer-events-none absolute -left-28 top-20 h-80 w-80 rounded-full bg-[#44CC3A]/15 blur-3xl" />
         <div className="team-orb team-orb-two pointer-events-none absolute -right-36 bottom-0 h-[460px] w-[460px] rounded-full bg-[#01369E]/12 blur-3xl" />
@@ -67,7 +67,7 @@ const MedicalTeam = () => {
       </section>
 
       {/* TEAM DEPARTMENTS */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
@@ -111,7 +111,7 @@ const MedicalTeam = () => {
       </section>
 
       {/* TEAM ROLES */}
-      <section className="bg-[#F3FAFC] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#F3FAFC] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
@@ -163,7 +163,7 @@ const MedicalTeam = () => {
       </section>
 
       {/* CARE STANDARDS */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="team-standard-intro">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">

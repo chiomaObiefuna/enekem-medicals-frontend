@@ -218,7 +218,7 @@ const Immunization = () => {
       </section>
 
       {/* FACT STRIP */}
-      <section className="border-y border-[#b6ccfe]/70 bg-white px-5 py-8 sm:px-8 lg:px-10">
+      <section className="border-y border-[#b6ccfe]/70 bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
           <div className="immunization-fact rounded-[1.7rem] bg-[#edf2fb] p-5">
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#008000]">
@@ -252,7 +252,7 @@ const Immunization = () => {
       {/* VACCINE GROUPS */}
       <section
         id="vaccine-groups"
-        className="relative bg-[#edf2fb] px-5 py-16 sm:px-8 sm:py-20 lg:px-10"
+        className="relative bg-[#edf2fb] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="immunization-section-orb pointer-events-none absolute right-0 top-16 h-96 w-96 rounded-full bg-[#b6ccfe]/40 blur-3xl" />
 
@@ -296,7 +296,7 @@ const Immunization = () => {
       </section>
 
       {/* CHILD VACCINES */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="immunization-intro-panel">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#008000]">
@@ -329,7 +329,7 @@ const Immunization = () => {
       </section>
 
       {/* SUITABLE + WHAT TO BRING */}
-      <section className="bg-[#edf2fb] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#edf2fb] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.95fr]">
           <div className="immunization-panel rounded-[2.5rem] bg-white p-7 shadow-[0_20px_70px_rgba(1,54,158,0.08)] sm:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#008000]">
@@ -376,7 +376,7 @@ const Immunization = () => {
       </section>
 
       {/* VISIT FLOW */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#008000]">
@@ -412,7 +412,7 @@ const Immunization = () => {
       </section>
 
       {/* CTA - NO COLOURED BOTTOM BLOCK */}
-      <section className="bg-white px-5 py-16 sm:px-8 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="immunization-final-cta mx-auto max-w-7xl rounded-[2.5rem] border border-[#b6ccfe]/70 bg-[#edf2fb] p-7 shadow-[0_24px_80px_rgba(1,54,158,0.09)] sm:p-10">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>

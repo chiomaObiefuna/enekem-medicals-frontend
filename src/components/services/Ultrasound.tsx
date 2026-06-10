@@ -167,7 +167,7 @@ const Ultrasound = () => {
       {/* SCAN TYPES */}
       <section
         id="scan-types"
-        className="relative bg-[#F5FAFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10"
+        className="relative bg-[#F5FAFF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="pointer-events-none absolute right-0 top-10 h-[420px] w-[420px] rounded-full bg-[#44CC3A]/10 blur-3xl" />
 
@@ -224,7 +224,7 @@ const Ultrasound = () => {
       </section>
 
       {/* SUITABLE FOR + WHAT TO BRING */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.95fr]">
           <div className="ultra-panel rounded-[2.5rem] bg-[#01369E] p-7 text-white shadow-[0_24px_80px_rgba(1,54,158,0.18)] sm:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
@@ -271,7 +271,7 @@ const Ultrasound = () => {
       </section>
 
       {/* PROCESS */}
-      <section className="bg-[#F5FAFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#F5FAFF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#44CC3A]">
@@ -307,7 +307,7 @@ const Ultrasound = () => {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-[#01369E] px-5 py-16 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-[#01369E] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="ultra-grid pointer-events-none absolute inset-0 opacity-15" />
 
         <div className="ultra-final-cta relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto] lg:items-center">

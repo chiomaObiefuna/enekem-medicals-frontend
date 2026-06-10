@@ -167,7 +167,7 @@ const Laboratory = () => {
       {/* TESTS */}
       <section
         id="lab-tests"
-        className="relative bg-[#FFFFFF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10"
+        className="relative bg-[#FFFFFF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="lab-section-bubble lab-section-bubble-one" />
         <div className="lab-section-bubble lab-section-bubble-two" />
@@ -214,7 +214,7 @@ const Laboratory = () => {
       </section>
 
       {/* SUITABLE + PREP */}
-      <section className="bg-[#F4F7FF] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#F4F7FF] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="lab-panel rounded-[2.5rem] bg-white p-7 shadow-[0_20px_70px_rgba(16,42,67,0.08)] sm:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#A67C00]">
@@ -261,7 +261,7 @@ const Laboratory = () => {
       </section>
 
       {/* PROCESS */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#A67C00]">
@@ -297,7 +297,7 @@ const Laboratory = () => {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-[#ffe97f] px-5 py-16 sm:px-8 lg:px-10">
+      <section className="relative overflow-hidden bg-[#ffe97f] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="lab-cta-bubble lab-cta-bubble-one" />
         <div className="lab-cta-bubble lab-cta-bubble-two" />
 

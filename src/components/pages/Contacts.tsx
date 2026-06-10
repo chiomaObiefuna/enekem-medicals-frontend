@@ -1,8 +1,7 @@
-import { useState,type ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import {
   FaPhone,
   FaWhatsapp,
-  FaMapMarkerAlt,
   FaClock,
   FaEnvelope,
   FaExclamationTriangle,
@@ -17,12 +16,14 @@ import {
 import { Link } from "react-router-dom";
 import { contactInfo } from "../data/contactInfo";
 
+import locationIcon from "../../assets/icons/location.png";
+
 // ─────────────────────────────────────────
 // FLOATING WHATSAPP BUBBLE
-// Same pattern as ContactStrip — pulse ring + tooltip
 // ─────────────────────────────────────────
 const FloatingWhatsApp = () => {
   const [hovered, setHovered] = useState(false);
+
   return (
     <div
       className="fixed bottom-6 right-6 z-[999] flex items-center gap-3"
@@ -40,6 +41,7 @@ const FloatingWhatsApp = () => {
           Need Help? Chat with us
         </p>
       </div>
+
       <a
         href={contactInfo.whatsappLink}
         target="_blank"
@@ -68,12 +70,17 @@ const ContactRow = ({ icon, label, lines }: ContactRowProps) => (
     <div className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#01369E]/8 text-[#01369E]">
       {icon}
     </div>
+
     <div>
       <p className="mb-0.5 text-[11px] font-bold uppercase tracking-widest text-[#102A43]/40">
         {label}
       </p>
+
       {lines.map((line, i) => (
-        <p key={i} className="text-[14px] font-medium leading-relaxed text-[#102A43]/80">
+        <p
+          key={i}
+          className="text-[14px] font-medium leading-relaxed text-[#102A43]/80"
+        >
           {line}
         </p>
       ))}
@@ -105,8 +112,9 @@ interface SectionWrapperProps {
   sectionTag: string;
   sideLabel: string;
   sideColor: string;
-  sideNumber: string; // ghost watermark number e.g. "01", "02"
+  sideNumber: string;
   children: React.ReactNode;
+  contentClassName?: string;
 }
 
 const SectionWrapper = ({
@@ -115,19 +123,15 @@ const SectionWrapper = ({
   sideColor,
   sideNumber,
   children,
+  contentClassName = "",
 }: SectionWrapperProps) => (
   <div className="grid gap-0 lg:grid-cols-[220px_1fr]">
-
-    {/* ── LEFT: Sticky sidebar ──  */}
-    <div
-      className="hidden lg:block"
-      style={{ backgroundColor: sideColor }}
-    >
+    {/* LEFT: Sticky sidebar */}
+    <div className="hidden lg:block" style={{ backgroundColor: sideColor }}>
       <div
-        className="sticky top-0 flex min-h-screen flex-col items-start justify-center overflow-hidden px-8 py-14"
+        className="sticky top-0 flex min-h-[540px] flex-col items-start justify-center overflow-hidden px-8 py-14"
         style={{ backgroundColor: sideColor }}
       >
-        {/* Ghost watermark number — large, faded, absolutely positioned */}
         <span
           className="pointer-events-none absolute -bottom-6 -right-4 select-none font-extrabold leading-none text-white/[0.07]"
           style={{ fontSize: "160px" }}
@@ -136,38 +140,35 @@ const SectionWrapper = ({
           {sideNumber}
         </span>
 
-        {/* Top decorative line */}
         <span className="mb-5 block h-[2px] w-10 rounded-full bg-white/30" />
 
-        {/* Small tag text */}
         <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.25em] text-white/55">
           {sectionTag}
         </p>
 
-        {/* Main heading — preserves \n line breaks */}
         <h2 className="whitespace-pre-line text-3xl font-extrabold leading-tight text-white">
           {sideLabel}
         </h2>
 
-        {/* Bottom accent dot */}
-        <span
-          className="mt-6 block h-2 w-2 rounded-full bg-white/40"
-        />
+        <span className="mt-6 block h-2 w-2 rounded-full bg-white/40" />
       </div>
     </div>
 
-    {/* ── RIGHT: Content area ── */}
-    <div className="bg-white px-5 py-12 sm:px-10 lg:px-14 lg:py-14">
-
-      {/* Mobile label — only shows on screens below lg */}
+    {/* RIGHT: Content area */}
+    <div
+      className={`bg-white px-5 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-10 ${contentClassName}`}
+    >
+      {/* Mobile label */}
       <div className="mb-8 lg:hidden">
         <span
           className="mb-3 block h-[2px] w-8 rounded-full"
           style={{ backgroundColor: sideColor }}
         />
+
         <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#102A43]/40">
           {sectionTag}
         </p>
+
         <h2
           className="mt-1 whitespace-pre-line text-2xl font-extrabold"
           style={{ color: sideColor }}
@@ -180,6 +181,7 @@ const SectionWrapper = ({
     </div>
   </div>
 );
+
 // ─────────────────────────────────────────
 // MAIN PAGE
 // ─────────────────────────────────────────
@@ -188,6 +190,9 @@ const Contacts = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
+
+  const googleMapsLink =
+    "https://maps.google.com/?q=2+Dapo+Bode+Thomas+Street+Yaba+Lagos";
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -199,13 +204,15 @@ const Contacts = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!form.fullName.trim() || !form.phone.trim() || !form.message.trim()) {
       setFormError("Please fill in your name, phone number, and message.");
       return;
     }
+
     setSubmitting(true);
+
     try {
-      // Replace with real API call when backend is ready
       await new Promise((res) => setTimeout(res, 700));
       setSubmitted(true);
       setForm(emptyForm);
@@ -223,27 +230,28 @@ const Contacts = () => {
 
   return (
     <main className="w-full">
-
-      {/* ══════════════════════════════════════
-          SECTION 1 — CONTACT US
-      ══════════════════════════════════════ */}
-      
+      {/* SECTION 1 — CONTACT US */}
       <SectionWrapper
         sectionTag="Contact Us"
         sideLabel={"Contact\nUs"}
         sideColor="#01369E"
-        sideNumber="01" 
+        sideNumber="01"
+        contentClassName="pt-24 sm:pt-28 lg:pt-10 lg:pb-10"
       >
-        <div className="grid gap-10 xl:grid-cols-[1fr_300px]">
-
+        <div className="max-w-4xl">
           {/* Contact info */}
-          <div className="flex flex-col gap-6 relative overflow-hidden bg-white px-5 pb-4 pt-3 sm:px-2 sm:pb-2 sm:pt-3 lg:px-10 lg:pb-12 lg:pt-20">
-            <h3 className="text-xl font-bold text-[#102A43]">
-              Get in Touch
-            </h3>
+          <div className="relative flex flex-col gap-5 bg-white sm:gap-6 lg:max-w-3xl">
+            <h3 className="text-xl font-bold text-[#102A43]">Get in Touch</h3>
 
             <ContactRow
-              icon={<FaMapMarkerAlt size={16} />}
+              icon={
+                <img
+                  src={locationIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-4 w-4 object-contain"
+                />
+              }
               label="Visit Us"
               lines={[contactInfo.address]}
             />
@@ -295,20 +303,17 @@ const Contacts = () => {
 
             {/* CTA buttons */}
             <div className="mt-2 flex flex-wrap gap-3">
-              {/* Call Now */}
-             <a
-                    href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
-                    className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-[#01369E] px-6 py-3 text-sm font-bold text-[#01369E] transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
-                  >
-                    <span className="absolute inset-0 -translate-x-full bg-[#01369E] transition-transform duration-[350ms] ease-out group-hover:translate-x-0" />
-                    <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
-                      <PhoneCall size={15} />
-                      Call {contactInfo.phone1}
-                    </span>
+              <a
+                href={`tel:${contactInfo.phone1.replace(/\s+/g, "")}`}
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-[#01369E] px-6 py-3 text-sm font-bold text-[#01369E] transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
+              >
+                <span className="absolute inset-0 -translate-x-full bg-[#01369E] transition-transform duration-[350ms] ease-out group-hover:translate-x-0" />
+                <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-white">
+                  <PhoneCall size={15} />
+                  Call {contactInfo.phone1}
+                </span>
               </a>
 
-                  
-              {/* WhatsApp */}
               <a
                 href={contactInfo.whatsappLink}
                 target="_blank"
@@ -322,7 +327,6 @@ const Contacts = () => {
                 </span>
               </a>
 
-              {/* Book Appointment */}
               <Link
                 to="/book"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 border-[#D8E8EE] bg-[#F0F7FF] px-6 py-3 text-sm font-bold text-[#01369E] transition-all duration-300 hover:-translate-y-0.5"
@@ -331,77 +335,72 @@ const Contacts = () => {
                 Book Appointment
               </Link>
             </div>
-          </div>
 
-          {/* Small map — matches Evercare reference style */}
-          <div className="flex flex-col gap-4">
-            {/* Map thumbnail */}
-            <div className="overflow-hidden rounded-2xl border border-[#D8E8EE] shadow-md">
-              
-              
-            
-              <iframe
-                title="Enekem Medicals - Yaba Lagos"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9!2d3.3792!3d6.5244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzEnMjguMCJOIDPCsDIyJzQ1LjEiRQ!5e0!3m2!1sen!2sng"
-                width="100%"
-                height="180"
-                style={{ border: 0, display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            {/* Google Maps link card — visible map removed */}
+            <div className="mt-8 max-w-[520px] sm:mt-10 lg:mt-8">
+              <div className="p-5 sm:p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#01369E]/8">
+                  <img
+                    src={locationIcon}
+                    alt="Location icon"
+                    className="h-6 w-6 object-contain"
+                  />
+                </div>
 
-            {/* Location card below map */}
-            <div className="rounded-2xl border border-[#D8E8EE] bg-[#F0F7FF] p-4">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#01369E]">
-                Enekem Medicals
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-[#102A43]/70">
-                {contactInfo.address}
-              </p>
-              <a
-                href="https://maps.google.com/?q=2+Dapo+Bode+Thomas+Street+Yaba+Lagos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-[#01369E] hover:underline"
-              >
-                <FaMapMarkerAlt size={11} />
-                Find Us on Google Maps
-              </a>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-[#01369E]">
+                  Enekem Medicals
+                </p>
+
+                <p className="mt-2 text-sm leading-relaxed text-[#102A43]/70">
+                  {contactInfo.address}
+                </p>
+
+                <a
+                  href={googleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#01369E] px-5 py-3 text-xs font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002D82]"
+                >
+                  <img
+                    src={locationIcon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-4 w-4 object-contain brightness-0 invert"
+                  />
+                  Find Us on Google Maps
+                </a>
+              </div>
             </div>
           </div>
-
         </div>
       </SectionWrapper>
 
-      {/* Divider */}
       <div className="h-[1px] bg-[#D8E8EE]" />
 
-      {/* ══════════════════════════════════════
-          SECTION 2 — SEND A MESSAGE
-          Left: #25D366 sidebar
-          Right: inquiry form
-      ══════════════════════════════════════ */}
+      {/* SECTION 2 — SEND A MESSAGE */}
       <SectionWrapper
         sectionTag="Send a Message"
         sideLabel={"Send a\nMessage"}
         sideColor="#25D366"
-        sideNumber="02"  
+        sideNumber="02"
       >
         <div className="max-w-2xl">
           <h3 className="mb-2 text-xl font-bold text-[#102A43]">
             Send us an inquiry
           </h3>
+
           <p className="mb-8 text-sm leading-relaxed text-[#102A43]/55">
-            Have a question or need more information? Fill in the form and
-            our team will get back to you promptly.
+            Have a question or need more information? Fill in the form and our
+            team will get back to you promptly.
           </p>
 
-          {/* Success */}
           {submitted && (
             <div className="mb-6 flex gap-3 rounded-2xl border border-[#b3f0cc] bg-[#f0fbf4] p-4">
-              <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-[#25D366]" strokeWidth={2.5} />
+              <CheckCircle2
+                size={20}
+                className="mt-0.5 shrink-0 text-[#25D366]"
+                strokeWidth={2.5}
+              />
               <div>
                 <p className="font-semibold text-[#102A43]">Message sent!</p>
                 <p className="mt-0.5 text-sm text-[#102A43]/60">
@@ -411,10 +410,13 @@ const Contacts = () => {
             </div>
           )}
 
-          {/* Error */}
           {formError && (
             <div className="mb-6 flex gap-3 rounded-2xl border border-red-200 bg-red-50 p-4">
-              <AlertTriangle size={18} className="mt-0.5 shrink-0 text-red-400" strokeWidth={2.5} />
+              <AlertTriangle
+                size={18}
+                className="mt-0.5 shrink-0 text-red-400"
+                strokeWidth={2.5}
+              />
               <p className="text-sm text-red-500">{formError}</p>
             </div>
           )}
@@ -434,6 +436,7 @@ const Contacts = () => {
                   className={inputClass()}
                 />
               </div>
+
               <div>
                 <label className="mb-2 block text-sm font-semibold text-[#102A43]">
                   Phone Number
@@ -452,7 +455,6 @@ const Contacts = () => {
             <div>
               <label className="mb-2 block text-sm font-semibold text-[#102A43]">
                 Email Address
-                
               </label>
               <input
                 name="email"
@@ -490,24 +492,20 @@ const Contacts = () => {
         </div>
       </SectionWrapper>
 
-      {/* Divider */}
       <div className="h-[1px] bg-[#D8E8EE]" />
 
-      {/* ══════════════════════════════════════
-          EMERGENCY NOTICE — subtle red strip
-      ══════════════════════════════════════ */}
+      {/* EMERGENCY NOTICE */}
       <div className="bg-white px-5 py-6 sm:px-10 lg:px-14">
         <div className="mx-auto flex max-w-4xl items-center gap-2 text-red-400">
           <FaExclamationTriangle size={13} className="shrink-0" />
           <p className="text-xs leading-relaxed text-red-400">
             <span className="font-semibold">Emergency Notice: </span>
-            For urgent medical situations, please call us directly or visit
-            the facility immediately rather than waiting for online responses.
+            For urgent medical situations, please call us directly or visit the
+            facility immediately rather than waiting for online responses.
           </p>
         </div>
       </div>
 
-      {/* Floating WhatsApp bubble */}
       <FloatingWhatsApp />
     </main>
   );

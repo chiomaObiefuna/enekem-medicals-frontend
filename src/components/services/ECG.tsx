@@ -228,7 +228,7 @@ const ECG = () => {
       {/* ECG USES */}
       <section
         id="ecg-uses"
-        className="relative bg-[#edf2fb] px-5 py-16 sm:px-8 sm:py-20 lg:px-10"
+        className="relative bg-[#edf2fb] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="pointer-events-none absolute right-0 top-16 h-96 w-96 rounded-full bg-[#abc4ff]/35 blur-3xl" />
 
@@ -271,7 +271,7 @@ const ECG = () => {
       </section>
 
       {/* SUITABLE + PREP */}
-      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-white px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="ecg-panel rounded-[2.5rem] bg-[#004b23] p-7 text-white shadow-[0_24px_80px_rgba(0,75,35,0.18)] sm:p-9">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#9ef01a]">
@@ -318,7 +318,7 @@ const ECG = () => {
       </section>
 
       {/* FLOW */}
-      <section className="bg-[#edf2fb] px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
+      <section className="bg-[#edf2fb] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#004b23]">

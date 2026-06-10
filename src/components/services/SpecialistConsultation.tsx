@@ -154,7 +154,7 @@ const SpecialistConsultation = () => {
       {/* SPECIALISTS GRID */}
       <section
         id="specialists"
-        className="relative bg-[#FFFDF4] px-5 py-16 sm:px-8 sm:py-20 lg:px-10"
+        className="relative bg-[#FFFDF4] px-5 pb-12 pt-10 sm:px-8 sm:pb-14 sm:pt-12 lg:px-10 lg:py-20"
       >
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
