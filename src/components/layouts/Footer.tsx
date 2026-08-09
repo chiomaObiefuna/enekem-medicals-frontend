@@ -25,6 +25,13 @@ const quickLinks = [
   { label: "Contact Us", path: "/contact" },
 ];
 
+const legalLinks = [
+  { label: "Privacy Policy", path: "/legal/privacy-policy" },
+  { label: "Terms & Conditions", path: "/legal/terms-and-conditions" },
+  { label: "Cookie Policy", path: "/legal/cookie-policy" },
+  { label: "AI Assistant Disclaimer", path: "/legal/ai-assistant-disclaimer" },
+];
+
 const services = [
   "Medical Consultation",
   "Diagnostic Services",
@@ -67,6 +74,7 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+   const currentYear = new Date().getFullYear();
   return (
     <footer className="relative overflow-hidden bg-[#002D82] text-white">
       {/* Soft footer background pattern */}
@@ -214,17 +222,31 @@ const Footer = () => {
         </div>
 
         {/* Bottom footer */}
-        <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-5 border-t border-white/10 pt-7 text-sm text-[#D8E8EE] md:flex-row md:items-center md:justify-between">
-          <p>© 2026 Enekem Medicals. All rights reserved.</p>
+<div className="mx-auto mt-12 flex max-w-7xl flex-col gap-5 border-t border-white/10 pt-7 text-sm text-[#D8E8EE] md:flex-row md:items-center md:justify-between">
+  <p>© {currentYear} Enekem Medicals. All rights reserved.</p>
 
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 font-semibold text-[#F0F7FF] transition hover:text-[#44CC3A]"
-          >
-            Visit or Contact Us
-            <ArrowUpRight size={16} strokeWidth={2.5} />
-          </Link>
-        </div>
+  <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      {legalLinks.map((link) => (
+        <Link
+          key={link.label}
+          to={link.path}
+          className="font-medium text-[#D8E8EE] transition hover:text-[#44CC3A]"
+        >
+          {link.label}
+        </Link>
+      ))}
+    </div>
+
+    <Link
+      to="/contact"
+      className="inline-flex items-center gap-2 font-semibold text-[#F0F7FF] transition hover:text-[#44CC3A]"
+    >
+      Visit or Contact Us
+      <ArrowUpRight size={16} strokeWidth={2.5} />
+    </Link>
+  </div>
+</div>
       </div>
     </footer>
   );

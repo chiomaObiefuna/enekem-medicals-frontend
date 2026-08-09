@@ -4,7 +4,7 @@ import {
   type ChangeEvent,
   type FormEvent,
 } from "react";
-import {useSearchParams } from "react-router-dom";
+import {Link, useSearchParams } from "react-router-dom";
 import {
   AlertTriangle,
   CalendarDays,
@@ -265,6 +265,7 @@ type BookingFormData = {
   preferredDate: string;
   preferredTime: string;
   description: string;
+  acceptedDisclaimer?: boolean;
 };
 
 type BookingFormErrors = Partial<Record<keyof BookingFormData, string>>;
@@ -279,6 +280,7 @@ const initialFormData: BookingFormData = {
   preferredDate: "",
   preferredTime: "",
   description: "",
+  acceptedDisclaimer: false,
 };
 
 // ─────────────────────────────────────────
@@ -362,8 +364,22 @@ const Bookings = () => {
   const [submitError, setSubmitError] = useState("");
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
 
-  const today = new Date().toISOString().split("T")[0];
+  const getTodayDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+  const today = getTodayDate();
   const slotKey = (date: string, time: string) => `${date}|${time}`;
+
+  const isSelectedDateTimeInPast = (date: string, time: string) => {
+    const selectedDateTime = new Date(`${date}T${time}`);
+    const now = new Date();
+  
+    return selectedDateTime <= now;
+  };
 
   // Prefill form from service page URL parameters
   useEffect(() => {
@@ -454,10 +470,22 @@ const Bookings = () => {
   ) => {
     const { name, value } = event.target;
 
+    const isCheckbox =
+    event.target instanceof HTMLInputElement &&
+    event.target.type === "checkbox";
+
+  const checked =
+    event.target instanceof HTMLInputElement ? event.target.checked : false;
+
     if (name === "service") {
       handleServiceChange(value);
       return;
     }
+
+     setFormData((current) => ({
+    ...current,
+    [name]: isCheckbox ? checked : value,
+  }));
 
     setFormData((current) => ({
       ...current,
@@ -530,7 +558,16 @@ const Bookings = () => {
       newErrors.preferredTime = "Please choose a preferred time.";
     }
 
-    if (formData.preferredDate && formData.preferredTime) {
+          if (
+        formData.preferredDate &&
+        formData.preferredTime &&
+        isSelectedDateTimeInPast(formData.preferredDate, formData.preferredTime)
+      ) {
+        newErrors.preferredTime =
+          "The selected appointment time has already passed. Please choose a later time today or select another date.";
+      }
+
+    if (formData.preferredDate && formData.preferredTime && !newErrors.preferredTime) {
       const key = slotKey(formData.preferredDate, formData.preferredTime);
 
       if (bookedSlots.includes(key)) {
@@ -542,6 +579,11 @@ const Bookings = () => {
     if (!formData.description.trim()) {
       newErrors.description = "Please briefly describe your request.";
     }
+
+    if (!formData.acceptedDisclaimer) {
+  newErrors.acceptedDisclaimer =
+    "Please acknowledge the AI Assistant Disclaimer before submitting your booking request.";
+}
 
     return newErrors;
   };
@@ -561,7 +603,7 @@ const Bookings = () => {
 
     try {
       const response = await fetch(
-        "https://jt1zjplb.rcld.app/webhook/enekem-booking",
+       "https://gb0kfe93.rpcld.net/webhook/enekem-booking",
         {
           method: "POST",
           headers: {
@@ -577,6 +619,7 @@ const Bookings = () => {
             date: formData.preferredDate,
             time: formData.preferredTime,
             brief_description: formData.description,
+            accepted_Disclaimer: formData.acceptedDisclaimer 
           }),
         }
       );
@@ -1034,6 +1077,55 @@ const Bookings = () => {
                   </p>
                 )}
               </div>
+
+{/* Terms and Privacy Agreement */}
+<div>
+  <div
+    className={`rounded-2xl border bg-white p-4 ${
+      errors.acceptedDisclaimer ? "border-[#D96C6C]" : "border-[#D8E8EE]"
+    }`}
+  >
+    <div className="flex items-start gap-3">
+      <input
+        id="acceptedDisclaimer"
+        name="acceptedDisclaimer"
+        type="checkbox"
+        checked={formData.acceptedDisclaimer}
+        onChange={handleChange}
+        className="mt-1 h-4 w-4 rounded border-[#D8E8EE] accent-[#01369E]"
+        aria-describedby="acceptedDisclaimerText"
+      />
+
+      <p
+        id="acceptedDisclaimerText"
+        className="text-sm leading-7 text-[#526071]"
+      >
+        By submitting this booking request, I agree to the{" "}
+        <Link
+          to="/terms-and-conditions"
+          className="font-bold text-[#01369E] underline underline-offset-4"
+        >
+          Terms & Conditions
+        </Link>{" "}
+        and acknowledge the{" "}
+        <Link
+          to="/privacy-policy"
+          className="font-bold text-[#01369E] underline underline-offset-4"
+        >
+          Privacy Policy
+        </Link>
+        .
+      </p>
+    </div>
+  </div>
+
+  {errors.acceptedDisclaimer && (
+    <p className="mt-2 text-sm text-[#B94747]">
+      {errors.acceptedDisclaimer}
+    </p>
+  )}
+</div>
+
 
               {/* Submit */}
               <button

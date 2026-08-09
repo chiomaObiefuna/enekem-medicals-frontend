@@ -17,6 +17,14 @@ const HMO = lazy(() => import("./components/pages/HMO"));
 const FAQ = lazy(() => import("./components/pages/FAQ"));
 const MedicalTeam = lazy(() => import("./components/pages/MedicalTeam"));
 
+// Legal pages
+const PrivacyPolicy = lazy(() => import("./components/legal/PrivacyPolicy"));
+const TermsAndConditions = lazy(
+  () => import("./components/legal/TermsAndConditions")
+);
+const CookiePolicy = lazy(() => import("./components/legal/CookiePolicy"));
+const AIAssistantDisclaimer = lazy(() => import("./components/legal/AIAssistantDisclaimer"));
+
 
  const Dental = lazy(() => import("./components/services/Dental"));
  const ECG = lazy(() => import("./components/services/ECG"));
@@ -28,6 +36,8 @@ const Immunization = lazy(() => import("./components/services/Immunization"));
 const NursingCare = lazy(() => import("./components/services/NursingCare"));
  const SpecialistConsultation = lazy(() => import("./components/services/SpecialistConsultation"));
  const Telemedicine = lazy(() => import("./components/services/Telemedicine"));
+
+
 
 function App() {
   const [isOnline, setIsOnline] = useState(
@@ -71,6 +81,9 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/book" element={<Bookings />} />
             <Route path="/contact" element={<Contacts />} />
+            <Route path="/hmo" element={<HMO />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/about/medical-team" element={<MedicalTeam />} />
 
             {/* Service pages */}
             <Route path="/services/gp-consultation" element={<GPConsultation />} />
@@ -84,9 +97,13 @@ function App() {
               <Route path="/services/ecg" element={<ECG />} />
               <Route path="/services/immunization" element={<Immunization />} />
 
-            <Route path="/hmo" element={<HMO />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/about/medical-team" element={<MedicalTeam />} />
+            {/* Legal pages */}
+            <Route path="/legal/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/legal/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/legal/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/legal/ai-assistant-disclaimer" element={<AIAssistantDisclaimer />} />
+
+            
            
           </Routes>
         </Suspense>
