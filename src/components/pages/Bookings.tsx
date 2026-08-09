@@ -582,7 +582,7 @@ const Bookings = () => {
 
     if (!formData.acceptedDisclaimer) {
   newErrors.acceptedDisclaimer =
-    "Please acknowledge the AI Assistant Disclaimer before submitting your booking request.";
+    "Please agree to the Terms & Conditions and acknowledge the Privacy Policy before submitting your booking request.";
 }
 
     return newErrors;
